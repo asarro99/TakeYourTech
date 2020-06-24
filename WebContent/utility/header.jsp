@@ -15,7 +15,17 @@
          <li>
             <a href="#">Carrello</a>
          </li>
-         <li><a href="#">Account</a></li>
+        <%
+		if(session.getAttribute("roleUtente")==null){
+			out.println("<li><a href=" + "login.jsp" + ">Login</a></li>");
+		}else if(session.getAttribute("roleUtente")!=null && session.getAttribute("roleUtente").equals("utente")){
+			out.println("<li><a href=" + "account.jsp" + ">Account</a></li>");
+			out.println("<li><a href=" + "Logout" + ">Logout</a></li>");
+		}else if(session.getAttribute("roleUtente")!=null && session.getAttribute("roleUtente").equals("admin")){
+			out.println("<li><a href=" + "accountGestione.jsp" + ">Gestione</a></li>");
+			out.println("<li><a href=" + "Logout" + ">Logout</a></li>");
+		}
+		%>
       </ul>
    </div>
 </div>

@@ -257,23 +257,23 @@ public class DB implements DBModel {
 	}
 	
 	@Override
-	public ArrayList<String> Login(String username, String password) throws SQLException 
+	public ArrayList<String> Login(String email, String password) throws SQLException 
 	{
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String querylogin = "SELECT * FROM utenti  WHERE username = ?";
+		String querylogin = "SELECT * FROM utente WHERE Email = ?";
 		try 
 		{
 			connection = ds.getConnection();
 
 			preparedStatement = connection.prepareStatement(querylogin);
-			preparedStatement.setString(1, username);
+			preparedStatement.setString(1, email);
 			ResultSet rSet = preparedStatement.executeQuery();
 			
 			rSet.next();
-			String passwordDb =rSet.getString("password");
-			String tipo = rSet.getString("tipo");
+			String passwordDb =rSet.getString("Password");
+			String tipo = rSet.getString("TipoAccount");
             String id = rSet.getString("idUtente");
             ArrayList<String> risultato = new ArrayList<String>();
 			if (passwordDb.equals(password)) 

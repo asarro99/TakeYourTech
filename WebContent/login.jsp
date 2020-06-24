@@ -38,13 +38,15 @@
         <label id="label-login" for="log-login-show">Registrati</label>
         <input type="radio" name="active-log-panel" id="log-login-show" />
       </div>
-
+		
       <div class="white-panel">
         <div class="login-show">
           <h2>LOGIN</h2>
-          <input type="text" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <input type="button" value="Login" />
+          <form method="post" action="Login">
+          <input type="text" placeholder="Email" id="email" name = "email"/>
+          <input type="password" placeholder="Password" id="password" name="password"/>
+          <input type="submit" value="Login" />
+          </form>
         </div>
         <div class="register-show">
           <h2>REGISTRATI</h2>
@@ -53,7 +55,7 @@
           <input type="password" placeholder="Conferma Password" required />
           <input type="text" placeholder="Nome" />
           <input type="text" placeholder="Cognome" />
-          <input type="button" value="Registrati" />
+          <input type="button" value="Registrati"/>
         </div>
       </div>
     </div>

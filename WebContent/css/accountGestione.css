@@ -1,0 +1,51 @@
+.form-container{
+		display: inline-block;
+		margin-left: 10%;
+	}
+	
+	.form-wrapper{
+		width: 320px;
+		background: #009879;
+		padding: 10px 20px;
+		box-sizing: border-box;
+		border-radius: 7px;
+		margin: 10px;
+		float: left;
+	}
+	
+	h2{
+		text-align: center;
+		color: #fff;
+		font-weight: normal;
+		margin-bottom: 20px;
+	}
+	
+	.form-wrapper form input{
+		width: 100%;
+		background: #FFA500;
+		border: 1px solid #000;
+		border-radius: 3px;
+		padding: 6px 15px;
+		box-sizing: border-box;
+		margin-bottom: 20px !important;
+		font-size: 16px !important;
+	}
+	
+	input[type="submit"]{
+		background: #FFA500;
+		border: 0;
+		cursor: pointer;
+		border: 1px solid #000;
+	}
+	
+	input[type="file"]{
+		background: #FFA500;
+		border: 0;
+		cursor: pointer;
+		border: 1px solid #000;
+	}
+	
+	input[type="submit"]:hover{
+		background: #ffc457;
+		transition: .2s;
+	}
