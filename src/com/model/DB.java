@@ -156,17 +156,17 @@ public class DB implements DBModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO prodotti (CODICE,NOME, DESCRIZIONE, PREZZO, QUANTITA,IMMAGINE) VALUES (?,?, ?, ?, ?,?)";
+		String insertSQL = "INSERT INTO prodotto (IdProdotto,NomeCategoria, Nome,IVA,Prezzo, Immagine, Descrizione,Quantita) VALUES (?,?, ?, ?, ?,?,?,?)";
 
 		File file = new File(product.getPhoto());
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(1, product.getCode());
-			preparedStatement.setString(2, product.getName());
-			preparedStatement.setString(3, product.getDescription());
-			preparedStatement.setInt(4, product.getPrice());
-			preparedStatement.setInt(5, product.getQuantity());
+			preparedStatement.setString(1, product.getCode());
+			preparedStatement.setString(2, product.getCategoria());
+			preparedStatement.setString(3, product.getName());
+			preparedStatement.setInt(4, product.getIva());
+			preparedStatement.setFloat(5, product.getPrice());
 			FileInputStream fis;
 			try {
 				fis = new FileInputStream(file);
@@ -178,6 +178,8 @@ public class DB implements DBModel {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
+			preparedStatement.setString(7, product.getDescription());
+			preparedStatement.setInt(8, product.getQuantity());
 
 			preparedStatement.executeUpdate();
 			
@@ -198,15 +200,15 @@ public class DB implements DBModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "UPDATE prodotti SET NOME = ?, DESCRIZIONE=?, PREZZO=?, QUANTITA=? WHERE CODICE = ? ";
+		String insertSQL = "UPDATE prodotto SET NOME = ?, DESCRIZIONE=?, PREZZO=?, QUANTITA=? WHERE CODICE = ? ";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setInt(5, product.getCode());
+			preparedStatement.setString(5, product.getCode());
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setString(2, product.getDescription());
-			preparedStatement.setInt(3, product.getPrice());
+			preparedStatement.setFloat(3, product.getPrice());
 			preparedStatement.setInt(4, product.getQuantity());
 
 			preparedStatement.executeUpdate();

@@ -1,27 +1,31 @@
 package com.Bean;
 
 public class ProductBean {
-	int code;
+	String code;
 	String name;
 	String description;
-	int price;
+	String categoria;
+	int iva;
+	float price;
 	int quantity;
 	String photo;
 	byte[] photoByte;
 
 	public ProductBean() {
-		code = -1;
+		code = "";
 		name = "";
+		categoria="";
+		iva=0;
 		description = "";
 		quantity = 0;
 		photo="";
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 
@@ -40,12 +44,28 @@ public class ProductBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getCategoria() {
+		return categoria;
+	}
 
-	public int getPrice() {
+	public int getIva() {
+		return iva;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public void setIva(int iva) {
+		this.iva = iva;
+	}
+
+	public float getPrice() {
 		return price;
 	}
 
-	public void setPrice(int price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 

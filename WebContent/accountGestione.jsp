@@ -48,6 +48,8 @@
 				<h2>Inserimento</h2>
 				<input name="codice" type="text" placeholder="Inserisci codice prodotto">
 				<input name="nome" type="text" placeholder="Inserisci nome prodotto">
+				<input name="categoria" type="text" placeholder="Inserisci categoria prodotto">
+				<input name="iva" type="text" placeholder="Inserisci IVA prodotto">
 				<input name="descrizione" type="text" placeholder="Inserisci descrizione prodotto">
 				<input name="prezzo" type="text" placeholder="Inserisci prezzo prodotto">
 				<input name="quantita" type="text" placeholder="Inserisci quantita prodotto">
