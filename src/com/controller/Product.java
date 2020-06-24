@@ -88,6 +88,42 @@ public class Product extends HttpServlet {
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 			dispatcher.forward(request, response);
+		}else if (request.getParameter("action").equals("modifica")) {
+			String codice =request.getParameter("codice");
+			String categoria =request.getParameter("categoria");
+			String name = request.getParameter("nome");
+			String description = request.getParameter("descrizione");
+			int price = Integer.parseInt(request.getParameter("prezzo"));
+			int quantity = Integer.parseInt(request.getParameter("quantita"));
+			
+			ProductBean bean = new ProductBean();
+			bean.setCode(codice);
+			bean.setCategoria(categoria);
+			bean.setName(name);
+			bean.setDescription(description);
+			bean.setPrice(price);
+			bean.setQuantity(quantity);
+			try {
+				ds.doUpdate(bean);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+			dispatcher.forward(request, response);
+		}else if (request.getParameter("action").equals("rimozione")) {
+			String codice = request.getParameter("codice");
+
+			try {
+				ds.doDelete(codice);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 

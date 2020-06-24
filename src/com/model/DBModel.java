@@ -15,7 +15,7 @@ public interface DBModel {
 	
 	public void doUpdate(ProductBean product) throws SQLException;
 
-	public boolean doDelete(int code) throws SQLException;
+	public boolean doDelete(String code) throws SQLException;
 
 	public ProductBean doRetrieveByKey(int code) throws SQLException;
 	

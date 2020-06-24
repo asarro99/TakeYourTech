@@ -44,18 +44,18 @@ public class DB implements DBModel {
 	
 	
 	@Override
-	public synchronized boolean doDelete(int code) throws SQLException {
+	public synchronized boolean doDelete(String code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		int result = 0;
 
-		String deleteSQL = "DELETE FROM prodotti WHERE CODICE = ?";
+		String deleteSQL = "DELETE FROM prodotto WHERE IdProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setInt(1, code);
+			preparedStatement.setString(1, code);
 
 			result = preparedStatement.executeUpdate();
 
@@ -199,22 +199,26 @@ public class DB implements DBModel {
 	public synchronized void doUpdate(ProductBean product) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-
-		String insertSQL = "UPDATE prodotto SET NOME = ?, DESCRIZIONE=?, PREZZO=?, QUANTITA=? WHERE CODICE = ? ";
+		
+		String insertSQL = "UPDATE prodotto SET Nome = ?, Descrizione=?, Prezzo=?, Quantita=? WHERE IdProdotto = ? AND NomeCategoria=?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
+
 			preparedStatement.setString(5, product.getCode());
+			preparedStatement.setString(6, product.getCategoria());
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setString(2, product.getDescription());
 			preparedStatement.setFloat(3, product.getPrice());
 			preparedStatement.setInt(4, product.getQuantity());
 
 			preparedStatement.executeUpdate();
-
+			
 			//connection.commit();
-		} finally {
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
 			try {
 				if (preparedStatement != null)
 					preparedStatement.close();

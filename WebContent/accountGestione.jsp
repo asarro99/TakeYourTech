@@ -61,6 +61,7 @@
 			<form action="Product?action=modifica" method="post">
 				<h2>Modifica</h2>
 				<input name="codice" type="text" placeholder="Inserisci codice prodotto">
+				<input name="categoria" type="text" placeholder="Inserisci categoria prodotto">
 				<input name="nome" type="text" placeholder="Inserisci nome prodotto">
 				<input name="descrizione" type="text" placeholder="Inserisci descrizione prodotto">
 				<input name="prezzo" type="text" placeholder="Inserisci prezzo prodotto">
