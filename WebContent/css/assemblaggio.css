@@ -1,0 +1,84 @@
+.assemblaggio_copy {
+  background: #ff5722;
+  color: #fff;
+  width: 440px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.assemblaggio_copy h2 {
+  font-size: 1.5em;
+}
+
+.assemblaggio_copy:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 430px;
+}
+
+.assistito {
+  display: inline-block;
+  height: 500px;
+  width: 300px;
+  margin-left: 130px;
+  margin-right: 100px;
+  background-image: url(./img/assist.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.assistito h4 {
+  z-index: 1000;
+  color: red;
+  font-size: 40px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin-left: 130px;
+}
+.personalizzato {
+  display: inline-block;
+  height: 500px;
+  width: 300px;
+  margin-left: 100px;
+  margin-right: 130px;
+  background-image: url(./img/avanz.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.personalizzato h4 {
+  z-index: 1000;
+  color: red;
+  font-size: 40px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: -19px;
+  margin-left: 130px;
+}
+@media only screen and (max-width: 980px) {
+  .personalizzato {
+    margin-left: 90px;
+    margin-right: 90px;
+  }
+
+  .assistito {
+    margin-left: 90px;
+    margin-right: 90px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .personalizzato {
+    margin-top: 20px;
+  }
+
+  .assistito {
+    margin-bottom: 20px;
+  }
+}

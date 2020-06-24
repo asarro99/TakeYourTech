@@ -1,0 +1,45 @@
+.body_account {
+  width: 100%;
+  height: 100%;
+}
+
+.propic {
+  height: 18.75em;
+  width: 18.75em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.propic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profilo {
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+  padding-left: 11%;
+}
+
+.indirizzo {
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+  padding-left: 11%;
+}
+
+.pagamento {
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+  padding-left: 11%;
+}
+
+.ordini {
+  width: 90%;
+  margin-top: 20px;
+  text-align: center;
+  padding-left: 11%;
+}

@@ -1,0 +1,121 @@
+/****************************************
+  Scelta componenti
+*****************************************/
+.selection_copy {
+  background: #ff5722;
+  color: #fff;
+  width: 270px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.selection_copy h4 {
+  font-size: 24px;
+}
+
+.selection_copy:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 260px;
+}
+
+.h1sel {
+  font-size: 20px;
+}
+@media only screen and (max-width: 980px) {
+  .selection_copy {
+    width: 271px;
+  }
+}
+/****************************************
+  Lista Componenti
+*****************************************/
+
+.list_copy {
+  background: #ff5722;
+  color: #fff;
+  width: 300px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.list_copy h4 {
+  font-size: 1.5em;
+}
+
+.list_copy:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 290px;
+}
+
+.list_img {
+  display: inline-block;
+  height: 15em;
+  width: 15em;
+  margin-left: 250px;
+}
+
+.list_img img {
+  margin-bottom: 80px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list_elements {
+  display: inline-block;
+  margin-left: 200px;
+  font-size: 20px;
+}
+
+.btn-primary {
+  margin-left: 150px;
+  margin-bottom: 150px;
+  color: #ff5722 !important;
+  background-color: #fff !important;
+  border-color: #ff5722 !important;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  background-color: #ff5722 !important;
+  border-color: #ff5722 !important;
+}
+
+@media only screen and (max-width: 980px) {
+  .list_copy {
+    width: 281px;
+  }
+
+  .list_copy:after {
+    margin-left: 270px;
+  }
+  .list_img {
+    margin-bottom: 0px;
+    margin-left: 70px;
+  }
+
+  .list_elements {
+    margin-left: 160px;
+    margin-top: 20px;
+  }
+
+  .btn-primary {
+    margin-left: 110px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+}

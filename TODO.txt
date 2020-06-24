@@ -1,0 +1,28 @@
+|--WebContent
+    |--User
+        |--Account.jsp
+            |--Profile.jsp
+            |--userOrder.jsp
+            |--userShipping.jsp
+            |--userPayment.jsp
+    
+    |--Admin
+        |--Account.jsp
+            |--Profile.jsp
+            |--ArticlesManagement.jsp
+            |--OrderManagement.jsp
+    _
+    |--Home.jsp
+    |--Articles.jsp
+        |--ArticlesDetails.jsp
+    |--Category.jsp
+    |--Assembling.jsp
+    |--AssistedAssembly.jsp
+    |--CustomAssembly.jsp
+    |--Support.jsp
+        |--Contact.jsp
+        |--FAQ.jsp
+        |--SendIssue.jsp
+    |--Cart.jsp
+        |--Checkout.jsp
+    |--Login.jsp

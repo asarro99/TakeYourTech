@@ -1,0 +1,96 @@
+/****************************************
+  Contatti
+*****************************************/
+.title-box {
+  background: #ff5722;
+  color: #fff;
+  width: 180px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.title-box h2 {
+  font-size: 24px;
+}
+
+.title-box:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 170px;
+}
+
+.contacts_box .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts_box .fa {
+  height: 60px;
+  padding-top: 5px;
+  width: 60px;
+  font-size: 50px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#_facebook {
+  background-color: #39569c;
+}
+#_facebook:hover {
+  transition: 200ms;
+  color: #39569c;
+  background-color: white;
+}
+
+#_instagram {
+  background-color: #e1306c;
+}
+#_instagram:hover {
+  transition: 200ms;
+  color: #e1306c;
+  background-color: white;
+}
+
+#_twitter {
+  background-color: #1da1f2;
+}
+#_twitter:hover {
+  transition: 200ms;
+  color: #1da1f2;
+  background-color: white;
+}
+
+.contacts_box .phone {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts_box .email {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.contacts_box h4 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.contacts_box p {
+  margin: 0px;
+}

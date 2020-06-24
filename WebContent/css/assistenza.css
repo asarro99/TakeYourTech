@@ -1,0 +1,119 @@
+.faq_copy {
+  background: #ff5722;
+  color: #fff;
+  width: 140px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.faq_copy h2 {
+  font-size: 1.5em;
+}
+
+.faq_copy:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 129px;
+}
+.faq {
+  margin-left: 17%;
+  width: 80%;
+}
+
+.faq p {
+  font-size: 1.2em;
+}
+
+.assistenza_bottom {
+  display: flex;
+  width: 84%;
+  margin-left: 17%;
+}
+
+.contatti h3 {
+  background: #ff5722;
+  color: #fff;
+  width: 160px;
+  padding: 4px 10px;
+  height: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  font-size: 1.5em;
+}
+
+.contatti h3:after {
+  content: "";
+  border-top: 40px solid #ff5722;
+  border-right: 50px solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -4px;
+  margin-left: 150px;
+}
+
+.contatti h4 {
+  margin-left: 30px;
+  font-size: 1.4em;
+  display: inline;
+}
+
+.contatti p {
+  font-size: 1.2em;
+  display: inline;
+}
+.segnalazione {
+  display: flex;
+}
+
+.btn-primary {
+  height: 100px;
+  width: 130px;
+  margin-left: 21.5%;
+  margin-right: 21.5%;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  color: #ff5722 !important;
+  background-color: #fff !important;
+  border-color: #ff5722 !important;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  background-color: #ff5722 !important;
+  border-color: #ff5722 !important;
+}
+@media only screen and (max-width: 1025px) {
+  .btn-primary {
+    margin-right: 5%;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .faq {
+    margin-left: 3%;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .assistenza_bottom {
+    display: inline;
+    margin-left:12%;
+  }
+
+  .btn-primary {
+    margin:auto;
+    margin-right: 5%;
+    margin-top: 5%;
+  }
+
+  .contatti h4 {
+    margin-left: 10px;
+  }
+}
