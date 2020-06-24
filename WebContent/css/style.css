@@ -30,7 +30,7 @@ body {
 
 .form-control {
   margin-top: 9px;
-  margin-left: 30%;
+  margin-left: 20%;
   border: 1px solid #ff5722 !important;
   border-top-left-radius: 20px !important;
   border-bottom-left-radius: 20px !important;
@@ -89,7 +89,15 @@ body {
 .fa-shopping-basket {
   margin-right: 5px;
 }
-
+@media only screen and (max-width: 1025px){
+	.form-control {
+    margin-left: 5%;
+  }
+  
+  .search-box {
+    width: 45%;
+  }
+}
 @media only screen and (max-width: 980px) {
   .form-control {
     margin-left: 10%;
@@ -114,8 +122,11 @@ body {
   }
 
   .menu-bar ul li {
-    height: 57px;
-    width: 100%;
+  display:block;
+   width:300px;
+   padding: 5px;
+   height: 50px;
+   width: 100%;
   }
 
   .menu-bar ul li a {

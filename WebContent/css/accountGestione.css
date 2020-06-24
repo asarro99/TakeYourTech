@@ -1,6 +1,6 @@
 .form-container{
-		display: inline-block;
-		margin-left: 10%;
+		display: flex;
+		margin-left: 16.5%;
 	}
 	
 	.form-wrapper{
@@ -49,3 +49,39 @@
 		background: #ffc457;
 		transition: .2s;
 	}
+	
+	.btn-primary {
+  color: #ff5722 !important;
+  background-color: #fff !important;
+  border-color: #ff5722 !important;
+  margin-left: 47%;
+  height: 50px;
+  width: 100px;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  background-color: #ff5722 !important;
+  border-color: #ff5722 !important;
+}
+	
+@media only screen and (max-width: 1025px){
+	.form-container{
+	margin-left: 5%;
+	}
+	
+	.btn-primary{
+	margin-left:45%;
+	}
+}
+
+@media only screen and (max-width: 980px){
+	.form-container{
+	display: inline-block;
+	margin-left: 5%;
+	}
+	
+	.btn-primary{
+	margin-left:38%;
+	}
+}
