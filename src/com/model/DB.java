@@ -44,7 +44,7 @@ public class DB implements DBModel {
 	
 	
 	@Override
-	public synchronized boolean doDelete(String code) throws SQLException {
+	public synchronized boolean doDelete(int code) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
@@ -55,7 +55,7 @@ public class DB implements DBModel {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(deleteSQL);
-			preparedStatement.setString(1, code);
+			preparedStatement.setInt(1, code);
 
 			result = preparedStatement.executeUpdate();
 
@@ -156,30 +156,29 @@ public class DB implements DBModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO prodotto (IdProdotto,NomeCategoria, Nome,IVA,Prezzo, Immagine, Descrizione,Quantita) VALUES (?,?, ?, ?, ?,?,?,?)";
+		String insertSQL = "INSERT INTO prodotto (NomeCategoria, Nome,IVA,Prezzo, Immagine, Descrizione,Quantita) VALUES (?, ?, ?, ?,?,?,?)";
 
 		File file = new File(product.getPhoto());
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, product.getCode());
-			preparedStatement.setString(2, product.getCategoria());
-			preparedStatement.setString(3, product.getName());
-			preparedStatement.setInt(4, product.getIva());
-			preparedStatement.setFloat(5, product.getPrice());
+			preparedStatement.setString(1, product.getCategoria());
+			preparedStatement.setString(2, product.getName());
+			preparedStatement.setInt(3, product.getIva());
+			preparedStatement.setFloat(4, product.getPrice());
 			FileInputStream fis;
 			try {
 				fis = new FileInputStream(file);
 				try {
-					preparedStatement.setBinaryStream(6, fis, fis.available());
+					preparedStatement.setBinaryStream(5, fis, fis.available());
 				} catch (SQLException | IOException e) {
 					e.printStackTrace();
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			preparedStatement.setString(7, product.getDescription());
-			preparedStatement.setInt(8, product.getQuantity());
+			preparedStatement.setString(6, product.getDescription());
+			preparedStatement.setInt(7, product.getQuantity());
 
 			preparedStatement.executeUpdate();
 			
@@ -206,7 +205,7 @@ public class DB implements DBModel {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 
-			preparedStatement.setString(5, product.getCode());
+			preparedStatement.setInt(5, product.getCode());
 			preparedStatement.setString(6, product.getCategoria());
 			preparedStatement.setString(1, product.getName());
 			preparedStatement.setString(2, product.getDescription());
@@ -278,7 +277,7 @@ public class DB implements DBModel {
 			ResultSet rSet = preparedStatement.executeQuery();
 			
 			rSet.next();
-			String passwordDb =rSet.getString("Password");
+			String passwordDb =rSet.getString("pwd");
 			String tipo = rSet.getString("TipoAccount");
             String id = rSet.getString("idUtente");
             ArrayList<String> risultato = new ArrayList<String>();

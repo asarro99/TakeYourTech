@@ -46,7 +46,6 @@
 		<div class= "form-wrapper">
 			<form action="Product?action=insert" enctype="multipart/form-data" method="post">
 				<h2>Inserimento</h2>
-				<input name="codice" type="text" placeholder="Inserisci codice prodotto">
 				<input name="nome" type="text" placeholder="Inserisci nome prodotto">
 				<input name="categoria" type="text" placeholder="Inserisci categoria prodotto">
 				<input name="iva" type="text" placeholder="Inserisci IVA prodotto">

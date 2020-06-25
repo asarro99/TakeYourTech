@@ -1,7 +1,7 @@
 package com.Bean;
 
 public class ProductBean {
-	String code;
+	int code;
 	String name;
 	String description;
 	String categoria;
@@ -12,7 +12,7 @@ public class ProductBean {
 	byte[] photoByte;
 
 	public ProductBean() {
-		code = "";
+		code = 0;
 		name = "";
 		categoria="";
 		iva=0;
@@ -21,11 +21,11 @@ public class ProductBean {
 		photo="";
 	}
 
-	public String getCode() {
+	public int getCode() {
 		return code;
 	}
 
-	public void setCode(String code) {
+	public void setCode(int code) {
 		this.code = code;
 	}
 

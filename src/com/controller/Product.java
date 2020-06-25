@@ -45,12 +45,11 @@ public class Product extends HttpServlet {
 	{
 		if(request.getParameter("action").equals("insert"))
 		{
-			String codice = request.getParameter("codice");
 			String nome = request.getParameter("nome");
 			String categoria = request.getParameter("categoria");
 			String descrizione = request.getParameter("descrizione");
 			float prezzo =Float.parseFloat(request.getParameter("prezzo"));
-			int quantita = Integer.parseInt(request.getParameter("prezzo"));
+			int quantita = Integer.parseInt(request.getParameter("quantita"));
 			int iva = Integer.parseInt(request.getParameter("iva"));
 			String pathPhotoString ="";
 			
@@ -71,7 +70,6 @@ public class Product extends HttpServlet {
 			}
 			
 			ProductBean bean = new ProductBean();
-			bean.setCode(codice);
 			bean.setName(nome);
 			bean.setCategoria(categoria);
 			bean.setDescription(descrizione);
@@ -89,7 +87,7 @@ public class Product extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 			dispatcher.forward(request, response);
 		}else if (request.getParameter("action").equals("modifica")) {
-			String codice =request.getParameter("codice");
+			int codice = Integer.parseInt(request.getParameter("codice"));
 			String categoria =request.getParameter("categoria");
 			String name = request.getParameter("nome");
 			String description = request.getParameter("descrizione");
@@ -113,7 +111,7 @@ public class Product extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 			dispatcher.forward(request, response);
 		}else if (request.getParameter("action").equals("rimozione")) {
-			String codice = request.getParameter("codice");
+			int codice = Integer.parseInt(request.getParameter("codice"));
 
 			try {
 				ds.doDelete(codice);
