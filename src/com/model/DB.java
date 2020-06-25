@@ -121,7 +121,7 @@ public class DB implements DBModel {
 
 		ProductBean bean = new ProductBean();
 
-		String selectSQL = "SELECT * FROM prodotti WHERE CODICE = ?";
+		String selectSQL = "SELECT * FROM prodotto WHERE idProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -131,10 +131,12 @@ public class DB implements DBModel {
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				bean.setCode(rs.getInt("CODICE"));
+				bean.setCode(rs.getInt("idProdotto"));
+				bean.setCategoria(rs.getString("nomeCategoria"));
+				bean.setIva(rs.getInt("iva"));
 				bean.setName(rs.getString("NOME"));
 				bean.setDescription(rs.getString("DESCRIZIONE"));
-				bean.setPrice(rs.getInt("PREZZO"));
+				bean.setPrice(rs.getFloat("PREZZO"));
 				bean.setQuantity(rs.getInt("QUANTITA"));
 				bean.setPhotoBytes(rs.getBytes("IMMAGINE"));
 			}
@@ -149,6 +151,48 @@ public class DB implements DBModel {
 			}
 		}
 		return bean;
+	}
+	
+	@Override
+	public synchronized Collection<ProductBean>  doRetrieveByCategoria(String categoria) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<ProductBean> prodotti = new LinkedList<ProductBean>();
+
+		String selectSQL = "SELECT * FROM prodotto WHERE nomeCategoria = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement.setString(1, categoria);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				ProductBean bean = new ProductBean();
+				bean.setCode(rs.getInt("idProdotto"));
+				bean.setCategoria(rs.getString("nomeCategoria"));
+				bean.setIva(rs.getInt("iva"));
+				bean.setName(rs.getString("NOME"));
+				bean.setDescription(rs.getString("DESCRIZIONE"));
+				bean.setPrice(rs.getFloat("PREZZO"));
+				bean.setQuantity(rs.getInt("QUANTITA"));
+				bean.setPhotoBytes(rs.getBytes("IMMAGINE"));
+				
+				prodotti.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return prodotti;
 	}
 	
 	@Override
@@ -483,5 +527,36 @@ public class DB implements DBModel {
 			}
 		}
 		return products;
+	}
+    
+    public synchronized String getCategorie() throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		String categorieString = "";
+
+		String selectSQL = "SELECT * FROM categoria" ;
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+                categorieString += rs.getString("nomeCategoria") + " ";
+			}
+			
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return categorieString;
 	}
 }

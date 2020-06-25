@@ -4,6 +4,7 @@ import java.io.File;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,85 +44,111 @@ public class Product extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		if(request.getParameter("action").equals("insert"))
+		if(request.getParameter("action") != null)
 		{
-			String nome = request.getParameter("nome");
-			String categoria = request.getParameter("categoria");
-			String descrizione = request.getParameter("descrizione");
-			float prezzo =Float.parseFloat(request.getParameter("prezzo"));
-			int quantita = Integer.parseInt(request.getParameter("quantita"));
-			int iva = Integer.parseInt(request.getParameter("iva"));
-			String pathPhotoString ="";
-			
-		    String appPath = request.getServletContext().getRealPath("");
-		    String savePath = appPath + File.separator + SAVE_DIR;
-		         
-			File fileSaveDir = new File(savePath);
-			if (!fileSaveDir.exists()) {
-				fileSaveDir.mkdir();
-			}
+			if(request.getParameter("action").equals("insert"))
+			{
+				String nome = request.getParameter("nome");
+				String categoria = request.getParameter("categoria");
+				String descrizione = request.getParameter("descrizione");
+				float prezzo =Float.parseFloat(request.getParameter("prezzo"));
+				int quantita = Integer.parseInt(request.getParameter("quantita"));
+				int iva = Integer.parseInt(request.getParameter("iva"));
+				String pathPhotoString ="";
+				
+			    String appPath = request.getServletContext().getRealPath("");
+			    String savePath = appPath + File.separator + SAVE_DIR;
+			         
+				File fileSaveDir = new File(savePath);
+				if (!fileSaveDir.exists()) {
+					fileSaveDir.mkdir();
+				}
 
-			for (Part part : request.getParts()) {
-				String fileName = extractFileName(part);
-				if (fileName != null && !fileName.equals("")) {
-					part.write(savePath + File.separator + fileName);
-					pathPhotoString=savePath + File.separator + fileName;
+				for (Part part : request.getParts()) {
+					String fileName = extractFileName(part);
+					if (fileName != null && !fileName.equals("")) {
+						part.write(savePath + File.separator + fileName);
+						pathPhotoString=savePath + File.separator + fileName;
+					}
+				}
+				
+				ProductBean bean = new ProductBean();
+				bean.setName(nome);
+				bean.setCategoria(categoria);
+				bean.setDescription(descrizione);
+				bean.setPrice(prezzo);
+				bean.setIva(iva);
+				bean.setQuantity(quantita);
+				bean.setPhoto(pathPhotoString);
+				try {
+					ds.doSave(bean);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+				dispatcher.forward(request, response);
+			}else if (request.getParameter("action").equals("modifica")) {
+				int codice = Integer.parseInt(request.getParameter("codice"));
+				String categoria =request.getParameter("categoria");
+				String name = request.getParameter("nome");
+				String description = request.getParameter("descrizione");
+				int price = Integer.parseInt(request.getParameter("prezzo"));
+				int quantity = Integer.parseInt(request.getParameter("quantita"));
+				
+				ProductBean bean = new ProductBean();
+				bean.setCode(codice);
+				bean.setCategoria(categoria);
+				bean.setName(name);
+				bean.setDescription(description);
+				bean.setPrice(price);
+				bean.setQuantity(quantity);
+				try {
+					ds.doUpdate(bean);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+				dispatcher.forward(request, response);
+			}else if (request.getParameter("action").equals("rimozione")) {
+				int codice = Integer.parseInt(request.getParameter("codice"));
+
+				try {
+					ds.doDelete(codice);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+				dispatcher.forward(request, response);
+			}
+		}
+		
+		 if (request.getParameter("categoria")!=null) {
+				try {
+					Collection<ProductBean> prodotti = ds.doRetrieveByCategoria(request.getParameter("categoria"));
+					request.setAttribute("prodotti", prodotti);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
-			
-			ProductBean bean = new ProductBean();
-			bean.setName(nome);
-			bean.setCategoria(categoria);
-			bean.setDescription(descrizione);
-			bean.setPrice(prezzo);
-			bean.setIva(iva);
-			bean.setQuantity(quantita);
-			bean.setPhoto(pathPhotoString);
-			try {
-				ds.doSave(bean);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
-			dispatcher.forward(request, response);
-		}else if (request.getParameter("action").equals("modifica")) {
-			int codice = Integer.parseInt(request.getParameter("codice"));
-			String categoria =request.getParameter("categoria");
-			String name = request.getParameter("nome");
-			String description = request.getParameter("descrizione");
-			int price = Integer.parseInt(request.getParameter("prezzo"));
-			int quantity = Integer.parseInt(request.getParameter("quantita"));
-			
-			ProductBean bean = new ProductBean();
-			bean.setCode(codice);
-			bean.setCategoria(categoria);
-			bean.setName(name);
-			bean.setDescription(description);
-			bean.setPrice(price);
-			bean.setQuantity(quantity);
-			try {
-				ds.doUpdate(bean);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
-			dispatcher.forward(request, response);
-		}else if (request.getParameter("action").equals("rimozione")) {
-			int codice = Integer.parseInt(request.getParameter("codice"));
+		
+		//Caricamento sidemenu
+		try {
+			String categorie = ds.getCategorie();
+			request.setAttribute("sidemenu", categorie);
+			String paginaCorrente = (String) request.getParameter("page");
 
-			try {
-				ds.doDelete(codice);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaCorrente);
 			dispatcher.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+<%
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/indirizzi.jsp");	
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -21,7 +28,9 @@
       <!-- TOP NAV BAR -->
       <jsp:include page="./utility/header.jsp"/>
 		<!-- SIDE MENU -->
-      <jsp:include page="./utility/sidemenu.jsp"/>
+      <jsp:include page="./utility/sidemenu.jsp">
+        	<jsp:param value="<%=sidemenu%>" name="categorie"/>
+        </jsp:include>
 		
 		<!---------------------------------Indirizzi----------------------------------------->
 

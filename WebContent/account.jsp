@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/account.jsp");	
+		return;
+	}
+%>
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
@@ -23,7 +30,9 @@
 	
 	  <section class="header">
       <!-- SIDE MENU -->
-      <jsp:include page="./utility/sidemenu.jsp"/>
+      <jsp:include page="./utility/sidemenu.jsp">
+        	<jsp:param value="<%=sidemenu%>" name="categorie"/>
+        </jsp:include>
       </section>
       <!-- ACCOUNT -->
           <section class="body_account">

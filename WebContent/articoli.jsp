@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+    <%@ page import="java.util.*,com.Bean.ProductBean"%>
+ <%
+ 	
+ 	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
+	String sidemenu = (String)request.getAttribute("sidemenu");
+
+ %>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -23,19 +30,28 @@
 	
 	  <section class="header">
       <!-- SIDE MENU -->
-      <jsp:include page="./utility/sidemenu.jsp"/>
+      <jsp:include page="./utility/sidemenu.jsp">
+        	<jsp:param value="<%=sidemenu%>" name="categorie"/>
+        </jsp:include>
       </section>
       
       <!-- ARTICOLI -->
-<section class="new-products">
+	<section class="new-products">
       <div class="container">
         <div class="title-box">
           <h2>Articoli</h2>
         </div>
         <div class="row">
-          <div class="col-md-3">
+        <%
+			if (products != null && products.size() != 0) {
+				Iterator<?> it = products.iterator();
+				while (it.hasNext()) {
+					ProductBean bean = (ProductBean) it.next();
+		%>
+			
+			<div class="col-md-3">
             <div class="product-top">
-              <img src="./img/1.jpg" />
+              <img src="./getPicture?id=<%=bean.getCode() %>"  />
               <div class="overlay-right">
                 <button
                   type="button"
@@ -59,212 +75,16 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
               <i class="fa fa-star-half-o"></i>
-              <h3>Msi Portatile</h3>
-              <h5>800 Euro</h5>
+              <h3><%=bean.getName() %></h3>
+              <h5><%=bean.getPrice() %> Euro</h5>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/3.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Iphone Se</h3>
-              <h5>400 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
+			
+		<%
+				}
+			}
+		%>
+          
         </div>
       </div>
     </section>

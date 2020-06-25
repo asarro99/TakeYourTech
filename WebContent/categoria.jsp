@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+ <%@ page import="java.util.*"%>
+<%
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/categoria.jsp");	
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
    <head>

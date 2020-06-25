@@ -19,6 +19,8 @@ public interface DBModel {
 
 	public ProductBean doRetrieveByKey(int code) throws SQLException;
 	
+	public Collection<ProductBean>  doRetrieveByCategoria(String categoria) throws SQLException;
+	
 	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
 	
 	public ArrayList<String> Login(String username,String password) throws SQLException ;
@@ -32,4 +34,6 @@ public interface DBModel {
 	public Collection<OrdiniBean> getOridiniById(String id) throws SQLException;
 	
 	public  Collection<OrdiniBean> getOridiniUtenteData(String idUtente,String data1, String data2) throws SQLException;
+	
+	public String getCategorie() throws SQLException;
 }

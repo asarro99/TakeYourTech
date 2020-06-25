@@ -1,4 +1,5 @@
 <%
+
 	if(session.getAttribute("roleUtente")!=null)
 	{
 		String role = (String)session.getAttribute("roleUtente");
@@ -10,6 +11,12 @@
 	else
 	{
 		response.sendRedirect("./login.jsp");
+		return;
+	}
+
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/accountGestione.jsp");	
 		return;
 	}
 %>
@@ -38,7 +45,9 @@
 	
 	  <section class="header">
       <!-- SIDE MENU -->
-      <jsp:include page="./utility/sidemenu.jsp"/>
+      <jsp:include page="./utility/sidemenu.jsp">
+        	<jsp:param value="<%=sidemenu%>" name="categorie"/>
+        </jsp:include>
       </section>
       
       <!-- ACCOUNT -->
