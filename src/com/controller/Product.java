@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.File;
 
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.Bean.ProductBean;
+import com.model.Cart;
 import com.model.DB;
 
 /**
@@ -44,6 +46,12 @@ public class Product extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		Cart cart = (Cart)request.getSession().getAttribute("cart");
+		if(cart == null) {
+			cart = new Cart();
+			request.getSession().setAttribute("cart", cart);
+		}
+		
 		if(request.getParameter("action") != null)
 		{
 			if(request.getParameter("action").equals("insert"))
@@ -89,6 +97,7 @@ public class Product extends HttpServlet {
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}else if (request.getParameter("action").equals("modifica")) {
 				int codice = Integer.parseInt(request.getParameter("codice"));
 				String categoria =request.getParameter("categoria");
@@ -113,6 +122,7 @@ public class Product extends HttpServlet {
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}else if (request.getParameter("action").equals("rimozione")) {
 				int codice = Integer.parseInt(request.getParameter("codice"));
 
@@ -125,7 +135,31 @@ public class Product extends HttpServlet {
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
-			}
+				return;
+			}else if (request.getParameter("action").equals("addC")){
+				int id = Integer.parseInt(request.getParameter("codiceprod"));
+				
+				try {
+					
+					for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
+					{
+						cart.addProduct(ds.doRetrieveByKey(id));
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}else if (request.getParameter("action").equals("removeC")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				try {
+					cart.deleteProduct(ds.doRetrieveByKey(id));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}	
 		}
 		
 		 if (request.getParameter("categoria")!=null) {

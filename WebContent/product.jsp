@@ -92,7 +92,6 @@
           </div>
 
           <div class="col-md-7">
-            <p class="new-arrival text-center">NEW</p>
             <h2><%=prodotto.getName() %></h2>
             <p>Codice Prodotto: <%=prodotto.getCode() %></p>
 
@@ -111,10 +110,13 @@
             {
 			%>
             <label>Quantità: </label>
-            <input type="text" value="1" />
-            <button type="button" class="btn btn-primary">
+            <form action="./Product?page=/carrello.jsp&codiceprod=<%= prodotto.getCode()%>&action=addC" method="post">
+            <input type="text" value="1" name="quantita" />
+            <button type="submit" class="btn btn-primary">
               Aggiungi al carrello
             </button>
+            </form>
+            </a>
             <%
             }
             %>
@@ -128,7 +130,15 @@
       <div class="container">
         <h6>Descrizione Prodotto</h6>
         <p align="justify">
-          <%=rootNode.get("descrizione").asText() %>
+          <%=rootNode.get("descrizione").asText()+"\n"%>
+          <br>
+          <% 
+          	String [] caratt = rootNode.get("caratteristiche").toString().split(",");
+       		for(int i =0;i<caratt.length;i++)
+       		{
+       			out.println(caratt[i].replace("\"", "").replace("{", "").replace("}", "").replace(":", " : ")+"<br>");
+       		}
+          %>
         </p>
         <hr />
       </div>

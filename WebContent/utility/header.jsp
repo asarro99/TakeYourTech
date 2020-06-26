@@ -13,7 +13,7 @@
       <ul>
          <li><a href="#">Assemblaggio</a></li>
          <li>
-            <a href="#">Carrello</a>
+            <a href="carrello.jsp">Carrello</a>
          </li>
         <%
 		if(session.getAttribute("roleUtente")==null){

@@ -17,7 +17,7 @@ public class Logout extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getSession().removeAttribute("roleUtente");
-		//request.getSession().invalidate();   Se non viene invalidata la sessione non si perde il carrello
+		request.getSession().invalidate();   
 
 		String redirectedPage = "/login.jsp";
 		response.sendRedirect(request.getContextPath() + redirectedPage);

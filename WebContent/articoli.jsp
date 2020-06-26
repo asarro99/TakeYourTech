@@ -67,6 +67,7 @@
                   <i class="fa fa-eye"></i>
                 </button>
                 </a>
+                <a href="./Product?page=/carrello.jsp&codiceprod=<%= bean.getCode()%>&action=addC&quantita=1">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -74,6 +75,7 @@
                 >
                   <i class="fa fa-shopping-basket"></i>
                 </button>
+                </a>
               </div>
             </div>
             <div class="product-bottom text-center">

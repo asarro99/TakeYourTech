@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
- <%@ page import="java.util.*"%>
+ <%@ page import="java.util.*,com.model.Cart,com.Bean.ProductBean"%>
+ <%@page import="com.fasterxml.jackson.databind.node.ObjectNode"%>
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="com.fasterxml.jackson.databind.JsonNode"%>
 <%
+
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/carrello.jsp");	
 		return;
 	}
+	
+	Cart cart = (Cart) request.getSession().getAttribute("cart");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,75 +54,41 @@
           <th>Prezzo</th>
           <th>Modifica</th>
         </tr>
+         <%
+      		if(cart!=null)
+      		{
+      			ObjectMapper objectMapper = new ObjectMapper();
+      			List<ProductBean> prodcart = cart.getProducts(); 	
+ 		   		for(ProductBean beancart: prodcart) {
+ 		   		JsonNode rootNode = objectMapper.readValue(beancart.getDescription(), JsonNode.class);
+      	%>
         <tr>
           <td data-th="Img">
-            <img src="./img/1.jpg" alt="" />
+            <img src="./getPicture?id=<%=beancart.getCode() %>" alt="" />
           </td>
           <td data-th="Descrizione">
-            Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do
-            eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi
-            ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum
+            <%=rootNode.get("descrizione").asText() %>
           </td>
-          <td data-th="Quantita">Quantita</td>
-          <td data-th="Prezzo">Prezzo</td>
+          <td data-th="Quantita"><%=beancart.getQuantity() %></td>
+          <td data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity() %></td>
           <td data-th="Modifica">
-            <button type="button" class="btn btn-primary">
+          	<a href="Product?page=/carrello.jsp&action=removeC&id=<%=beancart.getCode()%>">
+          	  <button type="button" class="btn btn-primary">
               Rimuovi
             </button>
+          	</a>
           </td>
         </tr>
-        <tr>
-          <td data-th="Img">
-            <img src="./img/1.jpg" alt="" />
-          </td>
-          <td data-th="Descrizione">
-            Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do
-            eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi
-            ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum
-          </td>
-          <td data-th="Quantita">Quantita</td>
-          <td data-th="Prezzo">Prezzo</td>
-          <td data-th="Modifica">
-            <button type="button" class="btn btn-primary">
-              Rimuovi
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <td data-th="Img">
-            <img src="./img/1.jpg" alt="" />
-          </td>
-          <td data-th="Descrizione">
-            Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do
-            eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi
-            ut aliquid ex ea commodi consequatur. Duis aute irure reprehenderit
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum
-          </td>
-          <td data-th="Quantita">Quantita</td>
-          <td data-th="Prezzo">Prezzo</td>
-          <td data-th="Modifica">
-            <button type="button" class="btn btn-primary">
-              Rimuovi
-            </button>
-          </td>
-        </tr>
+        <%
+ 		   		}
+      		}
+        %>
       </table>
     </section>
 
     <div class="totale">
       <h2>Prezzo totale:</h2>
-      <p>120 Euro</p>
+      <p><%=cart.getTotal() %></p>
     </div>
     
     <!---------------------------------FOOTER----------------------------------------->
