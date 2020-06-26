@@ -1,11 +1,22 @@
+<%@page import="com.fasterxml.jackson.databind.JsonNode"%>
+<%@page import="com.fasterxml.jackson.databind.node.ObjectNode"%>
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
+<%@page import="com.Bean.ProductBean"%>
+<%@page import="java.util.Collection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <%
+	
+	ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
+	ObjectMapper objectMapper = new ObjectMapper();
+	JsonNode rootNode = objectMapper.readValue(prodotto.getDescription(), JsonNode.class);
+
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/product.jsp");	
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=1");	
 		return;
 	}
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,13 +55,13 @@
             >
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="./img/1.jpg" class="d-block w-100" />
+                  <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/2.jpg" class="d-block w-100" />
+                  <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
                 </div>
                 <div class="carousel-item">
-                  <img src="./img/3.jpg" class="d-block w-100" />
+                  <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
                 </div>
                 <a
                   class="carousel-control-prev"
@@ -82,8 +93,8 @@
 
           <div class="col-md-7">
             <p class="new-arrival text-center">NEW</p>
-            <h2>MacBook Pro</h2>
-            <p>Codice Prodotto: 123</p>
+            <h2><%=prodotto.getName() %></h2>
+            <p>Codice Prodotto: <%=prodotto.getCode() %></p>
 
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -91,15 +102,22 @@
             <i class="fa fa-star"></i>
             <i class="fa fa-star-half-o"></i>
 
-            <p class="price">1000 Euro</p>
-            <p><b>Disponibilità: </b>In magaziono</p>
+            <p class="price"><%=prodotto.getPrice()%> Euro</p>
+            <p><b>Disponibilità: </b><%if(prodotto.getQuantity()>0)out.println("In Magazzino"); else out.println("Non disponibile"); %></p>
             <p><b>Condizioni: </b>Nuovo</p>
-            <p><b>Brand: </b>Apple Inc.</p>
+            <p><b>Brand: </b><%=rootNode.get("caratteristiche").get("Marca").asText() %></p>
+            <%
+            if(prodotto.getQuantity()>0)
+            {
+			%>
             <label>Quantità: </label>
             <input type="text" value="1" />
             <button type="button" class="btn btn-primary">
               Aggiungi al carrello
             </button>
+            <%
+            }
+            %>
           </div>
         </div>
       </div>
@@ -110,17 +128,7 @@
       <div class="container">
         <h6>Descrizione Prodotto</h6>
         <p align="justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam molestias
-          quaerat eligendi numquam aspernatur, obcaecati consequuntur quos
-          assumenda recusandae doloremque libero aut iusto facilis, officia
-          dolor debitis quae doloribus labore. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Nam molestias quaerat eligendi numquam
-          aspernatur, obcaecati consequuntur quos assumenda recusandae
-          doloremque libero aut iusto facilis, officia dolor debitis quae
-          doloribus labore. Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Nam molestias quaerat eligendi numquam aspernatur, obcaecati
-          consequuntur quos assumenda recusandae doloremque libero aut iusto
-          facilis, officia dolor debitis quae doloribus labore.
+          <%=rootNode.get("descrizione").asText() %>
         </p>
         <hr />
       </div>

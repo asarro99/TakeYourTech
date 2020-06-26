@@ -137,6 +137,16 @@ public class Product extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+		 
+		 if (request.getParameter("codiceprod")!=null) {
+				try {
+					ProductBean prodotto = ds.doRetrieveByKey(Integer.parseInt(request.getParameter("codiceprod")));
+					request.setAttribute("prodotto", prodotto);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		
 		//Caricamento sidemenu
 		try {

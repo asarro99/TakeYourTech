@@ -4,7 +4,12 @@
  <%
  	
  	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
+ 
 	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/articoli.jsp&categoria=Alimentatori");	
+		return;
+	}
 
  %>
 <!DOCTYPE html>
@@ -53,6 +58,7 @@
             <div class="product-top">
               <img src="./getPicture?id=<%=bean.getCode() %>"  />
               <div class="overlay-right">
+              <a href="Product?page=/product.jsp&codiceprod=<%=bean.getCode() %>">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -60,6 +66,7 @@
                 >
                   <i class="fa fa-eye"></i>
                 </button>
+                </a>
                 <button
                   type="button"
                   class="btn btn-secondary"
