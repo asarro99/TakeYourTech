@@ -36,7 +36,6 @@ public class Product extends HttpServlet {
      */
     public Product() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     private static DB ds = new DB();
@@ -91,7 +90,6 @@ public class Product extends HttpServlet {
 				try {
 					ds.doSave(bean);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -116,7 +114,6 @@ public class Product extends HttpServlet {
 				try {
 					ds.doUpdate(bean);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -129,37 +126,12 @@ public class Product extends HttpServlet {
 				try {
 					ds.doDelete(codice);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
-				return;
-			}else if (request.getParameter("action").equals("addC")){
-				int id = Integer.parseInt(request.getParameter("codiceprod"));
-				
-				try {
-					
-					for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
-					{
-						cart.addProduct(ds.doRetrieveByKey(id));
-					}
-					
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}else if (request.getParameter("action").equals("removeC")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				try {
-					cart.deleteProduct(ds.doRetrieveByKey(id));
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}	
+			}
 		}
 		
 		 if (request.getParameter("categoria")!=null) {
@@ -167,7 +139,6 @@ public class Product extends HttpServlet {
 					Collection<ProductBean> prodotti = ds.doRetrieveByCategoria(request.getParameter("categoria"));
 					request.setAttribute("prodotti", prodotti);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -177,7 +148,6 @@ public class Product extends HttpServlet {
 					ProductBean prodotto = ds.doRetrieveByKey(Integer.parseInt(request.getParameter("codiceprod")));
 					request.setAttribute("prodotto", prodotto);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -191,7 +161,6 @@ public class Product extends HttpServlet {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(paginaCorrente);
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
