@@ -43,25 +43,53 @@
         <div class="login-show">
           <h2>LOGIN</h2>
           <form method="post" action="Login">
-          <input type="text" placeholder="Email" id="email" name = "email"/>
-          <input type="password" placeholder="Password" id="password" name="password"/>
-          <input type="submit" value="Login" />
+	          <input type="text" placeholder="Email" id="email" name = "email"/>
+	          <input type="password" placeholder="Password" id="password" name="password"/>
+	          <input type="submit" value="Login" />
           </form>
         </div>
         <div class="register-show">
           <h2>REGISTRATI</h2>
-          <input type="text" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <input type="password" placeholder="Conferma Password" required />
-          <input type="text" placeholder="Nome" />
-          <input type="text" placeholder="Cognome" />
-          <input type="button" value="Registrati"/>
+          <form id="reg-form" method="post" action="Register">
+          	  <div class="form-controller">
+          	  	  <input id="reg-email" type="text" placeholder="Email" />
+          	  	  <div class="div-non-visualize">
+          	  	  <small></small>
+          	  	  </div>
+          	  </div>
+          	  <div class="form-controller">
+	          	  <input id="reg-pass" type="password" placeholder="Password"/>
+	          	  <div class="div-non-visualize">
+          	  	  <small></small>
+          	  	  </div>
+	          </div>
+	          <div class="form-controller">
+	          <input id="reg-pass2" type="password" placeholder="Conferma Password"/>
+	          <div class="div-non-visualize">
+          	  	  <small></small>
+          	  	  </div>
+	          </div>
+	          <div class="form-controller">
+	          <input id="reg-nome" type="text" placeholder="Nome" />
+	          <div class="div-non-visualize">
+          	  	  <small></small>
+          	  	  </div>
+	          </div>
+	          <div class="form-controller">
+	          <input id="reg-cognome" type="text" placeholder="Cognome" />
+	          <div class="div-non-visualize">
+          	  	  <small></small>
+          	  	  </div>
+	          </div>
+	          <input type="submit" value="Registrati" />
+          </form>
         </div>
       </div>
     </div>
     <!---------------------------------FOOTER----------------------------------------->
     <jsp:include page="./utility/footer.jsp"/>
     
+    <script src="./js/login.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
     $(document).ready(function () {

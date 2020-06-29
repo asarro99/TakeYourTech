@@ -84,7 +84,8 @@ a {
   border: 1px solid #b5b5b5;
   outline: none;
 }
-.login-show input[type="button"] {
+
+.login-show input[type="submit"] {
   max-width: 150px;
   width: 100%;
   background: white;
@@ -97,7 +98,7 @@ a {
   cursor: pointer;
   transition: 0.4s;
 }
-.login-show input[type="button"]:hover {
+.login-show input[type="submit"]:hover {
   color: white;
   background-color: #448aff;
   transition: 0.4s;
@@ -109,14 +110,13 @@ a {
 
 .register-show input[type="text"],
 .register-show input[type="password"] {
-  width: 100%;
-  display: block;
-  margin: 20px 0;
-  padding: 15px;
+  width: 80%;
+  margin: 5px 0;
+  padding: 12px;
   border: 1px solid #b5b5b5;
   outline: none;
 }
-.register-show input[type="button"] {
+.register-show input[type="submit"] {
   max-width: 150px;
   width: 100%;
   background: white;
@@ -130,10 +130,33 @@ a {
   transition: 0.4s;
 }
 
-.register-show input[type="button"]:hover {
+.register-show input[type="submit"]:hover {
   color: white;
   background-color: #448aff;
   transition: 0.4s;
+}
+
+.form-controller small{
+	margin-left: 10px;	
+	color: red !important;
+}
+
+.form-controller.success input[type="text"],
+.form-controller.success input[type="password"]{
+	border: 1px solid #2ecc71;
+}
+
+.form-controller.error input[type="text"],
+.form-controller.error input[type="password"]{
+	border: 1px solid #e74c3c;
+}
+
+.div-visualize{
+	display:block;
+}
+
+.div-non-visualize{
+	display:none;
 }
 
 /* 
@@ -229,4 +252,8 @@ a {
 	  text-align: center;
 	  border-radius: 3px;
 	}
+	
+	.form-controller small{
+
+}
 }
