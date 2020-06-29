@@ -6,8 +6,7 @@
 .propic {
   height: 18.75em;
   width: 18.75em;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 2%;
 }
 
 .propic img {
@@ -17,29 +16,59 @@
 }
 
 .profilo {
-  width: 90%;
   margin-top: 20px;
-  text-align: center;
-  padding-left: 11%;
+  margin-left:16%;
 }
 
-.indirizzo {
-  width: 90%;
-  margin-top: 20px;
-  text-align: center;
-  padding-left: 11%;
+.indirizzo ,.pagamento ,.ordini{
+	margin: 8.5em 8% 0;
 }
 
-.pagamento {
-  width: 90%;
-  margin-top: 20px;
-  text-align: center;
-  padding-left: 11%;
+.boxProfile{
+	display: flex;
 }
 
-.ordini {
-  width: 90%;
-  margin-top: 20px;
-  text-align: center;
-  padding-left: 11%;
+.bottoni{
+	width: 70%;
+	display: flex;
+}
+
+.btn-primary {
+	font-size: 20px !important;
+  color: #ff5722 !important;
+  background-color: #fff !important;
+  border-color: #ff5722 !important;
+}
+
+.btn-primary:hover {
+  color: #fff !important;
+  background-color: #ff5722 !important;
+  border-color: #ff5722 !important;
+}
+
+@media only screen and (max-width: 980px){
+	.boxProfile{
+	display: inline-block;
+	width: 100%;
+	}
+	.propic{
+	display: block;
+	width: auto;
+	height: auto;
+	margin: 0 20px;
+	}
+	
+	.bottoni{
+	display: block;
+	width: 100%;}
+	
+	.profilo{
+	text-align: center;
+	margin: 0;
+	}
+	
+	.indirizzo ,.pagamento ,.ordini{
+	margin: 5% 0;
+	text-align:center;
+	}
 }

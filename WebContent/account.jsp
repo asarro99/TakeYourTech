@@ -36,20 +36,41 @@
       </section>
       <!-- ACCOUNT -->
           <section class="body_account">
-      <div class="propic">
-        <img src="./img/propic1.jpg" alt="" />
+          <div class="boxProfile">
+	      <div class="propic">
+	        <img src="./img/propic1.jpg" alt="" />
+	      </div>
+	   		<div class="bottoni">
+	      <div class="indirizzo">
+	        <a href="">
+	          	  <button type="button" class="btn btn-primary">
+	              Indirizzi
+	            </button>
+	          	</a>
+	      </div>
+	      <div class="pagamento">
+	        <a href="">
+	          	  <button type="button" class="btn btn-primary">
+	              Metodi di Pagamento
+	            </button>
+	          	</a>
+	      </div>
+	      <div class="ordini">
+	        <a href="">
+	          	  <button type="button" class="btn btn-primary">
+	              Ordini
+	            </button>
+	          	</a>
+	      </div>
+	    </div>
       </div>
       <div class="profilo">
-        <p>profilo</p>
-      </div>
-      <div class="indirizzo">
-        <p>indirizzo</p>
-      </div>
-      <div class="pagamento">
-        <p>pagamento</p>
-      </div>
-      <div class="ordini">
-        <p>ordini</p>
+      	<h4>Nome</h4>	
+        <p>Maurizio Tucci</p>
+        <h4>Nome</h4>
+        <p>Maurizio Tucci</p>
+        <h4>Nome</h4>
+        <p>Maurizio Tucci</p>
       </div>
     </section>
       
