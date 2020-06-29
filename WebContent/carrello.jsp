@@ -89,6 +89,11 @@
     <div class="totale">
       <h2>Prezzo totale:</h2>
       <p><%=cart.getTotal() %></p>
+      <a href="Product?page=/carrello.jsp&action=checkout">
+          	  <button type="button" class="btn btn-primary">
+              Checkout
+            </button>
+      </a>
     </div>
     
     <!---------------------------------FOOTER----------------------------------------->

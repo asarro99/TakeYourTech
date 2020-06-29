@@ -5,6 +5,7 @@ import java.io.File;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.Bean.ProductBean;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Cart;
 import com.model.DB;
 
@@ -131,6 +134,64 @@ public class Product extends HttpServlet {
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
+			}else if (request.getParameter("action").equals("addC")) {
+				int id = Integer.parseInt(request.getParameter("codiceprod"));
+				for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
+				{
+					try {
+						cart.addProduct(ds.doRetrieveByKey(id));
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			} else if (request.getParameter("action").equals("removeC")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				try {
+					cart.deleteProduct(ds.doRetrieveByKey(id));
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (request.getParameter("action").equals("checkout")) 
+			{
+				String role = (String)request.getSession().getAttribute("roleUtente");
+                if(role!=null && role.equals("utente")) {
+                	ObjectMapper mapper= new ObjectMapper();
+					try 
+					{
+						int idMetodoPagamento = ds.getidMetodoPagamento(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+						ArrayList<String> IndirizzoSpedizione = ds.getidIndirizzoSpedizione(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+
+						if(idMetodoPagamento==0)
+						{
+							 response.sendRedirect(request.getContextPath()+"/index.jsp");
+			                 return;
+						}
+						else 
+						{
+							if(IndirizzoSpedizione.size()==0)
+							{
+								response.sendRedirect(request.getContextPath()+"/account.jsp");
+				                 return;
+							}
+							else 
+							{
+								ds.doCartSave(idMetodoPagamento,Integer.parseInt((String) request.getSession().getAttribute("idUtente")),(float)cart.getTotal(),IndirizzoSpedizione.get(3),IndirizzoSpedizione.get(2),IndirizzoSpedizione.get(1),"fammok");
+								int idOrdine = ds.getidOrdine(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+								ds.doProdottiOrdinatiSave(cart,idOrdine);
+								cart.removeAll();
+							}
+						}
+					} 
+					catch (JsonProcessingException | SQLException e) 
+					{
+						e.printStackTrace();
+					}
+                }else {
+                    response.sendRedirect(request.getContextPath()+"/login.jsp");
+                    return;
+                }
 			}
 		}
 		

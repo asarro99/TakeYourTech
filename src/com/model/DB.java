@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -274,11 +275,11 @@ public class DB implements DBModel {
 	}
 	
 	@Override
-	public synchronized void doCartSave(String cart, String id) throws SQLException {
+	public synchronized void doCartSave(int IdMetPagam, int IdUtetne,float totalePagamento,String codicePostale,String citta,String via,String codiceTracciab) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO ordini (dettagliOrdine,data,idUtente) VALUES (?,?,?)";
+		String insertSQL = "INSERT INTO ordine (idMetodoPagamento,idUtente,totalePagamento,codicePostale,citta,via,codiceTracciabilita) VALUES (?,?,?,?,?,?,?)";
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String data = df.format(new Date());
@@ -286,9 +287,13 @@ public class DB implements DBModel {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
-			preparedStatement.setString(1, cart);
-            preparedStatement.setString(3, id);
-            preparedStatement.setString(2,data);
+			preparedStatement.setInt(1, IdMetPagam);
+            preparedStatement.setInt(2, IdUtetne);
+            preparedStatement.setFloat(3,totalePagamento);
+            preparedStatement.setString(4, codicePostale);
+            preparedStatement.setString(5, citta);
+            preparedStatement.setString(6, via);
+            preparedStatement.setString(7, codiceTracciab);
 
 			preparedStatement.executeUpdate();
 
@@ -540,7 +545,7 @@ public class DB implements DBModel {
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-
+			
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -558,5 +563,157 @@ public class DB implements DBModel {
 			}
 		}
 		return categorieString;
+	}
+    
+    public synchronized int getidMetodoPagamento(int IdUtente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		int datiMetodoPagamento =0;
+
+		String selectSQL = "SELECT * FROM metodopagamento WHERE idUtente = ?" ;
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setInt(1, IdUtente);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.next();
+			datiMetodoPagamento=rs.getInt("idMetodoPagamento");
+
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+				{
+					preparedStatement.close();
+					return datiMetodoPagamento;
+				}
+			} finally {
+				if (connection != null)
+				{
+					connection.close();
+					return datiMetodoPagamento;
+				}
+			}
+		}
+		return datiMetodoPagamento;
+	}
+    
+    
+    public synchronized ArrayList<String>  getidIndirizzoSpedizione(int IdUtente) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		ArrayList<String> inidirizzoSpedizioneDati = new ArrayList<String>();
+
+		String selectSQL = "SELECT * FROM indirizzospedizione WHERE idUtente = ?" ;
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+			
+			preparedStatement.setInt(1, IdUtente);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.next();
+			inidirizzoSpedizioneDati.add(Integer.toString(rs.getInt("idIndirizzo")));
+			inidirizzoSpedizioneDati.add(rs.getString("via"));
+			inidirizzoSpedizioneDati.add(rs.getString("citta"));
+			inidirizzoSpedizioneDati.add(rs.getString("codicePostale"));
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+				{
+					preparedStatement.close();
+					return inidirizzoSpedizioneDati;
+				}
+			} finally {
+				if (connection != null)
+				{
+					connection.close();
+					return inidirizzoSpedizioneDati;
+				}
+			}
+		}
+		return inidirizzoSpedizioneDati;
+	}
+    
+    public synchronized int getidOrdine(int IdUtente) throws SQLException {
+  		Connection connection = null;
+  		PreparedStatement preparedStatement = null;
+
+  		int idOrdine =0;
+
+  		String selectSQL = "SELECT idOrdine FROM ordine WHERE idUtente = ?" ;
+
+  		try {
+  			connection = ds.getConnection();
+  			preparedStatement = connection.prepareStatement(selectSQL);
+  			
+  			preparedStatement.setInt(1, IdUtente);
+  			ResultSet rs = preparedStatement.executeQuery();
+  			
+  			rs.next();
+  			idOrdine=rs.getInt("idOrdine");
+
+
+  		} finally {
+  			try {
+  				if (preparedStatement != null)
+  				{
+  					preparedStatement.close();
+  					return idOrdine;
+  				}
+  			} finally {
+  				if (connection != null)
+  				{
+  					connection.close();
+  					return idOrdine;
+  				}
+  			}
+  		}
+  		return idOrdine;
+  	}
+    
+	@Override
+	public synchronized void doProdottiOrdinatiSave(Cart carrello, int idOrdine) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		
+		String insertSQL = "INSERT INTO prodottoordinato (idOrdine,idProdotto,quantita,prezzo,nome,iva) VALUES (?,?,?,?,?,?)";
+		
+		List<ProductBean> prodottiBeans = carrello.getProducts();
+		
+
+		for(int i=0;i<prodottiBeans.size();i++)
+		{			
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(insertSQL);
+			try {
+	            preparedStatement.setInt(1,idOrdine);
+	            preparedStatement.setInt(2,prodottiBeans.get(i).getCode());
+	            preparedStatement.setInt(3, prodottiBeans.get(i).getQuantity());
+	            preparedStatement.setFloat(4, prodottiBeans.get(i).getPrice());
+	            preparedStatement.setString(5, prodottiBeans.get(i).getName());
+	            preparedStatement.setInt(6, prodottiBeans.get(i).getIva());
+
+				preparedStatement.executeUpdate();
+
+				//connection.commit();
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+		}
+		
 	}
 }

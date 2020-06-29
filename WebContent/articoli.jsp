@@ -58,7 +58,7 @@
             <div class="product-top">
               <img src="./getPicture?id=<%=bean.getCode() %>"  />
               <div class="overlay-right">
-              <a href="Product?page=/product.jsp&codiceprod=<%=bean.getCode() %>">
+              <a href="Product?page=/product.jsp&codiceprod=<%=bean.getCode()%>">
                 <button
                   type="button"
                   class="btn btn-secondary"

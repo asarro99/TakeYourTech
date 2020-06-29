@@ -11,7 +11,7 @@ import com.Bean.ProductBean;
 public interface DBModel {
 	public void doSave(ProductBean product) throws SQLException;
 	
-	public void doCartSave(String cart, String id) throws SQLException;
+	public void doCartSave(int IdMetPagam, int IdUtetne,float totalePagamento,String codicePostale,String citta,String via,String codiceTracciab) throws SQLException;
 	
 	public void doUpdate(ProductBean product) throws SQLException;
 
@@ -36,4 +36,13 @@ public interface DBModel {
 	public  Collection<OrdiniBean> getOridiniUtenteData(String idUtente,String data1, String data2) throws SQLException;
 	
 	public String getCategorie() throws SQLException;
+	
+	public int getidMetodoPagamento(int IdUtente) throws SQLException;
+	
+	public int getidOrdine(int IdUtente) throws SQLException;
+	
+	public ArrayList<String>  getidIndirizzoSpedizione(int IdUtente) throws SQLException;
+	
+	public void doProdottiOrdinatiSave(Cart carrello, int idOrdine) throws SQLException;
+
 }

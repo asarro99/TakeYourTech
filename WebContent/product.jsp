@@ -111,7 +111,7 @@
 			%>
             <label>Quantità: </label>
             <form action="./Product?page=/carrello.jsp&codiceprod=<%= prodotto.getCode()%>&action=addC" method="post">
-            <input type="text" value="1" name="quantita" />
+            <input type="text" value="1" name="quantita"/>
             <button type="submit" class="btn btn-primary">
               Aggiungi al carrello
             </button>
