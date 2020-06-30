@@ -10,17 +10,69 @@ import com.model.Cart;
 public class OrdiniBean {
 	int code;
 	String description;
-	String idUtente;
+	int idUtente;
+	int idMetodoPagamento;
+	String codicePostale;
+	String citta;
+	String via;
+	String codiceTracciabilita;
     String data;
-    int totale;
+    float totale;
 
 	public OrdiniBean() {
 		code = -1;
+		idMetodoPagamento=0;
+		citta="";
+		via="";
+		codiceTracciabilita="";
+		codicePostale="";
 		description = "";
 		data = "";
-		idUtente="";
+		idUtente=0;
         totale=0;
 	}
+	
+	public String getCitta() {
+		return citta;
+	}
+	
+	public void setCitta(String citta) {
+		this.citta = citta;
+	}
+	
+	public String getCodicePostale() {
+		return codicePostale;
+	}
+	
+	public void setCodicePostale(String codicePostale) {
+		this.codicePostale = codicePostale;
+	}
+	
+	public String getCodiceTracciabilita() {
+		return codiceTracciabilita;
+	}
+	
+	public void setCodiceTracciabilita(String codiceTracciabilita) {
+		this.codiceTracciabilita = codiceTracciabilita;
+	}
+	
+	public int getIdMetodoPagamento() {
+		return idMetodoPagamento;
+	}
+	
+	public void setIdMetodoPagamento(int idMetodoPagamento) {
+		this.idMetodoPagamento = idMetodoPagamento;
+	}
+	
+	public String getVia() {
+		return via;
+	}
+	
+	public void setVia(String via) {
+		this.via = via;
+	}
+	
+	
 
 	public int getCode() {
 		return code;
@@ -46,21 +98,23 @@ public class OrdiniBean {
 		this.data = data;
 	}
 
-    public String getIdUtente() {
+    public int getIdUtente() {
 		return idUtente;
 	}
-
-	public void setidUtente(String idUtente) {
+    
+    public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
+
 	
-	public int getTotale() throws JsonParseException, JsonMappingException, IOException {
-		ObjectMapper objectMapper = new ObjectMapper();
+	public float getTotale() throws JsonParseException, JsonMappingException, IOException {
+		/*ObjectMapper objectMapper = new ObjectMapper();
 		Cart carrello = objectMapper.readValue(description, Cart.class);
-		return (int) carrello.getTotal();
+		return (float) carrello.getTotal();*/
+		return this.totale;
 	}
 
-	public void setTotale(int totale) {
+	public void setTotale(float totale) {
 		this.totale = totale;
 	}
 

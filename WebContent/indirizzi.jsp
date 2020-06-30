@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+   <%@ page import="java.util.*,com.Bean.*"%>
 <%
+	Collection<?> indirizzi = (Collection<?>) request.getAttribute("indirizzi");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/indirizzi.jsp");	
+		response.sendRedirect("./Product?page=/indirizzi.jsp&action=indirizzi");	
 		return;
 	}
 %>
@@ -50,102 +52,42 @@
           <th>Modifica</th>
           <th>Rimuovi</th>
         </tr>
+        <%
+			if (indirizzi != null && indirizzi.size() != 0) {
+				Iterator<?> it = indirizzi.iterator();
+				while (it.hasNext()) {
+					IndirizziBean bean = (IndirizziBean) it.next();
+		%>
         <tr>
-          <td data-th="ID">12345</td>
+          <td data-th="ID"><%=bean.getCode() %></td>
           <td data-th="Indirizzo">
-            Via degli Spani 11
+            <%=bean.getVia()%>
           </td>
-          <td data-th="Città">Scafati</td>
-          <td data-th="CAP">83202</td>
+          <td data-th="Città"><%=bean.getCitta()%></td>
+          <td data-th="CAP"><%=bean.getCodicePostale() %></td>
           <td data-th="Prezzo">
             <button type="button" class="btn btn-primary">
               Modifica
             </button>
           </td>
           <td data-th="Dettagli">
+          <a href="./Product?page=/indirizzi.jsp&action=indirizzi&type=rimuovi&idind=<%=bean.getCode()%>">
             <button type="button" class="btn btn-primary">
               Rimuovi
             </button>
+           </a>
           </td>
         </tr>
-        <tr>
-          <th>ID</th>
-          <th>Indirizzo</th>
-          <th>Città</th>
-          <th>CAP</th>
-          <th>Modifica</th>
-          <th>Rimuovi</th>
-        </tr>
-        <tr>
-          <td data-th="ID">12345</td>
-          <td data-th="Indirizzo">
-            Via degli Spani 11
-          </td>
-          <td data-th="Città">Scafati</td>
-          <td data-th="CAP">83202</td>
-          <td data-th="Prezzo">
-            <button type="button" class="btn btn-primary">
-              Modifica
-            </button>
-          </td>
-          <td data-th="Dettagli">
-            <button type="button" class="btn btn-primary">
-              Rimuovi
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th>ID</th>
-          <th>Indirizzo</th>
-          <th>Città</th>
-          <th>CAP</th>
-          <th>Modifica</th>
-          <th>Rimuovi</th>
-        </tr>
-        <tr>
-          <td data-th="ID">12345</td>
-          <td data-th="Indirizzo">
-            Via degli Spani 11
-          </td>
-          <td data-th="Città">Scafati</td>
-          <td data-th="CAP">83202</td>
-          <td data-th="Prezzo">
-            <button type="button" class="btn btn-primary">
-              Modifica
-            </button>
-          </td>
-          <td data-th="Dettagli">
-            <button type="button" class="btn btn-primary">
-              Rimuovi
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th>ID</th>
-          <th>Indirizzo</th>
-          <th>Città</th>
-          <th>CAP</th>
-          <th>Modifica</th>
-          <th>Rimuovi</th>
-        </tr>
-        <tr>
-          <td data-th="ID">12345</td>
-          <td data-th="Indirizzo">
-            Via degli Spani 11
-          </td>
-          <td data-th="Città">Scafati</td>
-          <td data-th="CAP">83202</td>
-          <td data-th="Prezzo">
-            <button type="button" class="btn btn-primary">
-              Modifica
-            </button>
-          </td>
-          <td data-th="Dettagli">
-            <button type="button" class="btn btn-primary">
-              Rimuovi
-            </button>
-          </td>
-        </tr>
+        <%
+				}
+			} else {
+		%>
+		<tr>
+			<td colspan="6">Nessun indirizzo disponibile</td>
+		</tr>
+		<%
+			}
+		%>
       </table>
     </section>
     <div class="centraBottone">

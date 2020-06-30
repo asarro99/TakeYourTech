@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.Bean.IndirizziBean;
+import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -192,6 +194,61 @@ public class Product extends HttpServlet {
                     response.sendRedirect(request.getContextPath()+"/login.jsp");
                     return;
                 }
+			}else if(request.getParameter("action").equals("ordini"))
+			{
+				String IdUtente = (String) request.getSession().getAttribute("idUtente");
+	            if(IdUtente != null)
+	            {   
+	                try {
+	                	String data1 = request.getParameter("data1");
+	            		String data2 = request.getParameter("data2");
+
+	                	if(data1 != null && data2 != null && !data1.equals("2017-06-01") && !data2.equals("2017-06-01"))
+	                	{
+	                			Collection<OrdiniBean> ordini = ds.getOridiniUtenteData(Integer.parseInt(IdUtente), data1, data2);
+	                            request.setAttribute("ordini", ordini);
+	                	}
+	                	else {
+						Collection<OrdiniBean> ordini = ds.getOridiniUtente(Integer.parseInt(IdUtente));
+	                    request.setAttribute("ordini", ordini);
+
+	                	}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+			}
+			else if(request.getParameter("action").equals("indirizzi"))
+			{
+				
+				String IdUtente = (String) request.getSession().getAttribute("idUtente");
+				
+				  if(request.getParameter("type")!=null && request.getParameter("type").equals("rimuovi"))
+		            {
+		            	try {
+							ds.rimuoviIndirizzo(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
+						} catch (NumberFormatException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		            }
+				  
+	            if(IdUtente != null)
+	            {   
+	                try {
+
+						Collection<IndirizziBean> indirizzi = ds.getIndirizziUtente(Integer.parseInt(IdUtente));
+	                    request.setAttribute("indirizzi", indirizzi);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+	            
 			}
 		}
 		

@@ -42,7 +42,7 @@
 	      </div>
 	   		<div class="bottoni">
 	      <div class="indirizzo">
-	        <a href="">
+	        <a href="indirizzi.jsp">
 	          	  <button type="button" class="btn btn-primary">
 	              Indirizzi
 	            </button>
@@ -56,7 +56,7 @@
 	          	</a>
 	      </div>
 	      <div class="ordini">
-	        <a href="">
+	        <a href="mieiOrdini.jsp">
 	          	  <button type="button" class="btn btn-primary">
 	              Ordini
 	            </button>

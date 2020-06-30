@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+   <%@ page import="java.util.*,com.Bean.*"%>
 <%
+	Collection<?> ordini = (Collection<?>) request.getAttribute("ordini");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/mieiOrdini.jsp");	
+		response.sendRedirect("./Product?page=/mieiOrdini.jsp&action=ordini");	
 		return;
 	}
 %>
@@ -39,6 +41,15 @@
       </div>
     </section>
     <section class="ordini">
+    	<h1>Ricerca per data</h2>
+	<form action="./Product?page=/mieiOrdini.jsp&action=ordini" method="post">
+	<div>
+		<h2>Dalla data: </h2> <input type="date" name="data1" value="2017-06-01">
+		<h2>alla data: </h2> <input type="date" name="data2" value="2017-06-01">
+		<br>
+		<input type="submit" value="Ricerca">
+	</div>
+	</form>
       <table class="rwd-table">
         <tr>
           <th>Codice</th>
@@ -46,20 +57,36 @@
           <th>Prezzo</th>
           <th>Dettagli</th>
         </tr>
+        <%
+			if (ordini != null && ordini.size() != 0) {
+				Iterator<?> it = ordini.iterator();
+				while (it.hasNext()) {
+					OrdiniBean bean = (OrdiniBean) it.next();
+		%>
         <tr>
           <td data-th="Codice">
-            ABCDEFGH123456
+            <%=bean.getCode() %>
           </td>
           <td data-th="Data">
-            21/03/99
+            <%=bean.getData() %>
           </td>
-          <td data-th="Prezzo">Prezzo</td>
+          <td data-th="Prezzo"><%=bean.getTotale() %></td>
           <td data-th="Dettagli">
             <button type="button" class="btn btn-primary">
               Dettagli
             </button>
           </td>
         </tr>
+        <%
+				}
+			} else {
+		%>
+		<tr>
+			<td colspan="6">Nessun ordine disponibile</td>
+		</tr>
+		<%
+			}
+		%>
       </table>
     </section>
 	

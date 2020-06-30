@@ -21,6 +21,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
 import com.model.DBModel;
@@ -279,11 +280,11 @@ public class DB implements DBModel {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
-		String insertSQL = "INSERT INTO ordine (idMetodoPagamento,idUtente,totalePagamento,codicePostale,citta,via,codiceTracciabilita) VALUES (?,?,?,?,?,?,?)";
+		String insertSQL = "INSERT INTO ordine (idMetodoPagamento,idUtente,totalePagamento,codicePostale,citta,via,codiceTracciabilita,Data) VALUES (?,?,?,?,?,?,?,?)";
 		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String data = df.format(new Date());
-		System.out.println(data);
+
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
@@ -294,6 +295,7 @@ public class DB implements DBModel {
             preparedStatement.setString(5, citta);
             preparedStatement.setString(6, via);
             preparedStatement.setString(7, codiceTracciab);
+            preparedStatement.setString(8, data);
 
 			preparedStatement.executeUpdate();
 
@@ -350,28 +352,34 @@ public class DB implements DBModel {
 	}
 
     @Override
-	public synchronized Collection<OrdiniBean> getOridiniUtente(String idUtente) throws SQLException {
+	public synchronized Collection<OrdiniBean> getOridiniUtente(int idUtente) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 
 		Collection<OrdiniBean> products = new LinkedList<OrdiniBean>();
 
-		String selectSQL = "SELECT * FROM ordini WHERE idUtente = ?" ;
+		String selectSQL = "SELECT * FROM ordine WHERE idUtente = ?" ;
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(selectSQL);
-            preparedStatement.setString(1, idUtente);
+            preparedStatement.setInt(1, idUtente);
 
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
 				OrdiniBean bean = new OrdiniBean();
 
+				bean.setTotale(rs.getFloat("totalePagamento"));
+				bean.setCodicePostale(rs.getString("codicePostale"));
+				bean.setData(rs.getString("Data"));
+				bean.setIdUtente(idUtente);
+				bean.setIdMetodoPagamento(rs.getInt("idMetodoPagamento"));
 				bean.setCode(rs.getInt("idOrdine"));
-				bean.setDescription(rs.getString("dettagliOrdine"));
-                bean.setData(rs.getString("data"));
-                bean.setidUtente(rs.getString("idUtente"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setVia(rs.getString("via"));
+				bean.setCodiceTracciabilita(rs.getString("codiceTracciabilita"));
+				
                 products.add(bean);
 			}
 
@@ -388,29 +396,35 @@ public class DB implements DBModel {
 	}
     
     @Override
-   	public synchronized Collection<OrdiniBean> getOridiniUtenteData(String idUtente,String data1, String data2) throws SQLException {
+   	public synchronized Collection<OrdiniBean> getOridiniUtenteData(int idUtente,String data1, String data2) throws SQLException {
    		Connection connection = null;
    		PreparedStatement preparedStatement = null;
 
    		Collection<OrdiniBean> products = new LinkedList<OrdiniBean>();
 
-   		String selectSQL = "SELECT * FROM ordini WHERE idUtente = ? AND data BETWEEN "+ '"'+data1+'"'+" AND " + '"' + 	data2 + '"';
+   		String selectSQL = "SELECT * FROM ordine WHERE idUtente = ? AND data BETWEEN "+ '"'+data1+'"'+" AND " + '"' + 	data2 + '"';
 
    		try {
    			connection = ds.getConnection();
    			preparedStatement = connection.prepareStatement(selectSQL);
-               preparedStatement.setString(1, idUtente);
+               preparedStatement.setInt(1, idUtente);
 
    			ResultSet rs = preparedStatement.executeQuery();
 
    			while (rs.next()) {
    				OrdiniBean bean = new OrdiniBean();
 
-   				bean.setCode(rs.getInt("idOrdine"));
-   				bean.setDescription(rs.getString("dettagliOrdine"));
-                   bean.setData(rs.getString("data"));
-                   bean.setidUtente(rs.getString("idUtente"));
-                   products.add(bean);
+				bean.setTotale(rs.getFloat("totalePagamento"));
+				bean.setCodicePostale(rs.getString("codicePostale"));
+				bean.setData(rs.getString("Data"));
+				bean.setIdUtente(idUtente);
+				bean.setIdMetodoPagamento(rs.getInt("idMetodoPagamento"));
+				bean.setCode(rs.getInt("idOrdine"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setVia(rs.getString("via"));
+				bean.setCodiceTracciabilita(rs.getString("codiceTracciabilita"));
+				
+                products.add(bean);
    			}
 
    		} finally {
@@ -446,7 +460,7 @@ public class DB implements DBModel {
 				bean.setCode(rs.getInt("idOrdine"));
 				bean.setDescription(rs.getString("dettagliOrdine"));
                 bean.setData(rs.getString("data"));
-                bean.setidUtente(rs.getString("idUtente"));
+                bean.setIdUtente(rs.getInt("idUtente"));
                 products.add(bean);
 			}
 
@@ -482,7 +496,7 @@ public class DB implements DBModel {
 				bean.setCode(rs.getInt("idOrdine"));
 				bean.setDescription(rs.getString("dettagliOrdine"));
                 bean.setData(rs.getString("data"));
-                bean.setidUtente(rs.getString("idUtente"));
+                bean.setIdUtente(rs.getInt("idUtente"));
                 products.add(bean);
 			}
 
@@ -518,7 +532,7 @@ public class DB implements DBModel {
 				bean.setCode(rs.getInt("idOrdine"));
 				bean.setDescription(rs.getString("dettagliOrdine"));
                 bean.setData(rs.getString("data"));
-                bean.setidUtente(rs.getString("idUtente"));
+                bean.setIdUtente(rs.getInt("idUtente"));
                 products.add(bean);
 			}
 
@@ -716,4 +730,65 @@ public class DB implements DBModel {
 		}
 		
 	}
+	
+	   @Override
+		public synchronized Collection<IndirizziBean> getIndirizziUtente(int idUtente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			Collection<IndirizziBean> indirizzi = new LinkedList<IndirizziBean>();
+
+			String selectSQL = "SELECT * FROM indirizzospedizione WHERE idUtente = ?" ;
+
+			try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+	            preparedStatement.setInt(1, idUtente);
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					IndirizziBean bean = new IndirizziBean();
+
+	
+					bean.setCodicePostale(rs.getString("codicePostale"));
+					bean.setIdUtente(idUtente);
+					bean.setCode(rs.getInt("idIndirizzo"));
+					bean.setCitta(rs.getString("citta"));
+					bean.setVia(rs.getString("via"));
+					
+	                indirizzi.add(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+			return indirizzi;
+		}
+	   
+	   public synchronized void rimuoviIndirizzo(int idIndirizzo,int idUtente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			String selectSQL = "DELETE FROM indirizzospedizione WHERE idIndirizzo = ? AND idUtente = ?" ;
+
+			try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+	            preparedStatement.setInt(1, idIndirizzo);
+	            preparedStatement.setInt(2, idUtente);
+
+				int rs = preparedStatement.executeUpdate();
+
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 }
