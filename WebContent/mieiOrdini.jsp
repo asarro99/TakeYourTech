@@ -41,53 +41,61 @@
       </div>
     </section>
     <section class="ordini">
-    	<h1>Ricerca per data</h2>
-	<form action="./Product?page=/mieiOrdini.jsp&action=ordini" method="post">
-	<div>
-		<h2>Dalla data: </h2> <input type="date" name="data1" value="2017-06-01">
-		<h2>alla data: </h2> <input type="date" name="data2" value="2017-06-01">
-		<br>
-		<input type="submit" value="Ricerca">
-	</div>
-	</form>
-      <table class="rwd-table">
-        <tr>
-          <th>Codice</th>
-          <th>Data</th>
-          <th>Prezzo</th>
-          <th>Dettagli</th>
-        </tr>
-        <%
-			if (ordini != null && ordini.size() != 0) {
-				Iterator<?> it = ordini.iterator();
-				while (it.hasNext()) {
-					OrdiniBean bean = (OrdiniBean) it.next();
-		%>
-        <tr>
-          <td data-th="Codice">
-            <%=bean.getCode() %>
-          </td>
-          <td data-th="Data">
-            <%=bean.getData() %>
-          </td>
-          <td data-th="Prezzo"><%=bean.getTotale() %></td>
-          <td data-th="Dettagli">
-            <button type="button" class="btn btn-primary">
-              Dettagli
-            </button>
-          </td>
-        </tr>
-        <%
-				}
-			} else {
-		%>
-		<tr>
-			<td colspan="6">Nessun ordine disponibile</td>
-		</tr>
-		<%
-			}
-		%>
-      </table>
+	    <div class="ricerca">
+	    	<h1>Ricerca per data</h1>
+		<form action="./Product?page=/mieiOrdini.jsp&action=ordini" method="post">
+			<h3>Dalla data: </h3> <input type="date" name="data1" value="2017-06-01">
+			<h3>alla data: </h3> <input type="date" name="data2" value="2017-06-01">
+			<br>
+			<div class="bottone">
+			<input type="submit" value="Ricerca" class="btn btn-primary">
+			</div>
+		</form>
+		</div>
+		<div class="boxtabella">
+			<table class="tabella">
+	            <thead>
+	               <tr>
+		              <th>Codice</th>
+			          <th>Data</th>
+			          <th>Prezzo</th>
+			          <th>Dettagli</th>
+	               </tr>
+	            </thead>
+	            <tbody>
+	                <%
+					if (ordini != null && ordini.size() != 0) {
+						Iterator<?> it = ordini.iterator();
+						while (it.hasNext()) {
+							OrdiniBean bean = (OrdiniBean) it.next();
+				%>
+		        <tr>
+		          <td data-th="Codice">
+		            <%=bean.getCode() %>
+		          </td>
+		          <td data-th="Data">
+		            <%=bean.getData() %>
+		          </td>
+		          <td data-th="Prezzo"><%=bean.getTotale() %></td>
+		          <td data-th="Dettagli">
+		            <button type="button" class="btn btn-primary">
+		              Dettagli
+		            </button>
+		          </td>
+		        </tr>
+		        <%
+						}
+					} else {
+				%>
+				<tr>
+					<td colspan="6">Nessun ordine disponibile</td>
+				</tr>
+				<%
+					}
+				%>
+	            </tbody>
+	         </table>
+	      </div>
     </section>
 	
     

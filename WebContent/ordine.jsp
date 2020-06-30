@@ -1,14 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-   pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*,com.model.Cart,com.Bean.ProductBean"%>
-<%
-   String sidemenu = (String)request.getAttribute("sidemenu");
-   if(sidemenu == null) {
-   	response.sendRedirect("./Product?page=/carrello.jsp");	
-   	return;
-   }
-   Cart cart = (Cart) request.getSession().getAttribute("cart");
-   %>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -31,10 +20,10 @@
       <jsp:include page="./utility/header.jsp"/>
       <!-- SIDE MENU -->
       <jsp:include page="./utility/sidemenu.jsp">
-         <jsp:param value="<%=sidemenu%>" name="categorie"/>
+         <jsp:param value="ciao" name="categorie"/>
       </jsp:include>
       <!---------------------------------ORDINE----------------------------------------->
-      <div align="center">
+      <div class="qwerty" align="center">
          <table class="tabella">
             <thead>
                <tr>
@@ -52,21 +41,35 @@
                   </th>
                </tr>
             </thead>
-            <% List<ProductBean> prodcart = cart.getProducts(); 	
-               for(ProductBean beancart: prodcart) {
-               %>
             <tbody>
                <tr>
-                  <td><%=beancart.getDescription()%></td>
-                  <td><%=beancart.getQuantity()%></td>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
+                  <td>ciao</td>
                   <td>22%</td>
-                  <td><%=beancart.getPrice()%> Euro</td>
+                  <td>ciao</td>
+               </tr>
+               <tr>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
+                  <td>ciao</td>
+                  <td>22%</td>
+                  <td>ciao</td>
+               </tr>
+               <tr>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
+                  <td>ciao</td>
+                  <td>22%</td>
+                  <td>ciao</td>
+               </tr>
+               <tr>
+                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
+                  <td>ciao</td>
+                  <td>22%</td>
+                  <td>ciao</td>
                </tr>
             </tbody>
-            <%} %>
          </table>
-         <h2 style="color: #009879">Prezzo totale</h2>
-         <a style="color: #009879; font-weight: bold; font-size: 1.1em;"><%if(cart != null) out.println(cart.getTotal());%> Euro</a>
+         <h2>Prezzo totale</h2>
+         <a>ciao Euro</a>
       </div>
       <!---------------------------------FOOTER----------------------------------------->
       <jsp:include page="./utility/footer.jsp"/>
