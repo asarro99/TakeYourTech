@@ -79,8 +79,8 @@ a {
 .login-show input[type="password"] {
   width: 100%;
   display: block;
-  margin: 20px 0;
-  padding: 15px;
+  margin: 8px 0;
+  padding: 12px;
   border: 1px solid #b5b5b5;
   outline: none;
 }
@@ -110,7 +110,7 @@ a {
 
 .register-show input[type="text"],
 .register-show input[type="password"] {
-  width: 80%;
+  width: 100%;
   margin: 5px 0;
   padding: 12px;
   border: 1px solid #b5b5b5;
@@ -253,7 +253,19 @@ a {
 	  border-radius: 3px;
 	}
 	
-	.form-controller small{
-
+	.register-show input[type="text"],
+.register-show input[type="password"] {
+  width: 100%;
 }
+
+.login-show,
+.register-show {
+  padding: 50px 10px 50px 10px;
+}
+
+.register-show input[type="submit"],
+ .login-show input[type="submit"]{
+  max-width: 100%
+}
+	
 }

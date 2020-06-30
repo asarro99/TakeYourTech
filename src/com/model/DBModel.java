@@ -25,6 +25,8 @@ public interface DBModel {
 	
 	public ArrayList<String> Login(String username,String password) throws SQLException ;
 	
+	public boolean SignIn(String email, String password, String nome, String cognome) throws SQLException ;
+	
 	public Collection<OrdiniBean> getOridiniUtente(String idUtente) throws SQLException;
 	
 	public Collection<OrdiniBean> getOridini() throws SQLException;
