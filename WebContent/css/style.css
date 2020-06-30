@@ -8,9 +8,17 @@
   user-select: none;
 }
 
+a{
+	color: #fff !important;
+}
+
 body {
   background-color: #ffffff;
   font-family: sans-serif;
+}
+
+a{
+	color: #fff !important;
 }
 
 .top-nav-bar {
