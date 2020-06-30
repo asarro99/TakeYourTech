@@ -1,21 +1,27 @@
 const form = document.getElementById('reg-form');
+const form2 = document.getElementById('log-form');
+
 const email = document.getElementById('reg-email');
 const pass = document.getElementById('reg-pass');
 const pass2 = document.getElementById('reg-pass2');
 const nome = document.getElementById('reg-nome');
 const cognome = document.getElementById('reg-cognome');
 
-const checkForm = () => {
+const emailLog = document.getElementById('log-email');
+const passLog = document.getElementById('log-password');
+
+const checkFormReg = () => {
     const emailValue = email.value.trim();
     const passValue = pass.value.trim();
     const pass2Value = pass2.value.trim();
     const nomeValue = nome.value.trim();
     const cognomeValue = cognome.value.trim();
+    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     let validita = false;
 
-    if(emailValue === ''){
+    if(!emailValue.match(pattern)){
         validita = false;
-        setError(email, 'Il campo e-mail non puo\' essere vuoto');
+        setError(email, 'L\'indirizzo e-mail deve essere corretto.');
     }else{
         validita = true;
         setSuccess(email);
@@ -55,6 +61,30 @@ const checkForm = () => {
     return validita;
 }
 
+const checkFormLog = () => {
+    const emailValue = emailLog.value.trim();
+    const passValue = passLog.value.trim();
+    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let validita = false;
+
+    if(!emailValue.match(pattern)){
+        validita = false;
+        setError(emailLog, 'L\'indirizzo e-mail deve essere corretto.');
+    }else{
+        validita = true;
+        setSuccess(emailLog);
+    }
+
+    if(passValue === ''){
+        validita = false;
+        setError(passLog, 'Il campo password non puo\' essere vuoto');
+    }else{
+        validita = true;
+        setSuccess(passLog);
+    }
+    return validita;
+}
+
 const setError = (input, message) => {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
@@ -76,7 +106,13 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkForm())
+    if(checkFormReg())
         form.submit();
+});
+
+form2.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(checkFormLog())
+        form2.submit();
 });
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model.DB;
 import com.model.DBModel;
+import com.utility.PasswordHashing;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -24,7 +25,7 @@ public class Login extends HttpServlet {
 			String email = request.getParameter("email");
 			String password = request.getParameter("password");
 			
-			String redirectedPage;
+			String redirectedPage = null;
 			try {
 				ArrayList<String> conferma = ds.Login(email, password);
 				request.getSession().setAttribute("roleUtente", conferma.get(0));

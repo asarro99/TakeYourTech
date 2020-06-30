@@ -42,23 +42,33 @@
       <div class="white-panel">
         <div class="login-show">
           <h2>LOGIN</h2>
-          <form method="post" action="Login">
-	          <input type="text" placeholder="Email" id="email" name = "email"/>
-	          <input type="password" placeholder="Password" id="password" name="password"/>
+          <form id="log-form" method="post" action="Login">
+          	  <div class="form-controller">
+	          <input id="log-email" type="text" placeholder="Email" name = "email"/>
+	          <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+	          <div class="form-controller">
+	          <input id="log-password" type="password" placeholder="Password" name="password"/>
+	          <div class="div-non-visualize">
+	           <small></small>
+	          </div>
+	          </div>
 	          <input type="submit" value="Login" />
           </form>
         </div>
         <div class="register-show">
           <h2>REGISTRATI</h2>
-          <form id="reg-form" method="post" action="Register">
+          <form id="reg-form" method="post" action="SignIn">
           	  <div class="form-controller">
-          	  	  <input id="reg-email" type="text" placeholder="Email" />
+          	  	  <input id="reg-email" type="text" placeholder="Email" name = "email" />
           	  	  <div class="div-non-visualize">
           	  	  <small></small>
           	  	  </div>
           	  </div>
           	  <div class="form-controller">
-	          	  <input id="reg-pass" type="password" placeholder="Password"/>
+	          	  <input id="reg-pass" type="password" placeholder="Password" name = "password"/>
 	          	  <div class="div-non-visualize">
           	  	  <small></small>
           	  	  </div>
@@ -70,13 +80,13 @@
           	  	  </div>
 	          </div>
 	          <div class="form-controller">
-	          <input id="reg-nome" type="text" placeholder="Nome" />
+	          <input id="reg-nome" type="text" placeholder="Nome" name = "nome"/>
 	          <div class="div-non-visualize">
           	  	  <small></small>
           	  	  </div>
 	          </div>
 	          <div class="form-controller">
-	          <input id="reg-cognome" type="text" placeholder="Cognome" />
+	          <input id="reg-cognome" type="text" placeholder="Cognome" name = "cognome"/>
 	          <div class="div-non-visualize">
           	  	  <small></small>
           	  	  </div>
