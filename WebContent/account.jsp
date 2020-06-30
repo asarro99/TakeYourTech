@@ -49,7 +49,7 @@
 	          	</a>
 	      </div>
 	      <div class="pagamento">
-	        <a href="">
+	        <a href="metodiDiPagamento.jsp">
 	          	  <button type="button" class="btn btn-primary">
 	              Metodi di Pagamento
 	            </button>

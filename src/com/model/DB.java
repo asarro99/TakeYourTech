@@ -24,6 +24,7 @@ import javax.sql.DataSource;
 import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
+import com.Bean.metPagaBean;
 import com.model.DBModel;
 import com.utility.PasswordHashing;
 
@@ -824,4 +825,68 @@ public class DB implements DBModel {
 				e.printStackTrace();
 			}
 		}
+	   
+	   @Override
+		public synchronized Collection<metPagaBean> getMetPagaUtente(int idUtente) throws SQLException {
+			Connection connection = null;
+			PreparedStatement preparedStatement = null;
+
+			Collection<metPagaBean> indirizzi = new LinkedList<metPagaBean>();
+
+			String selectSQL = "SELECT * FROM metodopagamento WHERE idUtente = ?" ;
+
+			try {
+				connection = ds.getConnection();
+				preparedStatement = connection.prepareStatement(selectSQL);
+	            preparedStatement.setInt(1, idUtente);
+
+				ResultSet rs = preparedStatement.executeQuery();
+
+				while (rs.next()) {
+					metPagaBean bean = new metPagaBean();
+
+	
+					bean.setTipologia(rs.getString("tipologia"));
+					bean.setIdUtente(idUtente);
+					bean.setCode(rs.getInt("idMetodoPagamento"));
+					bean.setCodiceCarta(rs.getString("codiceCarta"));
+					bean.setIntestatario(rs.getString("intestatario"));
+					bean.setDataDiScadenza(rs.getString("dataDiScadenza"));
+					
+	                indirizzi.add(bean);
+				}
+
+			} finally {
+				try {
+					if (preparedStatement != null)
+						preparedStatement.close();
+				} finally {
+					if (connection != null)
+						connection.close();
+				}
+			}
+			return indirizzi;
+		}
+		
+		   public synchronized void rimuoviMetPaga(int idMetPag,int idUtente) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+
+				String selectSQL = "DELETE FROM metodopagamento WHERE idMetodoPagamento = ? AND idUtente = ?" ;
+
+				try {
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(selectSQL);
+		            preparedStatement.setInt(1, idMetPag);
+		            preparedStatement.setInt(2, idUtente);
+
+					int rs = preparedStatement.executeUpdate();
+
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+
 }

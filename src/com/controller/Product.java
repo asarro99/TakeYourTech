@@ -20,6 +20,7 @@ import javax.servlet.http.Part;
 import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
+import com.Bean.metPagaBean;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Cart;
@@ -243,6 +244,36 @@ public class Product extends HttpServlet {
 
 						Collection<IndirizziBean> indirizzi = ds.getIndirizziUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("indirizzi", indirizzi);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	            }
+	            
+			}else if(request.getParameter("action").equals("metPagamento"))
+			{
+				
+				String IdUtente = (String) request.getSession().getAttribute("idUtente");
+				
+				  if(request.getParameter("type")!=null && request.getParameter("type").equals("rimuovi"))
+		            {
+		            	try {
+							ds.rimuoviMetPaga(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
+						} catch (NumberFormatException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+		            }
+				  
+	            if(IdUtente != null)
+	            {   
+	                try {
+
+						Collection<metPagaBean> metPag = ds.getMetPagaUtente(Integer.parseInt(IdUtente));
+	                    request.setAttribute("metPagamento", metPag);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

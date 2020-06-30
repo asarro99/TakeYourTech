@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
+import com.Bean.metPagaBean;
 
 
 public interface DBModel {
@@ -27,7 +29,7 @@ public interface DBModel {
 	
 	public boolean SignIn(String email, String password, String nome, String cognome) throws SQLException ;
 	
-	public Collection<OrdiniBean> getOridiniUtente(String idUtente) throws SQLException;
+	public Collection<OrdiniBean> getOridiniUtente(int idUtente) throws SQLException;
 	
 	public Collection<OrdiniBean> getOridini() throws SQLException;
 	
@@ -35,7 +37,7 @@ public interface DBModel {
 	
 	public Collection<OrdiniBean> getOridiniById(String id) throws SQLException;
 	
-	public  Collection<OrdiniBean> getOridiniUtenteData(String idUtente,String data1, String data2) throws SQLException;
+	public  Collection<OrdiniBean> getOridiniUtenteData(int idUtente,String data1, String data2) throws SQLException;
 	
 	public String getCategorie() throws SQLException;
 	
@@ -46,5 +48,12 @@ public interface DBModel {
 	public ArrayList<String>  getidIndirizzoSpedizione(int IdUtente) throws SQLException;
 	
 	public void doProdottiOrdinatiSave(Cart carrello, int idOrdine) throws SQLException;
-
+	
+	public  Collection<IndirizziBean> getIndirizziUtente(int idUtente) throws SQLException;
+	
+    public  void rimuoviIndirizzo(int idIndirizzo,int idUtente) throws SQLException;
+    
+    public  Collection<metPagaBean> getMetPagaUtente(int idUtente) throws SQLException;
+    
+    public  void rimuoviMetPaga(int idIndirizzo,int idUtente) throws SQLException;
 }
