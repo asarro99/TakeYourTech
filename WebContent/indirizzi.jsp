@@ -49,7 +49,6 @@
           <th>Indirizzo</th>
           <th>Città</th>
           <th>CAP</th>
-          <th>Modifica</th>
           <th>Rimuovi</th>
         </tr>
         <%
@@ -65,12 +64,7 @@
           </td>
           <td data-th="Città"><%=bean.getCitta()%></td>
           <td data-th="CAP"><%=bean.getCodicePostale() %></td>
-          <td data-th="Prezzo">
-            <button type="button" class="btn btn-primary">
-              Modifica
-            </button>
-          </td>
-          <td data-th="Dettagli">
+          <td data-th="Rimuovi">
           <a href="./Product?page=/indirizzi.jsp&action=indirizzi&type=rimuovi&idind=<%=bean.getCode()%>">
             <button type="button" class="btn btn-primary">
               Rimuovi
@@ -90,11 +84,17 @@
 		%>
       </table>
     </section>
-    <div class="centraBottone">
-      <button type="button" class="btn btn-primary add">
-        Aggiungi Indirizzo
-      </button>
-    </div>
+    <div class= "form-container">
+		<div class= "form-wrapper">
+			<form action="Product?action=insert" enctype="multipart/form-data" method="post">
+				<h2>Inserimento</h2>
+				<input name="via" type="text" placeholder="Inserisci la via">
+				<input name="citta" type="text" placeholder="Inserisci la citta">
+				<input name="CAP" type="text" placeholder="Inserisci CAP">
+				<input type="submit" value="Aggiungi indirizzo">
+			</form>
+		</div>
+	</div>
     
     <!---------------------------------FOOTER----------------------------------------->
     <jsp:include page="./utility/footer.jsp"/>

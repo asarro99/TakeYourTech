@@ -16,7 +16,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>TakeYourTech</title>
       <link rel="stylesheet" href="./css/style.css" />
-      <link rel="stylesheet" href="./css/indirizzi.css" />
+      <link rel="stylesheet" href="./css/metodiDiPagamento.css" />
       <link
          rel="stylesheet"
          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -38,7 +38,7 @@
 
     <section class="title">
       <div class="title-box">
-        <h2>Indirizzi</h2>
+        <h2>Pagamento</h2>
       </div>
     </section>
 
@@ -88,11 +88,20 @@
 		%>
       </table>
     </section>
-    <div class="centraBottone">
-      <button type="button" class="btn btn-primary add">
-        Aggiungi Metodo di pagamento
-      </button>
-    </div>
+
+	<div class= "form-container">
+		<div class= "form-wrapper">
+			<form action="Product?action=insert" enctype="multipart/form-data" method="post">
+				<h2>Inserimento</h2>
+				<input name="codice" type="text" placeholder="Inserisci codice carta">
+				<input name="intestatario" type="text" placeholder="Inserisci intestatario">
+				<input name="tipologia" type="text" placeholder="Inserisci tipologia">
+				<input name="scadenza" type="text" placeholder="Inserisci scadenza">
+				
+				<input type="submit" value="Aggiungi pagamento">
+			</form>
+		</div>
+	</div>
     
     <!---------------------------------FOOTER----------------------------------------->
     <jsp:include page="./utility/footer.jsp"/>

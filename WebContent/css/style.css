@@ -60,7 +60,7 @@ a{
 
 .search-box {
   display: inline-flex;
-  width: 60%;
+  width: 45%;
 }
 
 .fa-search {
@@ -103,7 +103,7 @@ a{
   }
   
   .search-box {
-    width: 45%;
+    width: 40%;
   }
 }
 @media only screen and (max-width: 980px) {

@@ -5,7 +5,7 @@
 	
 	.form-wrapper{
 		width: 320px;
-		background: #009879;
+		background: #ff5722;
 		padding: 10px 20px;
 		box-sizing: border-box;
 		border-radius: 7px;
@@ -22,7 +22,7 @@
 	
 	.form-wrapper form input{
 		width: 100%;
-		background: #FFA500;
+		background: #fff;
 		border: 1px solid #000;
 		border-radius: 3px;
 		padding: 6px 15px;
@@ -49,6 +49,8 @@
 		background: #ffc457;
 		transition: .2s;
 	}
+	
+	
 	
 	.btn-primary {
   color: #ff5722 !important;
