@@ -888,5 +888,43 @@ public class DB implements DBModel {
 				}
 			}
 
+		   
+		   @Override
+			public synchronized Cart getProdottiOrdine(int idOrder) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
 
+				Cart prodottiOrdinatiCart = new Cart();
+
+				String selectSQL = "SELECT * FROM prodottoordinato WHERE idOrdine = ?" ;
+
+				try {
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(selectSQL);
+		            preparedStatement.setInt(1, idOrder);
+
+					ResultSet rs = preparedStatement.executeQuery();
+
+					while (rs.next()) {
+						ProductBean bean = new ProductBean();
+						
+						bean.setQuantity(rs.getInt("quantita"));
+						bean.setPrice(rs.getFloat("prezzo"));
+						bean.setName(rs.getString("nome"));
+						bean.setIva(rs.getInt("iva"));
+						
+						prodottiOrdinatiCart.addProduct(bean);
+					}
+
+				} finally {
+					try {
+						if (preparedStatement != null)
+							preparedStatement.close();
+					} finally {
+						if (connection != null)
+							connection.close();
+					}
+				}
+				return prodottiOrdinatiCart;
+			}
 }

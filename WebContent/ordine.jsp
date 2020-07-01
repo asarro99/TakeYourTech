@@ -1,3 +1,12 @@
+<%@ page import="java.util.*,com.Bean.*,com.model.*"%>
+<%
+	Cart cart = (Cart) request.getAttribute("ordine");
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Ordine?page=/ordine.jsp&action=show&orderID="+(String)request.getParameter("orderID"));	
+		return;
+	}
+%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -19,19 +28,19 @@
       <!-- TOP NAV BAR -->
       <jsp:include page="./utility/header.jsp"/>
       <!-- SIDE MENU -->
-      <jsp:include page="./utility/sidemenu.jsp">
-         <jsp:param value="ciao" name="categorie"/>
-      </jsp:include>
+          <jsp:include page="./utility/sidemenu.jsp">
+        	<jsp:param value="<%=sidemenu%>" name="categorie"/>
+        </jsp:include>
       <!---------------------------------ORDINE----------------------------------------->
       <div class="qwerty" align="center">
          <table class="tabella">
             <thead>
                <tr>
                   <th>
-                     Descrizione
+                     Nome
                   </th>
                   <th>
-                     Quantit√ 
+                     Quantit‡
                   </th>
                   <th>
                      IVA
@@ -42,34 +51,22 @@
                </tr>
             </thead>
             <tbody>
+            <% List<ProductBean> prodcart = cart.getProducts(); 	
+		  	   for(ProductBean beancart: prodcart) {
+			%>
                <tr>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
-                  <td>ciao</td>
-                  <td>22%</td>
-                  <td>ciao</td>
+                  <td><%=beancart.getName() %></td>
+                  <td><%=beancart.getQuantity() %></td>
+                  <td><%=beancart.getIva()%></td>
+                  <td><%=beancart.getPrice() %></td>
                </tr>
-               <tr>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
-                  <td>ciao</td>
-                  <td>22%</td>
-                  <td>ciao</td>
-               </tr>
-               <tr>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
-                  <td>ciao</td>
-                  <td>22%</td>
-                  <td>ciao</td>
-               </tr>
-               <tr>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullamco laboriosam, nisi ut aliquid ex ea commodi consequatur.</td>
-                  <td>ciao</td>
-                  <td>22%</td>
-                  <td>ciao</td>
-               </tr>
+               <%
+		  	   }
+               %>
             </tbody>
          </table>
          <h2>Prezzo totale</h2>
-         <a>ciao Euro</a>
+         <a><%=cart.getTotal() %> Euro</a>
       </div>
       <!---------------------------------FOOTER----------------------------------------->
       <jsp:include page="./utility/footer.jsp"/>

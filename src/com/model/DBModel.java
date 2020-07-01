@@ -56,4 +56,6 @@ public interface DBModel {
     public  Collection<metPagaBean> getMetPagaUtente(int idUtente) throws SQLException;
     
     public  void rimuoviMetPaga(int idIndirizzo,int idUtente) throws SQLException;
+    
+    public  Cart getProdottiOrdine(int idOrder) throws SQLException;
 }
