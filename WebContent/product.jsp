@@ -8,12 +8,17 @@
 <%
 	
 	ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
+	if(prodotto==null)
+	{
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
+		return;
+	}
 	ObjectMapper objectMapper = new ObjectMapper();
 	JsonNode rootNode = objectMapper.readValue(prodotto.getDescription(), JsonNode.class);
-
+		
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/product.jsp&codiceprod=1");	
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
 		return;
 	}
 	
