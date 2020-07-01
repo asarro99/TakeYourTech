@@ -904,17 +904,20 @@ public class DB implements DBModel {
 		            preparedStatement.setInt(1, idOrder);
 
 					ResultSet rs = preparedStatement.executeQuery();
-
+	
 					while (rs.next()) {
 						ProductBean bean = new ProductBean();
 						
+						bean.setCode(rs.getInt("idProdotto"));
 						bean.setQuantity(rs.getInt("quantita"));
 						bean.setPrice(rs.getFloat("prezzo"));
 						bean.setName(rs.getString("nome"));
 						bean.setIva(rs.getInt("iva"));
 						
+	
 						prodottiOrdinatiCart.addProduct(bean);
 					}
+					
 
 				} finally {
 					try {

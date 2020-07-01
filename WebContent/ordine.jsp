@@ -51,7 +51,7 @@
                </tr>
             </thead>
             <tbody>
-            <% List<ProductBean> prodcart = cart.getProducts(); 	
+            <% List<ProductBean> prodcart = cart.getProducts(); 
 		  	   for(ProductBean beancart: prodcart) {
 			%>
                <tr>
