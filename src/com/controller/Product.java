@@ -168,14 +168,14 @@ public class Product extends HttpServlet {
 
 						if(idMetodoPagamento==0)
 						{
-							 response.sendRedirect(request.getContextPath()+"/index.jsp");
+							 response.sendRedirect(request.getContextPath()+"/metodiDiPagamento.jsp");
 			                 return;
 						}
 						else 
 						{
 							if(IndirizzoSpedizione.size()==0)
 							{
-								response.sendRedirect(request.getContextPath()+"/account.jsp");
+								response.sendRedirect(request.getContextPath()+"/indirizzi.jsp");
 				                 return;
 							}
 							else 

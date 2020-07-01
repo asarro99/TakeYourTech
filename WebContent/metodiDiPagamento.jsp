@@ -90,7 +90,7 @@
     </section>
     <div class="centraBottone">
       <button type="button" class="btn btn-primary add">
-        Aggiungi Indirizzo
+        Aggiungi Metodo di pagamento
       </button>
     </div>
     
