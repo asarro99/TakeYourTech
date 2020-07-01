@@ -334,7 +334,7 @@ public class DB implements DBModel {
 			String tipo = rSet.getString("TipoAccount");
             String id = rSet.getString("idUtente");
             ArrayList<String> risultato = new ArrayList<String>();
-			if (PasswordHashing.autenticazione(password, passwordDb));
+			if (PasswordHashing.autenticazione(password, passwordDb))
 			{	
 				risultato.add(tipo);
 				risultato.add(id);
@@ -349,7 +349,8 @@ public class DB implements DBModel {
 				if (connection != null)
 					connection.close();
 			}
-		}	
+		}
+		return null;	
 	}
 	
 	@Override
@@ -696,7 +697,7 @@ public class DB implements DBModel {
 
   		int idOrdine =0;
 
-  		String selectSQL = "SELECT idOrdine FROM ordine WHERE idUtente = ?" ;
+  		String selectSQL = "SELECT idOrdine FROM ordine WHERE idUtente = ? ORDER BY idOrdine " ;
 
   		try {
   			connection = ds.getConnection();
