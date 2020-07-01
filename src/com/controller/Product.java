@@ -142,7 +142,9 @@ public class Product extends HttpServlet {
 				for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
 				{
 					try {
-						cart.addProduct(ds.doRetrieveByKey(id));
+						ProductBean prodotto =ds.doRetrieveByKey(id);
+						prodotto.setQuantity(1);
+						cart.addProduct(prodotto);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

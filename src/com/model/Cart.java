@@ -26,7 +26,6 @@ public class Cart {
 				}
 			}
 			
-			product.setQuantity(1);
 			products.add(product);
 	}
 	

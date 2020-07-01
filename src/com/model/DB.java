@@ -697,7 +697,7 @@ public class DB implements DBModel {
 
   		int idOrdine =0;
 
-  		String selectSQL = "SELECT idOrdine FROM ordine WHERE idUtente = ? ORDER BY idOrdine " ;
+  		String selectSQL = "SELECT idOrdine FROM ordine WHERE idUtente = ? ORDER BY idOrdine DESC" ;
 
   		try {
   			connection = ds.getConnection();
