@@ -59,36 +59,6 @@
                 <div class="carousel-item active">
                   <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
                 </div>
-                <div class="carousel-item">
-                  <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./getPicture?id=<%=prodotto.getCode()%>" class="d-block w-100" />
-                </div>
-                <a
-                  class="carousel-control-prev"
-                  href="#product-slider"
-                  role="button"
-                  data-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a
-                  class="carousel-control-next"
-                  href="#product-slider"
-                  role="button"
-                  data-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">Next</span>
-                </a>
               </div>
             </div>
           </div>

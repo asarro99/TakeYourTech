@@ -341,8 +341,10 @@ a{
 	text-align:center;
 }
 .product-top img {
-  height:200px;
-  width: 200px;	
+	max-width: 270px;
+	max-height: 135px;
+  	height:auto;
+  	width: auto;	
 }
 
 .overlay-right {

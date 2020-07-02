@@ -70,7 +70,7 @@
             <%=rootNode.get("descrizione").asText() %>
           </td>
           <td data-th="Quantita"><%=beancart.getQuantity() %></td>
-          <td data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity() %></td>
+          <td data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity()%> Euro</td>
           <td data-th="Modifica">
           	<a href="Product?page=/carrello.jsp&action=removeC&id=<%=beancart.getCode()%>">
           	  <button type="button" class="btn btn-primary">

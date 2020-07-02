@@ -63,8 +63,10 @@
 }
 
 .carrello img {
-  height: 100px;
-  width: 200px;
+ 	max-width: 300px;
+	max-height: 165px;
+  	height:auto;
+  	width: auto;
 }
 
 .btn-primary {

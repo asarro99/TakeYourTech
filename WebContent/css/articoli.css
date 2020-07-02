@@ -1,6 +1,8 @@
 .product-top img {
-  width: 100px;
-  height:100px;
+ 	max-width: 300px;
+	max-height: 165px;
+  	height:auto;
+  	width: auto;
 }
 
 .overlay-right {

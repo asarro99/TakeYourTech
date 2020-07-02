@@ -44,7 +44,7 @@
 	<section class="new-products">
       <div class="container">
         <div class="title-box">
-          <h2>Articoli</h2>
+          <h2 id="cat"></h2>
         </div>
         <div class="row">
         <%
@@ -122,6 +122,15 @@
         document.getElementById("close-btn").style.display = "none";
       }
     </script>
+       
+     <script>
+     let searchParams = new URLSearchParams(window.location.search);
+     if(searchParams.has('categoria')){
+     	let productParam = searchParams.get('categoria');
+     	document.getElementById('cat').innerHTML = productParam;
+     }
+     	
+     </script>
        
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
