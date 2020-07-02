@@ -13,9 +13,6 @@
 		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
 		return;
 	}
-	ObjectMapper objectMapper = new ObjectMapper();
-	JsonNode rootNode = objectMapper.readValue(prodotto.getDescription(), JsonNode.class);
-		
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
@@ -109,7 +106,7 @@
             <p class="price"><%=prodotto.getPrice()%> Euro</p>
             <p><b>Disponibilità: </b><%if(prodotto.getQuantity()>0)out.println("In Magazzino"); else out.println("Non disponibile"); %></p>
             <p><b>Condizioni: </b>Nuovo</p>
-            <p><b>Brand: </b><%=rootNode.get("caratteristiche").get("Marca").asText() %></p>
+            <p id="brand"></p>
             <%
             if(prodotto.getQuantity()>0)
             {
@@ -133,16 +130,8 @@
     <section class="product-description">
       <div class="container">
         <h6>Descrizione Prodotto</h6>
-        <p align="justify">
-          <%=rootNode.get("descrizione").asText()+"\n"%>
-          <br>
-          <% 
-          	String [] caratt = rootNode.get("caratteristiche").toString().split(",");
-       		for(int i =0;i<caratt.length;i++)
-       		{
-       			out.println(caratt[i].replace("\"", "").replace("{", "").replace("}", "").replace(":", " : ")+"<br>");
-       		}
-          %>
+        <p align="justify" id="descrizione">
+          
         </p>
         <hr />
       </div>
@@ -153,6 +142,7 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/product.js"></script>
     
     <script>
     window.onresize = function(){

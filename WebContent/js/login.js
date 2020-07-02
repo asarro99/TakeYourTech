@@ -16,7 +16,7 @@ const checkFormReg = () => {
     const pass2Value = pass2.value.trim();
     const nomeValue = nome.value.trim();
     const cognomeValue = cognome.value.trim();
-    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  //ESPRESSIONE REGOLARE
     let validita = false;
 
     if(!emailValue.match(pattern)){

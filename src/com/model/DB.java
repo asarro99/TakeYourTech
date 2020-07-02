@@ -351,8 +351,7 @@ public class DB implements DBModel {
 				if (connection != null)
 					connection.close();
 			}
-		}
-		return null;	
+		}	
 	}
 	
 	@Override
