@@ -55,8 +55,9 @@
 	           <small></small>
 	          </div>
 	          </div>
-	          <input type="submit" value="Login" />
+	          <input type="submit" value="Login" id="loginBtn"/>
           </form>
+          <div id="ajaxResponse"></div>
         </div>
         <div class="register-show">
           <h2>REGISTRATI</h2>

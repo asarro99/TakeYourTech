@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.DB;
-import com.model.DBModel;
-import com.utility.PasswordHashing;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -50,6 +48,5 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
-	
 
 }

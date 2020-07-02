@@ -107,7 +107,7 @@ const setSuccess = (input) => {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if(checkFormReg())
-        form.submit();
+       form.submit();
 });
 
 form2.addEventListener('submit', (e) => {

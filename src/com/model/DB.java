@@ -339,8 +339,10 @@ public class DB implements DBModel {
 				risultato.add(tipo);
 				risultato.add(id);
 				return risultato;
+			}else {
+				return null;
 			}
-		} 
+		}
 		finally {
 			try {
 				if (preparedStatement != null)

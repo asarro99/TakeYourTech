@@ -121,7 +121,6 @@
               Aggiungi al carrello
             </button>
             </form>
-            </a>
             <%
             }
             %>

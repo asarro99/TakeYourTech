@@ -146,7 +146,6 @@ public class Product extends HttpServlet {
 						prodotto.setQuantity(1);
 						cart.addProduct(prodotto);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -155,7 +154,6 @@ public class Product extends HttpServlet {
 				try {
 					cart.deleteProduct(ds.doRetrieveByKey(id));
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else if (request.getParameter("action").equals("checkout")) 
@@ -217,7 +215,6 @@ public class Product extends HttpServlet {
 
 	                	}
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	            }
@@ -232,10 +229,8 @@ public class Product extends HttpServlet {
 		            	try {
 							ds.rimuoviIndirizzo(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
 						} catch (NumberFormatException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 		            }
@@ -247,7 +242,6 @@ public class Product extends HttpServlet {
 						Collection<IndirizziBean> indirizzi = ds.getIndirizziUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("indirizzi", indirizzi);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	            }
@@ -262,10 +256,8 @@ public class Product extends HttpServlet {
 		            	try {
 							ds.rimuoviMetPaga(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
 						} catch (NumberFormatException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (SQLException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 		            }
@@ -277,7 +269,6 @@ public class Product extends HttpServlet {
 						Collection<metPagaBean> metPag = ds.getMetPagaUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("metPagamento", metPag);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	            }
@@ -320,7 +311,6 @@ public class Product extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 	
