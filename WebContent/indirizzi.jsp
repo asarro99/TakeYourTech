@@ -91,11 +91,26 @@
     </section>
     <div class= "form-container">
 		<div class= "form-wrapper">
-			<form action="./Product?page=/indirizzi.jsp&action=indirizzi&type=ins" enctype="multipart/form-data" method="post">
+			<form id="form-inserimento" action="./Product?page=/indirizzi.jsp&action=indirizzi&type=ins" enctype="multipart/form-data" method="post">
 				<h2>Inserimento</h2>
-				<input name="via" type="text" placeholder="Inserisci la via">
-				<input name="citta" type="text" placeholder="Inserisci la citta">
-				<input name="CAP" type="text" placeholder="Inserisci CAP">
+				<div class="form-controller">
+				<input id="via-inserimento" name="via" type="text" placeholder="Inserisci la via">
+								 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+				<div class="form-controller">
+				<input id="citta-inserimento" name="citta" type="text" placeholder="Inserisci la citta">
+								 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+				<div class="form-controller">
+				<input id="cap-inserimento" name="CAP" type="text" placeholder="Inserisci CAP">
+								 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
 				<input type="submit" value="Aggiungi indirizzo">
 			</form>
 		</div>
@@ -105,6 +120,8 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="./js/indirizzi.js"></script>
     
     <script>
     window.onresize = function(){

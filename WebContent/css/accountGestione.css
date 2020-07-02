@@ -5,7 +5,7 @@
 	
 	.form-wrapper{
 		width: 320px;
-		background: #ff5722;
+		border: 2px solid #ff5722;
 		padding: 10px 20px;
 		box-sizing: border-box;
 		border-radius: 7px;
@@ -15,7 +15,7 @@
 	
 	h2{
 		text-align: center;
-		color: #fff;
+		color: #ff5722;
 		font-weight: normal;
 		margin-bottom: 20px;
 	}
@@ -23,11 +23,12 @@
 	.form-wrapper form input{
 		width: 100%;
 		background: #fff;
-		border: 1px solid #000;
+		border: 1px solid #ff5722;
 		border-radius: 3px;
 		padding: 6px 15px;
 		box-sizing: border-box;
-		margin-bottom: 20px !important;
+		margin-bottom: 5px !important;
+		margin-top: 5px !important;
 		font-size: 16px !important;
 	}
 	
@@ -46,7 +47,7 @@
 	}
 	
 	input[type="submit"]:hover{
-		background: #ffc457;
+		background: #ff5722;
 		transition: .2s;
 	}
 	
@@ -65,6 +66,29 @@
   color: #fff !important;
   background-color: #ff5722 !important;
   border-color: #ff5722 !important;
+}
+
+.form-controller small{
+	margin-left: 10px;	
+	color: red !important;
+}
+
+.form-controller.success input[type="text"],
+.form-controller.success input[type="password"]{
+	border: 2px solid green;
+}
+
+.form-controller.error input[type="text"],
+.form-controller.error input[type="password"]{
+	border: 2px solid red;
+}
+
+.div-visualize{
+	display:block;
+}
+
+.div-non-visualize{
+	display:none;
 }
 	
 @media only screen and (max-width: 1025px){

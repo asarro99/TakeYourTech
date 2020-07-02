@@ -28,10 +28,13 @@ public class Login extends HttpServlet {
 				ArrayList<String> conferma = ds.Login(email, password);
 				request.getSession().setAttribute("roleUtente", conferma.get(0));
 				request.getSession().setAttribute("idUtente", conferma.get(1));
+				if(request.getSession().getAttribute("erroreLogin") != null) {
+					request.getSession().removeAttribute("erroreLogin");
+				}
 				redirectedPage = "/index.jsp";
 			} catch (Exception e) {
-				e.printStackTrace();
 				request.getSession().setAttribute("roleUtente", null);
+				request.getSession().setAttribute("erroreLogin", true);
 				redirectedPage = "/login.jsp";
 			}
 			response.sendRedirect(request.getContextPath() + redirectedPage);

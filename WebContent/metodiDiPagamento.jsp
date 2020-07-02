@@ -96,12 +96,32 @@
 
 	<div class= "form-container">
 		<div class= "form-wrapper">
-			<form action="./Product?page=/metodiDiPagamento.jsp&action=metPagamento&type=ins" enctype="multipart/form-data" method="post">
+			<form id="form-inserimento" action="./Product?page=/metodiDiPagamento.jsp&action=metPagamento&type=ins" enctype="multipart/form-data" method="post">
 				<h2>Inserimento</h2>
-				<input name="codiceCarta" type="text" placeholder="Inserisci codice carta">
-				<input name="intestatario" type="text" placeholder="Inserisci intestatario">
-				<input name="tipologia" type="text" placeholder="Inserisci tipologia">
-				<input name="scadenza" type="text" placeholder="Inserisci scadenza">
+				<div class="form-controller">
+				<input id="codice-inserimento" name="codiceCarta" type="text" placeholder="Inserisci codice carta">
+												 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+				<div class="form-controller">
+				<input id="intestatario-inserimento" name="intestatario" type="text" placeholder="Inserisci intestatario">
+												 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+				<div class="form-controller">
+				<input id="tipologia-inserimento" name="tipologia" type="text" placeholder="Inserisci tipologia">
+												 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
+				<div class="form-controller">
+				<input id="scadenza-inserimento" name="scadenza" type="text" placeholder="Inserisci scadenza">
+												 <div class="div-non-visualize">
+	          <small></small>
+	          </div>
+	          </div>
 				
 				<input type="submit" value="Aggiungi pagamento">
 			</form>
@@ -112,6 +132,8 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="./js/pagamenti.js"></script>
     
     <script>
     window.onresize = function(){

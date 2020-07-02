@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
+   <%
+   boolean login = false;
+   if(request.getSession().getAttribute("erroreLogin") != null){
+	    login = (boolean) request.getSession().getAttribute("erroreLogin");
+   }
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -57,7 +64,7 @@
 	          </div>
 	          <input type="submit" value="Login" id="loginBtn"/>
           </form>
-          <div id="ajaxResponse"></div>
+          <% if(login)out.print("<p>Credenziali errate!</p>"); %>
         </div>
         <div class="register-show">
           <h2>REGISTRATI</h2>
