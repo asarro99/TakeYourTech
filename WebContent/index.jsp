@@ -35,6 +35,7 @@
         	<jsp:param value="<%=sidemenu%>" name="categorie"/>
         </jsp:include>
       <!---------------------------------IN PRIMO PIANO----------------------------------------->
+      
       <section class="featured-categories">
       <div class="container">
         <div class="row">
@@ -52,10 +53,13 @@
     </section>
      <!---------------------------------IN VENDITA----------------------------------------->
      <section class="on-sale">
+     
       <div class="container">
-        <div class="title-box">
+      
+      <div class="title-box">
           <h2>In vendita</h2>
         </div>
+        
         <div class="row">
            <%
 			if (products != null && products.size() != 0) {
@@ -108,10 +112,10 @@
     </section>
     <!---------------------------------NUOVI PRODOTTI----------------------------------------->
     <section class="new-products">
-      <div class="container">
-        <div class="title-box">
+    <div class="title-box">
           <h2>Nuovi Prodotti</h2>
         </div>
+      <div class="container">
         <div class="row">
            <%
 			if (products != null && products.size() != 0) {
