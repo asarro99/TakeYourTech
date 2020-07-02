@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
  <%@ page import="java.util.*"%>
+     <%@ page import="java.util.*,com.Bean.ProductBean"%>
 <%
+	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/index.jsp");	
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
 		return;
 	}
 %>
@@ -32,36 +34,6 @@
         <jsp:include page="./utility/sidemenu.jsp">
         	<jsp:param value="<%=sidemenu%>" name="categorie"/>
         </jsp:include>
-         <!-- SLIDER -->
-         <div class="slider">
-            <div
-               id="slider"
-               class="carousel slide carousel-fade"
-               data-ride="carousel"
-               >
-               <div class="carousel-inner">
-                  <div class="carousel-item active">
-                     <img src="./img/1.jpg" class="d-block w-100" />
-                  </div>
-                  <div class="carousel-item">
-                     <img src="./img/2.jpg" class="d-block w-100" />
-                  </div>
-                  <div class="carousel-item">
-                     <img src="./img/3.jpg" class="d-block w-100" />
-                  </div>
-                  <div class="carousel-item">
-                     <img src="./img/2.jpg" class="d-block w-100" />
-                  </div>
-               </div>
-               <ol class="carousel-indicators">
-                  <li data-target="#slider" data-slide-to="0" class="active"></li>
-                  <li data-target="#slider" data-slide-to="1"></li>
-                  <li data-target="#slider" data-slide-to="2"></li>
-                  <li data-target="#slider" data-slide-to="3"></li>
-               </ol>
-            </div>
-         </div>
-      </section>
       <!---------------------------------IN PRIMO PIANO----------------------------------------->
       <section class="featured-categories">
       <div class="container">
@@ -85,10 +57,19 @@
           <h2>In vendita</h2>
         </div>
         <div class="row">
+           <%
+			if (products != null && products.size() != 0) {
+				Iterator<?> it = products.iterator();
+				int cont=0;
+				while (it.hasNext() && cont<8) {
+					cont++;
+					ProductBean bean = (ProductBean) it.next();
+		%>
           <div class="col-md-3">
             <div class="product-top">
-              <img src="./img/1.jpg" />
+              <img src="./getPicture?id=<%=bean.getCode() %>" />
               <div class="overlay-right">
+                <a href="Product?page=/product.jsp&codiceprod=<%=bean.getCode()%>">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -96,6 +77,8 @@
                 >
                   <i class="fa fa-eye"></i>
                 </button>
+                </a>
+                <a href="./Product?page=/carrello.jsp&codiceprod=<%= bean.getCode()%>&action=addC&quantita=1">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -103,6 +86,7 @@
                 >
                   <i class="fa fa-shopping-basket"></i>
                 </button>
+                </a>
               </div>
             </div>
             <div class="product-bottom text-center">
@@ -111,67 +95,14 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
               <i class="fa fa-star-half-o"></i>
-              <h3>Msi Portatile</h3>
-              <h5>800 Euro</h5>
+              <h3><%=bean.getName() %></h3>
+              <h5><%=bean.getPrice() %> Euro</h5>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/3.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Iphone Se</h3>
-              <h5>400 Euro</h5>
-            </div>
-          </div>
+       	<%
+				}
+			}
+		%>
         </div>
       </div>
     </section>
@@ -182,10 +113,22 @@
           <h2>Nuovi Prodotti</h2>
         </div>
         <div class="row">
+           <%
+			if (products != null && products.size() != 0) {
+				
+				Iterator<?> it = products.iterator();
+				int cont=0;
+				while (it.hasNext()) {
+					cont++;
+					if(cont >8)
+					{
+					ProductBean bean = (ProductBean) it.next();
+		%>
           <div class="col-md-3">
             <div class="product-top">
-              <img src="./img/1.jpg" />
+              <img src="./getPicture?id=<%=bean.getCode() %>" />
               <div class="overlay-right">
+                <a href="Product?page=/product.jsp&codiceprod=<%=bean.getCode()%>">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -193,6 +136,8 @@
                 >
                   <i class="fa fa-eye"></i>
                 </button>
+                </a>
+                <a href="./Product?page=/carrello.jsp&codiceprod=<%= bean.getCode()%>&action=addC&quantita=1">
                 <button
                   type="button"
                   class="btn btn-secondary"
@@ -200,6 +145,7 @@
                 >
                   <i class="fa fa-shopping-basket"></i>
                 </button>
+                </a>
               </div>
             </div>
             <div class="product-bottom text-center">
@@ -208,212 +154,20 @@
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
               <i class="fa fa-star-half-o"></i>
-              <h3>Msi Portatile</h3>
-              <h5>800 Euro</h5>
+              <h3><%=bean.getName() %></h3>
+              <h5><%=bean.getPrice() %> Euro</h5>
             </div>
           </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/3.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Iphone Se</h3>
-              <h5>400 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="product-top">
-              <img src="./img/2.jpg" />
-              <div class="overlay-right">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Dettagli"
-                >
-                  <i class="fa fa-eye"></i>
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  title="Aggiungi al carrello"
-                >
-                  <i class="fa fa-shopping-basket"></i>
-                </button>
-              </div>
-            </div>
-            <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
-              <h3>Mackbook Pro</h3>
-              <h5>3000 Euro</h5>
-            </div>
-          </div>
+       	<%
+					}
+					else
+					{
+						it.next();
+					}
+				}
+			}
+		%>
+          
         </div>
       </div>
     </section>

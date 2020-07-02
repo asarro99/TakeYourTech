@@ -5,7 +5,9 @@
    <div class="search-box">
         <i class="fa fa-bars" id="menu-btn" onclick="openMenu()"></i>
         <i class="fa fa-times" id="close-btn" onclick="closeMenu()"></i>
+      <a href="index.jsp">
       <img src="./img/logo.png" class="logo" />
+      </a>
       <input type="text" class="form-control" />
       <span class="input-group-text"><i class="fa fa-search"></i></span>
    </div>

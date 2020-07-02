@@ -62,4 +62,6 @@ public interface DBModel {
     public  void aggiungiMetodoPagamento(metPagaBean metodoPagamento) throws SQLException;
     
     public  void aggiungiIndirizzo(IndirizziBean indirizzo) throws SQLException;
+    
+    public  Collection<ProductBean> getSediciProdRandom() throws SQLException ;
 }

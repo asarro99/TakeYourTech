@@ -306,6 +306,15 @@ public class Product extends HttpServlet {
 					}
 	            }
 	            
+			}else if(request.getParameter("action").equals("indexProd"))
+			{
+				try {
+					Collection<ProductBean> prodotti = ds.getSediciProdRandom();
+					request.setAttribute("prodotti", prodotti);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

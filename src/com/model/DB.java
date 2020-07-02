@@ -993,4 +993,46 @@ public class DB implements DBModel {
 					}
 				
 			}
+			
+		    @Override
+			public synchronized Collection<ProductBean> getSediciProdRandom() throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+
+				Collection<ProductBean> products = new LinkedList<ProductBean>();
+
+				String selectSQL = "SELECT * FROM prodotto ORDER BY RAND() LIMIT 16" ;
+
+				try {
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(selectSQL);
+
+					ResultSet rs = preparedStatement.executeQuery();
+
+					while (rs.next()) {
+						ProductBean bean = new ProductBean();
+
+						bean.setCode(rs.getInt("idProdotto"));
+						bean.setCategoria(rs.getString("nomeCategoria"));
+						bean.setIva(rs.getInt("iva"));
+						bean.setName(rs.getString("NOME"));
+						bean.setDescription(rs.getString("DESCRIZIONE"));
+						bean.setPrice(rs.getFloat("PREZZO"));
+						bean.setQuantity(rs.getInt("QUANTITA"));
+						bean.setPhotoBytes(rs.getBytes("IMMAGINE"));
+						
+		                products.add(bean);
+					}
+
+				} finally {
+					try {
+						if (preparedStatement != null)
+							preparedStatement.close();
+					} finally {
+						if (connection != null)
+							connection.close();
+					}
+				}
+				return products;
+			}
 }
