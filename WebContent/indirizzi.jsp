@@ -2,6 +2,11 @@
    pageEncoding="ISO-8859-1"%>
    <%@ page import="java.util.*,com.Bean.*"%>
 <%
+	if(session.getAttribute("roleUtente") == null)
+	{
+		response.sendRedirect("login.jsp");	
+		return;
+	}
 	Collection<?> indirizzi = (Collection<?>) request.getAttribute("indirizzi");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
@@ -86,7 +91,7 @@
     </section>
     <div class= "form-container">
 		<div class= "form-wrapper">
-			<form action="Product?action=insert" enctype="multipart/form-data" method="post">
+			<form action="./Product?page=/indirizzi.jsp&action=indirizzi&type=ins" enctype="multipart/form-data" method="post">
 				<h2>Inserimento</h2>
 				<input name="via" type="text" placeholder="Inserisci la via">
 				<input name="citta" type="text" placeholder="Inserisci la citta">

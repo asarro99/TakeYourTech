@@ -235,6 +235,22 @@ public class Product extends HttpServlet {
 						}
 		            }
 				  
+				  if(request.getParameter("type")!=null && request.getParameter("type").equals("ins"))
+				  {
+					  IndirizziBean indirizzo = new IndirizziBean();
+					  indirizzo.setIdUtente(Integer.parseInt((String)request.getSession().getAttribute("idUtente")));
+					  indirizzo.setVia(request.getParameter("via"));
+					  indirizzo.setCitta(request.getParameter("citta"));
+					  indirizzo.setCodicePostale(request.getParameter("CAP"));
+					  
+					  try {
+						ds.aggiungiIndirizzo(indirizzo);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				  }
+				  
 	            if(IdUtente != null)
 	            {   
 	                try {
@@ -261,6 +277,23 @@ public class Product extends HttpServlet {
 							e.printStackTrace();
 						}
 		            }
+				  
+				  if(request.getParameter("type")!=null && request.getParameter("type").equals("ins"))
+				  {
+					  metPagaBean met = new metPagaBean();
+					  met.setIdUtente(Integer.parseInt((String)request.getSession().getAttribute("idUtente")));
+					  met.setTipologia(request.getParameter("tipologia"));
+					  met.setDataDiScadenza(request.getParameter("scadenza"));
+					  met.setIntestatario(request.getParameter("intestatario"));
+					  met.setCodiceCarta(request.getParameter("codiceCarta"));
+					  
+					  try {
+						ds.aggiungiMetodoPagamento(met);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				  }
 				  
 	            if(IdUtente != null)
 	            {   

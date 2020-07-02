@@ -2,6 +2,11 @@
    pageEncoding="ISO-8859-1"%>
    <%@ page import="java.util.*,com.Bean.*"%>
 <%
+	if(session.getAttribute("roleUtente") == null)
+	{
+		response.sendRedirect("login.jsp");	
+		return;
+	}
 	Collection<?> metodPagamento = (Collection<?>) request.getAttribute("metPagamento");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
@@ -91,9 +96,9 @@
 
 	<div class= "form-container">
 		<div class= "form-wrapper">
-			<form action="Product?action=insert" enctype="multipart/form-data" method="post">
+			<form action="./Product?page=/metodiDiPagamento.jsp&action=metPagamento&type=ins" enctype="multipart/form-data" method="post">
 				<h2>Inserimento</h2>
-				<input name="codice" type="text" placeholder="Inserisci codice carta">
+				<input name="codiceCarta" type="text" placeholder="Inserisci codice carta">
 				<input name="intestatario" type="text" placeholder="Inserisci intestatario">
 				<input name="tipologia" type="text" placeholder="Inserisci tipologia">
 				<input name="scadenza" type="text" placeholder="Inserisci scadenza">

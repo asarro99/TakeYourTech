@@ -58,4 +58,8 @@ public interface DBModel {
     public  void rimuoviMetPaga(int idIndirizzo,int idUtente) throws SQLException;
     
     public  Cart getProdottiOrdine(int idOrder) throws SQLException;
+    
+    public  void aggiungiMetodoPagamento(metPagaBean metodoPagamento) throws SQLException;
+    
+    public  void aggiungiIndirizzo(IndirizziBean indirizzo) throws SQLException;
 }

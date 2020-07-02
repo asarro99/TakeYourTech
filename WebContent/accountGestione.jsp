@@ -4,7 +4,7 @@
 	{
 		String role = (String)session.getAttribute("roleUtente");
         if(role.equals("utente")){
-			response.sendRedirect("./index.jsp");
+			response.sendRedirect("./login.jsp");
 			return;
         }
 	}

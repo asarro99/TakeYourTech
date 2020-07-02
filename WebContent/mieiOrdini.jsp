@@ -2,6 +2,11 @@
    pageEncoding="ISO-8859-1"%>
    <%@ page import="java.util.*,com.Bean.*"%>
 <%
+	if(session.getAttribute("roleUtente") == null)
+	{
+		response.sendRedirect("login.jsp");	
+		return;
+	}
 	Collection<?> ordini = (Collection<?>) request.getAttribute("ordini");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {

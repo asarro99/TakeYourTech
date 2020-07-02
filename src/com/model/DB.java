@@ -932,4 +932,65 @@ public class DB implements DBModel {
 				}
 				return prodottiOrdinatiCart;
 			}
+		   
+			@Override
+			public synchronized void aggiungiMetodoPagamento(metPagaBean metodoPagamento) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+				
+				String insertSQL = "INSERT INTO metodopagamento (idUtente,tipologia,codiceCarta,intestatario,dataDiScadenza) VALUES (?,?,?,?,?)";
+						
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(insertSQL);
+					try {
+			            preparedStatement.setInt(1,metodoPagamento.getIdUtente());
+			            preparedStatement.setString(2,metodoPagamento.getTipologia());
+			            preparedStatement.setString(3,metodoPagamento.getCodiceCarta() );
+			            preparedStatement.setString(4, metodoPagamento.getIntestatario());
+			            preparedStatement.setString(5, metodoPagamento.getDataDiScadenza());
+
+						preparedStatement.executeUpdate();
+
+						//connection.commit();
+					} finally {
+						try {
+							if (preparedStatement != null)
+								preparedStatement.close();
+						} finally {
+							if (connection != null)
+								connection.close();
+						}
+					}
+				
+			}
+			
+			@Override
+			public synchronized void aggiungiIndirizzo(IndirizziBean indirizzo) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+				
+				String insertSQL = "INSERT INTO indirizzospedizione (idUtente,via,citta,codicePostale) VALUES (?,?,?,?)";
+						
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(insertSQL);
+					try {
+			            preparedStatement.setInt(1,indirizzo.getIdUtente());
+			            preparedStatement.setString(2,indirizzo.getVia());
+			            preparedStatement.setString(3,indirizzo.getCitta() );
+			            preparedStatement.setString(4, indirizzo.getCodicePostale());
+
+						preparedStatement.executeUpdate();
+
+						//connection.commit();
+					} finally {
+						try {
+							if (preparedStatement != null)
+								preparedStatement.close();
+						} finally {
+							if (connection != null)
+								connection.close();
+						}
+					}
+				
+			}
 }

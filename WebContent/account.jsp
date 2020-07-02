@@ -2,6 +2,11 @@
    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%
+	if(session.getAttribute("roleUtente") == null)
+	{
+		response.sendRedirect("login.jsp");	
+		return;
+	}
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/account.jsp");	
