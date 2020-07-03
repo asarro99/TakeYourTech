@@ -21,6 +21,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.Bean.AccountBean;
 import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
@@ -820,7 +821,7 @@ public class DB implements DBModel {
 	            preparedStatement.setInt(1, idIndirizzo);
 	            preparedStatement.setInt(2, idUtente);
 
-				int rs = preparedStatement.executeUpdate();
+				preparedStatement.executeUpdate();
 
 
 			} catch (Exception e) {
@@ -882,7 +883,7 @@ public class DB implements DBModel {
 		            preparedStatement.setInt(1, idMetPag);
 		            preparedStatement.setInt(2, idUtente);
 
-					int rs = preparedStatement.executeUpdate();
+					preparedStatement.executeUpdate();
 
 
 				} catch (Exception e) {
@@ -1035,4 +1036,39 @@ public class DB implements DBModel {
 				}
 				return products;
 			}
+		    
+		    public synchronized AccountBean getInformazioniAccount(String idUtente) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+
+				AccountBean account = new AccountBean();
+
+				String selectSQL = "SELECT * FROM utente WHERE idUtente = ?" ;
+
+				try {
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(selectSQL);
+					preparedStatement.setString(1,idUtente);
+
+					ResultSet rs = preparedStatement.executeQuery();
+
+					while (rs.next()) {
+							account.setTipoAccount(rs.getString("tipoAccount"));
+							account.setNome(rs.getString("nome"));
+							account.setCognome(rs.getString("cognome"));
+							account.setEmail(rs.getString("email"));
+					}
+
+				} finally {
+					try {
+						if (preparedStatement != null)
+							preparedStatement.close();
+					} finally {
+						if (connection != null)
+							connection.close();
+					}
+				}
+				return account;
+			}
+		    
 }

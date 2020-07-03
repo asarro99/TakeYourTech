@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.Bean.AccountBean;
 import com.Bean.IndirizziBean;
 import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
@@ -64,4 +65,6 @@ public interface DBModel {
     public  void aggiungiIndirizzo(IndirizziBean indirizzo) throws SQLException;
     
     public  Collection<ProductBean> getSediciProdRandom() throws SQLException ;
+    
+    public  AccountBean getInformazioniAccount(String idUtente) throws SQLException;
 }

@@ -180,30 +180,22 @@
       <div class="container">
         <div class="row">
           <div class="col-md-3 feature-box">
-            <img src="./img/3.jpg" />
-            <div class="feature-text">
+            <img src="./img/svg/originale.svg" />
               <p><b>Prodotti 100% originali </b>presso la nostra compagnia!</p>
-            </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./img/3.jpg" />
-            <div class="feature-text">
+            <img src="./img/svg/reso.svg" />
               <p><b>Reso entro 30 giorni </b>dal ricevimento del prodotto!</p>
-            </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./img/3.jpg" />
-            <div class="feature-text">
+            <img src="./img/svg/spedizione.svg" />
               <p><b>Spedizione gratuita </b>per ordini superiori a 500 Euro!</p>
-            </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./img/3.jpg" />
-            <div class="feature-text">
+            <img src="./img/svg/pagamento.svg" />
               <p>
                 <b>Paga online </b>con varie soluzioni offerte dal nostro sito!
               </p>
-            </div>
           </div>
         </div>
       </div>
