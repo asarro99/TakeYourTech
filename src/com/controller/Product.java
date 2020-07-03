@@ -212,6 +212,7 @@ public class Product extends HttpServlet {
 								ds.doCartSave(idMetodoPagamento,Integer.parseInt((String) request.getSession().getAttribute("idUtente")),(float)cart.getTotal(),IndirizzoSpedizione.get(3),IndirizzoSpedizione.get(2),IndirizzoSpedizione.get(1),"fammok");
 								int idOrdine = ds.getidOrdine(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
 								ds.doProdottiOrdinatiSave(cart,idOrdine);
+								ds.aggiornaQuantitaProdotti(cart);
 								cart.removeAll();
 							}
 						}

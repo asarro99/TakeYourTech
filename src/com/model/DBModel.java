@@ -67,4 +67,8 @@ public interface DBModel {
     public  Collection<ProductBean> getSediciProdRandom() throws SQLException ;
     
     public  AccountBean getInformazioniAccount(String idUtente) throws SQLException;
+    
+    public  void aggiornaQuantitaProdotti(Cart carrello) throws SQLException ;
+    
+    public  int getQuantitaProdotto(int idProdotto) throws SQLException ;
 }

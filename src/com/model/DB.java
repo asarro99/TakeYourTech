@@ -1071,4 +1071,69 @@ public class DB implements DBModel {
 				return account;
 			}
 		    
+		    public synchronized int getQuantitaProdotto(int idProdotto) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+
+				int quantita =0;
+
+				String selectSQL = "SELECT quantita FROM prodotto WHERE idProdotto = ?" ;
+
+				try {
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(selectSQL);
+					preparedStatement.setInt(1,idProdotto);
+
+					ResultSet rs = preparedStatement.executeQuery();
+
+					while (rs.next()) {
+							quantita=rs.getInt("quantita");
+					}
+
+				} finally {
+					try {
+						if (preparedStatement != null)
+							preparedStatement.close();
+					} finally {
+						if (connection != null)
+							connection.close();
+					}
+				}
+				return quantita;
+			}
+		    
+		    @Override
+			public synchronized void aggiornaQuantitaProdotti(Cart carrello) throws SQLException {
+				Connection connection = null;
+				PreparedStatement preparedStatement = null;
+				
+				String insertSQL = "UPDATE prodotto SET Quantita=? WHERE idProdotto = ?";
+				
+				List<ProductBean> prodottiBeans = carrello.getProducts();
+
+				for(int i=0;i<prodottiBeans.size();i++)
+				{			
+					connection = ds.getConnection();
+					preparedStatement = connection.prepareStatement(insertSQL);
+					try {
+						int quantitaDisp = getQuantitaProdotto(prodottiBeans.get(i).getCode());
+			            preparedStatement.setInt(1,quantitaDisp - prodottiBeans.get(i).getQuantity());
+			            preparedStatement.setInt(2, prodottiBeans.get(i).getCode());
+			            
+						preparedStatement.executeUpdate();
+
+						//connection.commit();
+					} finally {
+						try {
+							if (preparedStatement != null)
+								preparedStatement.close();
+						} finally {
+							if (connection != null)
+								connection.close();
+						}
+					}
+				}
+				
+			}
+		    
 }
