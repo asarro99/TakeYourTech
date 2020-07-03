@@ -139,16 +139,45 @@ public class Product extends HttpServlet {
 				dispatcher.forward(request, response);
 			}else if (request.getParameter("action").equals("addC")) {
 				int id = Integer.parseInt(request.getParameter("codiceprod"));
-				for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
-				{
-					try {
-						ProductBean prodotto =ds.doRetrieveByKey(id);
-						prodotto.setQuantity(1);
-						cart.addProduct(prodotto);
-					} catch (SQLException e) {
-						e.printStackTrace();
+				
+				try {
+					int quantitaDisponibile= ((ProductBean)ds.doRetrieveByKey(id)).getQuantity();
+					
+					if(quantitaDisponibile > Integer.parseInt(request.getParameter("quantita")))
+					{
+						for (int i = 0; i < Integer.parseInt(request.getParameter("quantita")); i++) 
+						{
+							try {
+								ProductBean prodotto =ds.doRetrieveByKey(id);
+								prodotto.setQuantity(1);
+								cart.addProduct(prodotto);
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}
+						}
+						
 					}
+					else 
+					{
+						for (int i = 0; i < quantitaDisponibile; i++) 
+						{
+							try {
+								ProductBean prodotto =ds.doRetrieveByKey(id);
+								prodotto.setQuantity(1);
+								cart.addProduct(prodotto);
+							} catch (SQLException e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
+				
+		
 			} else if (request.getParameter("action").equals("removeC")) {
 				int id = Integer.parseInt(request.getParameter("id"));
 				try {
