@@ -1,21 +1,26 @@
 <%@ page import="java.util.*,com.Bean.*,com.model.*"%>
 <%
+
 	if(session.getAttribute("roleUtente") == null)
 	{
 		response.sendRedirect("login.jsp");	
 		return;
 	}
-	if(request.getAttribute("orderID")==null)
-	{
-		response.sendRedirect("account.jsp");	
-		return;
-	}
 	Cart cart = (Cart) request.getAttribute("ordine");
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Ordine?page=/ordine.jsp&action=show&orderID="+(String)request.getParameter("orderID"));	
-		return;
+		if(request.getParameter("ordineID")!=null)
+		{
+			response.sendRedirect("./Ordine?page=/ordine.jsp&action=show&orderID="+(String)request.getParameter("ordineID"));	
+			return;
+		}
+		else
+		{
+			response.sendRedirect("account.jsp");
+			return;
+		}
 	}
+
 %>
 <!DOCTYPE html>
 <html lang="en">

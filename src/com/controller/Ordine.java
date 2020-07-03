@@ -37,8 +37,10 @@ public class Ordine extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String action = request.getParameter("action"); 
 		
+			
 			if(action!=null) {
 				if(action.equalsIgnoreCase("show")) {
 		            String IdUtente = (String) request.getSession().getAttribute("idUtente");
@@ -46,7 +48,6 @@ public class Ordine extends HttpServlet {
 		            {   
 		                try {
 							int orderID = Integer.parseInt(request.getParameter("orderID"));
-							
 							Cart carrello = null;
 							
 							carrello = ds.getProdottiOrdine(orderID);
