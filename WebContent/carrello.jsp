@@ -69,8 +69,8 @@
           <td data-th="Descrizione">
             <%=rootNode.get("descrizione").asText() %>
           </td>
-          <td data-th="Quantita"><%=beancart.getQuantity() %></td>
-          <td data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity()%> Euro</td>
+          <td data-th="Quantita"><input class="inputQuantita" id="modQuantita<%=beancart.getCode() %>" type="text" value="<%=beancart.getQuantity() %>"></input></td>
+          <td id= "prezzoProdotto<%=beancart.getCode() %>" data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity()%> Euro</td>
           <td data-th="Modifica">
           	<a href="Product?page=/carrello.jsp&action=removeC&id=<%=beancart.getCode()%>">
           	  <button type="button" class="btn btn-primary">
@@ -88,7 +88,7 @@
 
     <div class="totale">
       <h2>Prezzo totale:</h2>
-      <p><%=cart.getTotal() %></p>
+      <p id="prezzoTotale"><%=cart.getTotal() %></p>
       <a href="Product?page=/carrello.jsp&action=checkout">
           	  <button type="button" class="btn btn-primary">
               Checkout
@@ -100,6 +100,8 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+	<script src="./js/carrello.js"></script>
 	
 	    <script>
     window.onresize = function(){
