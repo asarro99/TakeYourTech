@@ -93,6 +93,11 @@
   font-size: 1.8em;
 }
 
+.inputQuantita{
+	width: 50%;
+	text-align: center;	
+}
+
 @media (min-width: 980px) {
   .rwd-table td:before {
     display: none;
@@ -100,7 +105,7 @@
 }
 .rwd-table th,
 .rwd-table td {
-  text-align: left;
+  text-align: center;
 }
 
 .totale h2{
@@ -144,4 +149,9 @@
   .totale p{
   	font-size: 1.5em;
   }
+  
+  .inputQuantita{
+	width: 30%;
+	text-align: center;	
+}
 }
