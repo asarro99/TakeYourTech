@@ -173,7 +173,6 @@ public class Product extends HttpServlet {
 				
 					
 				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -276,7 +275,6 @@ public class Product extends HttpServlet {
 					  try {
 						ds.aggiungiIndirizzo(indirizzo);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				  }
@@ -320,7 +318,6 @@ public class Product extends HttpServlet {
 					  try {
 						ds.aggiungiMetodoPagamento(met);
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				  }
@@ -342,7 +339,6 @@ public class Product extends HttpServlet {
 					Collection<ProductBean> prodotti = ds.getSediciProdRandom();
 					request.setAttribute("prodotti", prodotti);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

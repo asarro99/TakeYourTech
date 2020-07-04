@@ -34,6 +34,7 @@
         <jsp:include page="./utility/sidemenu.jsp">
         	<jsp:param value="<%=sidemenu%>" name="categorie"/>
         </jsp:include>
+        </section>
       <!---------------------------------IN PRIMO PIANO----------------------------------------->
       
       <section class="featured-categories">

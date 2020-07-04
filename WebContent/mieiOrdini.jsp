@@ -64,6 +64,7 @@
 		              <th>Codice</th>
 			          <th>Data</th>
 			          <th>Prezzo</th>
+			      	  <th>Fattura</th>
 			          <th>Dettagli</th>
 	               </tr>
 	            </thead>
@@ -82,6 +83,13 @@
 		            <%=bean.getData() %>
 		          </td>
 		          <td data-th="Prezzo"><%=bean.getTotale() %></td>
+		          <td data-th="Fattura">
+		          <a href="Fattura">
+		          	 <button type="button" class="btn btn-primary">
+		              Fattura
+		            </button>
+		          </a>
+		          </td>
 		          <td data-th="Dettagli">
 		          <a href="./ordine.jsp?ordineID=<%= bean.getCode()%>">
 		          	 <button type="button" class="btn btn-primary">
