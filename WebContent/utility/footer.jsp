@@ -6,20 +6,17 @@
       <div class="row">
          <div class="col-md-4">
             <h1>Link Utili</h1>
-            <p>Politiche di Privacy</p>
-            <p>Termini di Utilizzo</p>
-            <p>Politiche di Recesso</p>
+            <a href="assistenza.jsp"><p>Domande frequenti</p></a>
          </div>
          <div class="col-md-4">
             <h1>Compagnia</h1>
             <p>Chi siamo</p>
             <a href="contatti.jsp"><p>Contattaci</p></a>
-            <a href="assistenza.jsp"><p>Domande frequenti</p></a>
          </div>
          <div class="col-md-4">
             <h1>Seguici su</h1>
             <p><i class="fa fa-facebook-official"></i> Facebook</p>
-            <p><i class="fa fa-linkedin"></i> Linkedin</p>
+            <p><i class="fa fa-telegram"></i> Telegramma</p>
             <p><i class="fa fa-twitter"></i> Twitter</p>
          </div>
       </div>
