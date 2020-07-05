@@ -94,12 +94,11 @@
         </p>
       </div>
       <div class="assistenza_bottom">
+      <a href="contatti.jsp">
         <button type="button" class="btn btn-primary">
           Contatti
         </button>
-        <button type="button" class="btn btn-primary">
-          Invia una segnalazione
-        </button>
+      </a>
       </div>
     </section>
 

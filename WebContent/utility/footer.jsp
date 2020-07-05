@@ -13,8 +13,8 @@
          <div class="col-md-4">
             <h1>Compagnia</h1>
             <p>Chi siamo</p>
-            <p>Contattaci</p>
-            <p>Carriera</p>
+            <a href="contatti.jsp"><p>Contattaci</p></a>
+            <a href="assistenza.jsp"><p>Domande frequenti</p></a>
          </div>
          <div class="col-md-4">
             <h1>Seguici su</h1>
