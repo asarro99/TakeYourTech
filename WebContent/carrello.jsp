@@ -48,7 +48,7 @@
     <section class="carrello">
       <table class="rwd-table">
         <tr>
-          <th>Img</th>
+          <th></th>
           <th>Descrizione</th>
           <th>Quantita</th>
           <th>Prezzo</th>
@@ -63,7 +63,7 @@
  		   		JsonNode rootNode = objectMapper.readValue(beancart.getDescription(), JsonNode.class);
       	%>
         <tr>
-          <td data-th="Img">
+          <td data-th="">
             <img src="./getPicture?id=<%=beancart.getCode() %>" alt="" />
           </td>
           <td data-th="Descrizione">
@@ -89,11 +89,13 @@
     <div class="totale">
       <h2>Prezzo totale:</h2>
       <p id="prezzoTotale"><%=cart.getTotal() %></p>
+      <div>
       <a href="Product?page=/carrello.jsp&action=checkout">
           	  <button type="button" class="btn btn-primary">
               Checkout
             </button>
       </a>
+      </div>
     </div>
     
     <!---------------------------------FOOTER----------------------------------------->

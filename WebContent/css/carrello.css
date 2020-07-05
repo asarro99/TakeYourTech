@@ -5,7 +5,7 @@
 .title-box {
   background: #ff5722;
   color: #fff;
-  width: 100px;
+  width: 102px;
   padding: 4px 10px;
   height: 40px;
   margin-bottom: 10px;
@@ -23,7 +23,7 @@
   position: absolute;
   display: flex;
   margin-top: -4px;
-  margin-left: 89px;
+  margin-left: 91px;
 }
 
 .carrello {
@@ -56,7 +56,7 @@
   padding-bottom: 0.5em;
 }
 .rwd-table td:before {
-  content: attr(data-th) ": ";
+  content: attr(data-th) "";
   font-weight: bold;
   width: 6em;
   display: inline-block;
@@ -86,7 +86,6 @@
 }
 .totale h2 {
   display: inline;
-  padding-left: 65%;
 }
 .totale p {
   display: inline;
@@ -103,14 +102,11 @@
     display: none;
   }
 }
+
 .rwd-table th,
 .rwd-table td {
   text-align: center;
-}
-
-.totale h2{
-	padding-left: 45%;
-}
+} 
 
 @media (min-width: 480px) {
 	
@@ -134,7 +130,6 @@
   
   .totale h2{
   	font-size: 1.5em;
-  	padding-left: 5%;
   }
   .totale p{
   	font-size: 1.5em;
@@ -144,7 +139,6 @@
 @media (min-width: 320px){
 	  .totale h2{
   	font-size: 1.5em;
-  	padding-left: 5%;
   }
   .totale p{
   	font-size: 1.5em;

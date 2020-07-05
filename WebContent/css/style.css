@@ -416,7 +416,9 @@ a{
 }
 
 .website-features img {
-  width: 40%;
+	max-height:100px;
+  height: auto;
+  width: auto;
 }
 
 .feature-box {

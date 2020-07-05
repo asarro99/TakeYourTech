@@ -57,9 +57,10 @@
 			</div>
 		</form>
 		</div>
+		
+		
 		<div class="boxtabella">
-			<table class="tabella">
-	            <thead>
+			<table class="rwd-table">
 	               <tr>
 		              <th>Codice</th>
 			          <th>Data</th>
@@ -67,8 +68,6 @@
 			      	  <th>Fattura</th>
 			          <th>Dettagli</th>
 	               </tr>
-	            </thead>
-	            <tbody>
 	                <%
 					if (ordini != null && ordini.size() != 0) {
 						Iterator<?> it = ordini.iterator();
@@ -108,9 +107,9 @@
 				<%
 					}
 				%>
-	            </tbody>
 	         </table>
 	      </div>
+	      
     </section>
 	
     
