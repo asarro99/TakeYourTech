@@ -10,8 +10,11 @@
 }
 
 .propic img {
-  width: 100%;
-  height: 100%;
+  margin-top:10%;
+  max-width:70%;
+  max-height:70%
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
@@ -25,6 +28,7 @@
 }
 
 .boxProfile{
+	text-align:center;
 	display: flex;
 }
 
@@ -51,12 +55,7 @@
 	display: inline-block;
 	width: 100%;
 	}
-	.propic{
-	display: block;
-	width: auto;
-	height: auto;
-	margin: 0 20px;
-	}
+
 	
 	.bottoni{
 	display: block;

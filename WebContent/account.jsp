@@ -43,7 +43,7 @@
           <section class="body_account">
           <div class="boxProfile">
 	      <div class="propic">
-	        <img src="./img/propic1.jpg" alt="" />
+	        <img src="./img/svg/utente.svg" alt="" />
 	      </div>
 	   		<div class="bottoni">
 	      <div class="indirizzo">
