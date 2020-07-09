@@ -3,7 +3,12 @@ package com.utility;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.Bean.AccountBean;
+import com.Bean.OrdiniBean;
+import com.Bean.ProductBean;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
@@ -16,13 +21,20 @@ import com.itextpdf.text.pdf.FontSelector;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.model.Cart;
 
 public class GeneratoreFattura {
-	public static void createPDF(String pdfFilename,String logo) {
+	public static void createPDF(String pdfFilename,String logo, ArrayList<Object> lista) {
 		try {
 			OutputStream file = new FileOutputStream(new File(pdfFilename));
 			Document document = new Document();
 			PdfWriter.getInstance(document, file);
+			
+			//DATI DA INSERIRE
+			OrdiniBean ordine = (OrdiniBean) lista.get(0);
+			AccountBean account = (AccountBean) lista.get(1);
+			Cart prodottiOrdinatiCart = (Cart) lista.get(2);
+			List<ProductBean> products = prodottiOrdinatiCart.getProducts();
 			
 			//Inserimeto dell'immagine nel pdf
 			Image image = Image.getInstance(logo);
@@ -32,8 +44,8 @@ public class GeneratoreFattura {
 			PdfPTable irdTable = new PdfPTable(2);
 			irdTable.addCell(getIRDCell("N. Fattura"));
 			irdTable.addCell(getIRDCell("Data Fattura"));
-			irdTable.addCell(getIRDCell("12345"));  //Numero della fattura/Ordine
-			irdTable.addCell(getIRDCell("16-11-1999"));	//Data della fattura/Ordine
+			irdTable.addCell(getIRDCell("" + ordine.getCode()));  //Numero della fattura/Ordine
+			irdTable.addCell(getIRDCell("" + ordine.getData()));	//Data della fattura/Ordine
 			
 			//Creazione tabella superiore 2
 			PdfPTable irhTable = new PdfPTable(3);
@@ -53,17 +65,17 @@ public class GeneratoreFattura {
 			
 			//Informazioni spedizione
 			Phrase bill = fs.process("Spedito a");
-			Paragraph name = new Paragraph("Antonio Sarro");
+			Paragraph name = new Paragraph("" + account.getNome() + " " + account.getCognome());
 			name.setIndentationLeft(20);
-			Paragraph contact = new Paragraph("sarroantonio1999@gmail.com");
+			Paragraph contact = new Paragraph("" + account.getEmail());
 			contact.setIndentationLeft(20);
-			Paragraph address = new Paragraph("Via Petrulli 3");
+			Paragraph address = new Paragraph("" + ordine.getVia());
 			address.setIndentationLeft(20);
 			
 			//Sezione dei prodotti
 			PdfPTable billTable = new PdfPTable(6);  //Una pagina può contenere 15 prodotti
 			billTable.setWidthPercentage(100);
-			billTable.setWidths(new float[] {1,2,5,2,1,2});
+			billTable.setWidths(new float[] {2,2,5,2,2,2});
 			billTable.setSpacingBefore(30.0f);
 			billTable.addCell(getBillHeaderCell("Indice"));
 			billTable.addCell(getBillHeaderCell("Categoria"));
@@ -73,44 +85,17 @@ public class GeneratoreFattura {
 			billTable.addCell(getBillHeaderCell("Prezzo Totale"));
 			
 			//INSERIMENTO PRODOTTI (USARE FOR)
-			billTable.addCell(getBillRowCell("1"));
-			billTable.addCell(getBillRowCell("Mobile"));
-			billTable.addCell(getBillRowCell("Nokia Lumia 610 \n IMI:WQ361989213 "));
-			billTable.addCell(getBillRowCell("12000.0"));
-			billTable.addCell(getBillRowCell("1"));
-			billTable.addCell(getBillRowCell("12000.0"));
+			int index = 0;
+		    for(ProductBean b : products) {
+		    	billTable.addCell(getBillRowCell(""+ (index + 1)));
+				billTable.addCell(getBillRowCell("Categoria"));
+				billTable.addCell(getBillRowCell("" + b.getName()));
+				billTable.addCell(getBillRowCell("" + b.getPrice() + " Euro"));
+				billTable.addCell(getBillRowCell("" + b.getQuantity()));
+				billTable.addCell(getBillRowCell("" + b.getPrice() * b.getQuantity() + " Euro"));
+				index++;
+		    }
 
-			billTable.addCell(getBillRowCell("2"));
-			billTable.addCell(getBillRowCell("Accessories"));
-			billTable.addCell(getBillRowCell("Nokia Lumia 610 Panel \n Serial:TIN3720 "));
-			billTable.addCell(getBillRowCell("200.0"));
-			billTable.addCell(getBillRowCell("1"));
-			billTable.addCell(getBillRowCell("200.0"));
-			
-			billTable.addCell(getBillRowCell(" "));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			
-			billTable.addCell(getBillRowCell(" "));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			
-			billTable.addCell(getBillRowCell(" "));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-			billTable.addCell(getBillRowCell(""));
-
-			
-			
-			
 			//CREAZIONE PARTE BASSO-SINISTRA
 			PdfPTable validity = new PdfPTable(1);
 			validity.setWidthPercentage(100);
@@ -127,11 +112,11 @@ public class GeneratoreFattura {
 			PdfPTable accounts = new PdfPTable(2);
 			accounts.setWidthPercentage(100);
 			accounts.addCell(getAccountsCell("Totale Parziale"));
-			accounts.addCell(getAccountsCellR("12620.00"));
-			accounts.addCell(getAccountsCell("Tasse(22%)"));
-			accounts.addCell(getAccountsCellR("315.55"));
+			accounts.addCell(getAccountsCellR("" + ordine.getTotale() + " Euro"));
+			accounts.addCell(getAccountsCell("IVA(22%)"));
+			accounts.addCell(getAccountsCellR("" + ordine.getTotale() * 22 / 100 + " Euro"));
 			accounts.addCell(getAccountsCell("Totale"));
-			accounts.addCell(getAccountsCellR("11673.55"));			
+			accounts.addCell(getAccountsCellR("" + (ordine.getTotale() + ordine.getTotale() * 22 / 100) + " Euro"));			
 			PdfPCell summaryR = new PdfPCell (accounts);
 			summaryR.setColspan (3);         
 			billTable.addCell(summaryR);

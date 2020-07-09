@@ -15,7 +15,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>TakeYourTech</title>
       <link rel="stylesheet" href="./css/style.css" />
-      <link rel="stylesheet" href="./css/articoli.css" />
+      <link rel="stylesheet" href="./css/assemblaggio.css" />
       <link
          rel="stylesheet"
          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -37,17 +37,142 @@
       </section>
       
 	  <!-- ASSEMBLAGGIO -->
-	    <section class="assemblaggio">
-      <div class="assemblaggio_copy">
-        <h3>Seleziona il tipo di assemblaggio</h3>
-      </div>
-      <div class="assistito">
-        <h4>Assistito</h4>
-      </div>
-      <div class="personalizzato">
-        <h4>Personalizzato</h4>
-      </div>
-    </section>
+	  <div class="site-inner">
+	  	<div class="content-sidebar-wrap">
+	  		<main class="content">
+	  			<article>
+	  				<div class="entry-content">
+	  					<div id="config-ajax">
+	  						<form method="get">
+	  							<div class="coloum-wrap">
+	  								<div class="coloum">
+	  									<label for="cpubase">CPU</label>
+	  									<select name="cpubase" id="cpubase" class="configuratore-base-select">
+	  										<optgroup label="Intel">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  								  <div class="coloum">
+	  									<label for="cpubase">GPU</label>
+	  									<select name="cpubase" id="gpubase" class="configuratore-base-select">
+	  										<optgroup label="GTX">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="RTX">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  							</div>
+	  							<div class="coloum-wrap">
+	  								<div class="coloum">
+	  									<label for="cpubase">CPU</label>
+	  									<select name="cpubase" id="cpubase" class="configuratore-base-select">
+	  										<optgroup label="Intel">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  								  <div class="coloum">
+	  									<label for="cpubase">GPU</label>
+	  									<select name="cpubase" id="gpubase" class="configuratore-base-select">
+	  										<optgroup label="GTX">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="RTX">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  							</div>
+	  							<div class="coloum-wrap">
+	  								<div class="coloum">
+	  									<label for="cpubase">CPU</label>
+	  									<select name="cpubase" id="cpubase" class="configuratore-base-select">
+	  										<optgroup label="Intel">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  								  <div class="coloum">
+	  									<label for="cpubase">GPU</label>
+	  									<select name="cpubase" id="gpubase" class="configuratore-base-select">
+	  										<optgroup label="GTX">
+	  										<option value="123" data-img-src="">Intel Core i5 - 73.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 177.90</option>
+	  										<option value="234" data-img-src="">Intel Core i7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="RTX">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  										<optgroup label="AMD">
+	  										<option value="123" data-img-src="">Ryzen 3 - 73.90</option>
+	  										<option value="234" data-img-src="">Ryzen 5 - 177.90</option>
+	  										<option value="234" data-img-src="">Ryzen 7 - 59.90</option>
+	  										</optgroup>
+	  									</select>
+	  								</div>
+	  							</div>
+	  							<div class="coloum-wrap">
+					<div class="alert-hdd-ssd">
+                    <div class="message-hdd-ssd"></div>
+                </div>
+                <div class="alert-cpu-gpu">
+                    <div class="message-cpu-gpu"></div>
+                </div>
+	  							</div>
+	  							            <div class="search-button-builds">
+                <input class="configbasebutton" type="submit" id="submit" name="submit" value="Crea Configurazione">
+            </div>
+	  						</form>
+	  					</div>
+	  				</div>
+	  			</article>
+	  		</main>
+	  	</div>
+	  </div>
       
     <jsp:include page="./utility/footer.jsp"/>
     

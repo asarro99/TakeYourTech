@@ -13,7 +13,7 @@
    </div>
    <div class="menu-bar">
       <ul>
-         <li><a href="assistito.jsp">Assemblaggio</a></li>
+         <li><a href="assemblaggio.jsp">Assemblaggio</a></li>
          <li>
             <a href="carrello.jsp">Carrello</a>
          </li>

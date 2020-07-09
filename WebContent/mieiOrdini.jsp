@@ -83,7 +83,7 @@
 		          </td>
 		          <td data-th="Prezzo"><%=bean.getTotale() %></td>
 		          <td data-th="Fattura">
-		          <a href="Fattura">
+		          <a href="Fattura?ordineID=<%= bean.getCode()%>">
 		          	 <button type="button" class="btn btn-primary">
 		              Fattura
 		            </button>

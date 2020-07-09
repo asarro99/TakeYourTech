@@ -71,4 +71,6 @@ public interface DBModel {
     public  void aggiornaQuantitaProdotti(Cart carrello) throws SQLException ;
     
     public  int getQuantitaProdotto(int idProdotto) throws SQLException ;
+    
+    public ArrayList<Object> getDatiFattura(int idOrdine) throws SQLException ;
 }
