@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.DB;
+import com.model.dao.FatturaModelDS;
 import com.utility.GeneratoreFattura;
 
 @WebServlet("/Fattura")
 public class Fattura extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static DB ds = new DB();
+	private static FatturaModelDS ds = new FatturaModelDS();
 	
     public Fattura() {
         super();

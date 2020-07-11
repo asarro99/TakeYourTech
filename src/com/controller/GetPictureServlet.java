@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Bean.ProductBean;
-import com.model.DB;
+import com.model.dao.ProdottoModelDS;
 @WebServlet("/getPicture")
 public class GetPictureServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -20,7 +20,7 @@ public class GetPictureServlet extends HttpServlet {
     public GetPictureServlet() {
         super();
     }
-    private static DB ds = new DB();
+    private static ProdottoModelDS ds = new ProdottoModelDS();
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = (String) request.getParameter("id");

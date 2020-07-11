@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.DB;
+import com.model.dao.LoginModelDS;
 
 @WebServlet("/SignIn")
 public class SignIn extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static DB ds = new DB();
+	private static LoginModelDS ds = new LoginModelDS();
 	
     public SignIn() {
         super();

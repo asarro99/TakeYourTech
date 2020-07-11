@@ -9,13 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.model.DB;
+import com.model.dao.LoginModelDS;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	
-	private static DB ds = new DB();
+	private static LoginModelDS ds = new LoginModelDS();
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

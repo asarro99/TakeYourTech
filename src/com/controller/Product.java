@@ -22,9 +22,13 @@ import com.Bean.OrdiniBean;
 import com.Bean.ProductBean;
 import com.Bean.metPagaBean;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.Cart;
-import com.model.DB;
+import com.model.dao.CategorieModelDS;
+import com.model.dao.IndirizziModelDS;
+import com.model.dao.OrdineModelDS;
+import com.model.dao.PagamentoModelDS;
+import com.model.dao.ProdottoModelDS;
+import com.model.dao.ProdottoOrdinatoModelDS;
 
 /**
  * Servlet implementation class Product
@@ -44,7 +48,12 @@ public class Product extends HttpServlet {
         super();
     }
     
-    private static DB ds = new DB();
+    private static ProdottoModelDS ds = new ProdottoModelDS();
+    private static PagamentoModelDS ds2 = new PagamentoModelDS();
+    private static IndirizziModelDS ds3 = new IndirizziModelDS();
+    private static OrdineModelDS ds4 = new OrdineModelDS();
+    private static ProdottoOrdinatoModelDS ds5 = new ProdottoOrdinatoModelDS();
+    private static CategorieModelDS ds6 = new CategorieModelDS();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -188,11 +197,10 @@ public class Product extends HttpServlet {
 			{
 				String role = (String)request.getSession().getAttribute("roleUtente");
                 if(role!=null && role.equals("utente")) {
-                	ObjectMapper mapper= new ObjectMapper();
 					try 
 					{
-						int idMetodoPagamento = ds.getidMetodoPagamento(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
-						ArrayList<String> IndirizzoSpedizione = ds.getidIndirizzoSpedizione(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+						int idMetodoPagamento = ds2.getidMetodoPagamento(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+						ArrayList<String> IndirizzoSpedizione = ds3.getidIndirizzoSpedizione(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
 
 						if(idMetodoPagamento==0)
 						{
@@ -208,9 +216,9 @@ public class Product extends HttpServlet {
 							}
 							else 
 							{
-								ds.doCartSave(idMetodoPagamento,Integer.parseInt((String) request.getSession().getAttribute("idUtente")),(float)cart.getTotal(),IndirizzoSpedizione.get(3),IndirizzoSpedizione.get(2),IndirizzoSpedizione.get(1),"fammok");
-								int idOrdine = ds.getidOrdine(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
-								ds.doProdottiOrdinatiSave(cart,idOrdine);
+								ds4.doCartSave(idMetodoPagamento,Integer.parseInt((String) request.getSession().getAttribute("idUtente")),(float)cart.getTotal(),IndirizzoSpedizione.get(3),IndirizzoSpedizione.get(2),IndirizzoSpedizione.get(1),"fammok");
+								int idOrdine = ds4.getidOrdine(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
+								ds5.doProdottiOrdinatiSave(cart,idOrdine);
 								ds.aggiornaQuantitaProdotti(cart);
 								cart.removeAll();
 							}
@@ -235,11 +243,11 @@ public class Product extends HttpServlet {
 
 	                	if(data1 != null && data2 != null && !data1.equals("2017-06-01") && !data2.equals("2017-06-01"))
 	                	{
-	                			Collection<OrdiniBean> ordini = ds.getOridiniUtenteData(Integer.parseInt(IdUtente), data1, data2);
+	                			Collection<OrdiniBean> ordini = ds4.getOridiniUtenteData(Integer.parseInt(IdUtente), data1, data2);
 	                            request.setAttribute("ordini", ordini);
 	                	}
 	                	else {
-						Collection<OrdiniBean> ordini = ds.getOridiniUtente(Integer.parseInt(IdUtente));
+						Collection<OrdiniBean> ordini = ds4.getOridiniUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("ordini", ordini);
 
 	                	}
@@ -256,7 +264,7 @@ public class Product extends HttpServlet {
 				  if(request.getParameter("type")!=null && request.getParameter("type").equals("rimuovi"))
 		            {
 		            	try {
-							ds.rimuoviIndirizzo(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
+		            		ds3.rimuoviIndirizzo(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
 						} catch (NumberFormatException e) {
 							e.printStackTrace();
 						} catch (SQLException e) {
@@ -273,7 +281,7 @@ public class Product extends HttpServlet {
 					  indirizzo.setCodicePostale(request.getParameter("CAP"));
 					  
 					  try {
-						ds.aggiungiIndirizzo(indirizzo);
+						  ds3.aggiungiIndirizzo(indirizzo);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -283,7 +291,7 @@ public class Product extends HttpServlet {
 	            {   
 	                try {
 
-						Collection<IndirizziBean> indirizzi = ds.getIndirizziUtente(Integer.parseInt(IdUtente));
+						Collection<IndirizziBean> indirizzi = ds3.getIndirizziUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("indirizzi", indirizzi);
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -298,7 +306,7 @@ public class Product extends HttpServlet {
 				  if(request.getParameter("type")!=null && request.getParameter("type").equals("rimuovi"))
 		            {
 		            	try {
-							ds.rimuoviMetPaga(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
+		            		ds2.rimuoviMetPaga(Integer.parseInt(request.getParameter("idind")),Integer.parseInt(IdUtente));
 						} catch (NumberFormatException e) {
 							e.printStackTrace();
 						} catch (SQLException e) {
@@ -316,7 +324,7 @@ public class Product extends HttpServlet {
 					  met.setCodiceCarta(request.getParameter("codiceCarta"));
 					  
 					  try {
-						ds.aggiungiMetodoPagamento(met);
+						  ds2.aggiungiMetodoPagamento(met);
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
@@ -326,7 +334,7 @@ public class Product extends HttpServlet {
 	            {   
 	                try {
 
-						Collection<metPagaBean> metPag = ds.getMetPagaUtente(Integer.parseInt(IdUtente));
+						Collection<metPagaBean> metPag = ds2.getMetPagaUtente(Integer.parseInt(IdUtente));
 	                    request.setAttribute("metPagamento", metPag);
 					} catch (SQLException e) {
 						e.printStackTrace();
@@ -355,12 +363,12 @@ public class Product extends HttpServlet {
 	                	{
 	                			if(idUtente != null && idUtente != "")
 	                			{
-	                				Collection<OrdiniBean> ordini = ds.getOridiniByDataAndIdUtente(data1, data2,Integer.parseInt(idUtente));
+	                				Collection<OrdiniBean> ordini = ds4.getOridiniByDataAndIdUtente(data1, data2,Integer.parseInt(idUtente));
 		                            request.setAttribute("ordini", ordini);
 	                			}
 	                			else 
 	                			{
-	                				Collection<OrdiniBean> ordini = ds.getOridiniByData( data1, data2);
+	                				Collection<OrdiniBean> ordini = ds4.getOridiniByData( data1, data2);
 		                            request.setAttribute("ordini", ordini);
 								}
 	            
@@ -369,12 +377,12 @@ public class Product extends HttpServlet {
 	                		
 	                		if(idUtente!=null && idUtente != "")
 	                		{
-	                			Collection<OrdiniBean> ordini = ds.getOridiniUtente(Integer.parseInt(idUtente));
+	                			Collection<OrdiniBean> ordini = ds4.getOridiniUtente(Integer.parseInt(idUtente));
 	    	                    request.setAttribute("ordini", ordini);
 	                		}
 	                		else 
 	                		{
-	                			Collection<OrdiniBean> ordini = ds.getOridini();
+	                			Collection<OrdiniBean> ordini = ds4.getOridini();
 	    	                    request.setAttribute("ordini", ordini);
 							}
 
@@ -405,7 +413,7 @@ public class Product extends HttpServlet {
 		
 		//Caricamento sidemenu
 		try {
-			String categorie = ds.getCategorie();
+			String categorie = ds6.getCategorie();
 			request.setAttribute("sidemenu", categorie);
 			String paginaCorrente = (String) request.getParameter("page");
 

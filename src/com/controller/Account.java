@@ -14,12 +14,12 @@ import com.Bean.AccountBean;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.model.DB;
+import com.model.dao.AccountModelDS;
 
 @WebServlet("/Account")
 public class Account extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static DB ds = new DB();
+	private static AccountModelDS ds = new AccountModelDS();
 	
     public Account() {
         super();

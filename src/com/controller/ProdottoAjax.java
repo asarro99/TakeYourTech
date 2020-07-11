@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Bean.ProductBean;
-import com.model.DB;
+import com.model.dao.ProdottoModelDS;
 
 @WebServlet("/ProdottoAjax")
 public class ProdottoAjax extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
-	private static DB ds = new DB();
+	private static ProdottoModelDS ds = new ProdottoModelDS();
 	
     public ProdottoAjax() {
         super();

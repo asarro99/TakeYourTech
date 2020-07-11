@@ -3,7 +3,6 @@ package com.controller;
 import java.io.IOException;
 
 import java.sql.SQLException;
-import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,9 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.*;
-import com.Bean.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.model.DB;
+import com.model.dao.CategorieModelDS;
+import com.model.dao.OrdineModelDS;
 
 /**
  * Servlet implementation class Ordine
@@ -23,7 +21,8 @@ import com.model.DB;
 @WebServlet("/Ordine")
 public class Ordine extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static DB ds = new DB();
+	private static OrdineModelDS ds = new OrdineModelDS();
+	private static CategorieModelDS ds2 = new CategorieModelDS();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -62,7 +61,7 @@ public class Ordine extends HttpServlet {
 			
 			//Caricamento sidemenu
 			try {
-				String categorie = ds.getCategorie();
+				String categorie = ds2.getCategorie();
 				request.setAttribute("sidemenu", categorie);
 				String paginaCorrente = (String) request.getParameter("page");
 
