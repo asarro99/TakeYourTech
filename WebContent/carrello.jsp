@@ -8,11 +8,6 @@
 
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		if((String)request.getAttribute("roleUtente")!="utente")
-		{
-			response.sendRedirect("login.jsp");	
-			return;
-		}
 		response.sendRedirect("./Product?page=/carrello.jsp");	
 		return;
 	}
@@ -49,6 +44,7 @@
       <div class="title-box">
         <h2>Carrello</h2>
       </div>
+     <div id="snackbar"></div>
     </section>
     <section class="carrello">
       <table class="rwd-table">
@@ -74,7 +70,7 @@
           <td data-th="Descrizione">
             <%=rootNode.get("descrizione").asText() %>
           </td>
-          <td data-th="Quantita"><input class="inputQuantita" id="modQuantita<%=beancart.getCode() %>" type="text" value="<%=beancart.getQuantity() %>"></input></td>
+          <td data-th="Quantita"><input class="inputQuantita" id="modQuantita<%=beancart.getCode() %>" type="number" value="<%=beancart.getQuantity() %>"></input></td>
           <td id= "prezzoProdotto<%=beancart.getCode() %>" data-th="Prezzo"><%=beancart.getPrice()*beancart.getQuantity()%> Euro</td>
           <td data-th="Modifica">
           	<a href="Product?page=/carrello.jsp&action=removeC&id=<%=beancart.getCode()%>">
@@ -144,8 +140,8 @@
         autoResponse: 'Grazie per averci contattato! Un nostro operatore ti rispondera\' a breve.',
         autoNoResponse: 'Ci dispiace per l\'attesa i nostri operatori sono tutti occupati,'+
                         ' tra pochi minuti sarai contattato.',
-        mainColor: "#ff5722", // Can be any css supported color 'red', 'rgb(255,87,34)', etc
-        alwaysUseFloatingButton: false // Use the mobile floating button also on large screens
+        mainColor: "#ff5722",
+        alwaysUseFloatingButton: false
     };
 	</script>
 	<script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>

@@ -42,13 +42,19 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
+          		<a href="Product?page=/articoli.jsp&categoria=Telefoni">
             <img src="./img/telefoni.png" />
+            	</a>
           </div>
           <div class="col-md-4">
+          <a href="Product?page=/articoli.jsp&categoria=Portatili">
             <img src="./img/Portatili.png" />
+           </a>
           </div>
           <div class="col-md-4">
+          <a href="Product?page=/articoli.jsp&categoria=Piu_venduti">
             <img src="./img/piuvenduti.png" />
+            </a>
           </div>
         </div>
       </div>

@@ -1,5 +1,18 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap");
 
+/* RIMUOVERE LE FRECCE AD INPUT NUMBER*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -338,7 +351,7 @@ body {
 }
 
 .product-top img {
-	max-width: 270px;
+	max-width: 240px;
 	max-height: 135px;
   	height:auto;
   	width: auto;

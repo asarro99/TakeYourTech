@@ -130,12 +130,18 @@
     </script>
        
      <script>
-     let searchParams = new URLSearchParams(window.location.search);
-     if(searchParams.has('categoria')){
-     	let productParam = searchParams.get('categoria');
-     	document.getElementById('cat').innerHTML = productParam;
-     }
-     	
+     $(document).ready(()=>{
+         let searchParams = new URLSearchParams(window.location.search);
+         if(searchParams.has('categoria')){
+         	let productParam = searchParams.get('categoria');
+         	console.log(productParam);
+         	productParam = productParam.replace("_", " ");
+         	console.log(productParam);
+         	document.getElementById('cat').innerHTML = productParam;
+         }
+     })
+
+
      </script>
        
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

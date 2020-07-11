@@ -108,11 +108,11 @@
   text-align: center;
 } 
 
-@media (min-width: 480px) {
-	
-	.rwd-table td:before {
-		  display :none;
-		}
+@media (min-width: 480px)  {
+
+.rwd-table td:before {
+	  display :none;
+	}
 	
   .rwd-table th,
   .rwd-table td {
@@ -134,6 +134,15 @@
   .totale p{
   	font-size: 1.5em;
   }
+  
+  .totale {
+  margin-right: 0;
+}
+
+.inputQuantita{
+	width: 60% !important;
+}
+
 }
 
 @media (min-width: 320px){
@@ -148,4 +157,64 @@
 	width: 30%;
 	text-align: center;	
 }
+
 }
+
+/* POPUP */
+
+#snackbar {
+  visibility: hidden; 
+  min-width: 250px; 
+  margin-left: -125px; 
+  background-color: #ff5722; 
+  color: #fff; 
+  text-align: center; 
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed;
+  z-index: 1; 
+  left: 48%; 
+  top: 50px; 
+}
+
+
+#snackbar.show {
+  visibility: visible; 
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {top: 0; opacity: 0;}
+  to {top: 50px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {top: 50px; opacity: 1;}
+  to {top: 0; opacity: 0;}
+}
+
+@media (max-width: 380px){
+#snackbar {
+  left: 37% !important; 
+  top: 120px !important; 
+	}
+}
+
+@media (max-width: 780px){
+#snackbar {
+  left: 43%; 
+  top: 120px; 
+}
+}
+

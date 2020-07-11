@@ -394,12 +394,21 @@ public class Product extends HttpServlet {
 		}
 		
 		 if (request.getParameter("categoria")!=null) {
+			 if(request.getParameter("categoria").equals("Piu_venduti")) {
+				 try {
+						Collection<ProductBean> prodotti = ds.getSediciProdRandom();
+						request.setAttribute("prodotti", prodotti);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			 } else {
 				try {
 					Collection<ProductBean> prodotti = ds.doRetrieveByCategoria(request.getParameter("categoria"));
 					request.setAttribute("prodotti", prodotti);
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			 }
 			}
 		 
 		 if (request.getParameter("codiceprod")!=null) {

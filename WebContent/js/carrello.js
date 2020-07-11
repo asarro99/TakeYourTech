@@ -1,5 +1,7 @@
 $('input').change((event)=>{
 	if(event.target.value <= 0){
+		$('#snackbar').text("Non si possono inserire quantita' inferiori ad 1.");
+		myFunction();
 		event.target.value = 1;
 	}
 		let id = (event.target.id).slice(11,event.target.id.lenght);
@@ -19,10 +21,20 @@ $('input').change((event)=>{
 				let prodotto = prezzi[0];
 				$('#prezzoTotale').text(totale + " Euro");
 				$('#'+idPrezzo).text(prodotto + " Euro");
+				$('#snackbar').text("Il massimo disponibile nel magazzino e' " + value);
+				myFunction();
 				event.target.value = value;
 			}
 		})
 });
 
+function myFunction() {
+	  // Get the snackbar DIV
+	  var x = document.getElementById("snackbar");
 
+	  // Add the "show" class to DIV
+	  x.className = "show";
 
+	  // After 3 seconds, remove the show class from DIV
+	  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	  }
