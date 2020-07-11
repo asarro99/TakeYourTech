@@ -1,4 +1,4 @@
-<%@ page import="java.util.*,com.Bean.*,com.model.*"%>
+<%@ page import="java.util.*,com.model.bean.*,com.model.*"%>
 <%
 
 	if(session.getAttribute("roleUtente") == null)

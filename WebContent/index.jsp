@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
  <%@ page import="java.util.*"%>
-     <%@ page import="java.util.*,com.Bean.ProductBean"%>
+     <%@ page import="java.util.*,com.model.bean.ProductBean"%>
 <%
 	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
 	String sidemenu = (String)request.getAttribute("sidemenu");

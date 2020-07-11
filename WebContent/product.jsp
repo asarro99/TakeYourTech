@@ -1,7 +1,7 @@
 <%@page import="com.fasterxml.jackson.databind.JsonNode"%>
 <%@page import="com.fasterxml.jackson.databind.node.ObjectNode"%>
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
-<%@page import="com.Bean.ProductBean"%>
+<%@page import="com.model.bean.ProductBean"%>
 <%@page import="java.util.Collection"%>
 <%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"

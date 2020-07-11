@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
- <%@ page import="java.util.*,com.model.Cart,com.Bean.ProductBean"%>
+ <%@ page import="java.util.*,com.model.Cart,com.model.bean.ProductBean"%>
  <%@page import="com.fasterxml.jackson.databind.node.ObjectNode"%>
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="com.fasterxml.jackson.databind.JsonNode"%>
