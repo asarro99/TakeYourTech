@@ -42,13 +42,13 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <img src="./img/1.jpg" />
+            <img src="./img/telefoni.png" />
           </div>
           <div class="col-md-4">
-            <img src="./img/2.jpg" />
+            <img src="./img/Portatili.png" />
           </div>
           <div class="col-md-4">
-            <img src="./img/3.jpg" />
+            <img src="./img/piuvenduti.png" />
           </div>
         </div>
       </div>
@@ -224,6 +224,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     
+    <!---------------------------------ASSISTENZA----------------------------------------->
     <script> 
     	window.intergramId = "49403884";
     	window.intergramCustomizations = {

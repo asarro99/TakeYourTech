@@ -30,6 +30,10 @@
   font-size: 1.2em;
 }
 
+.faq h4 {
+  color: #ff5722;
+}
+
 .assistenza_bottom {
   display: flex;
   width: 84%;
