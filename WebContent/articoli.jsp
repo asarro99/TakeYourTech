@@ -79,11 +79,17 @@
               </div>
             </div>
             <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
+               <%
+                Random rand = new Random();
+				int valore = rand.nextInt(4) + 1;
+              	for(int i=0; i<valore; i++){
+              		out.println("<i class=\"fa fa-star\"></i>");
+              	}
+              	int valore2 = rand.nextInt(2);
+              	for(int j=0; j<valore2; j++){
+              		out.println("<i class=\"fa fa-star-half-o\"></i>");
+              	}
+              %>
               <h3><%=bean.getName() %></h3>
               <h5><%=bean.getPrice() %> Euro</h5>
             </div>

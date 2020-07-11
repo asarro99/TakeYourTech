@@ -3,6 +3,7 @@
 <%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="com.Bean.ProductBean"%>
 <%@page import="java.util.Collection"%>
+<%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <%
@@ -67,11 +68,17 @@
             <h2><%=prodotto.getName() %></h2>
             <p>Codice Prodotto: <%=prodotto.getCode() %></p>
 
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
+             <%
+                Random rand = new Random();
+				int valore = rand.nextInt(4) + 1;
+              	for(int i=0; i<valore; i++){
+              		out.println("<i class=\"fa fa-star\"></i>");
+              	}
+              	int valore2 = rand.nextInt(2);
+              	for(int j=0; j<valore2; j++){
+              		out.println("<i class=\"fa fa-star-half-o\"></i>");
+              	}
+              %>
 
             <p class="price"><%=prodotto.getPrice()%> Euro</p>
             <p><b>Disponibilità: </b><%if(prodotto.getQuantity()>0)out.println("In Magazzino"); else out.println("Non disponibile"); %></p>

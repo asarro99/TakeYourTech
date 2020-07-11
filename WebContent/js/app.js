@@ -17,3 +17,8 @@ function closeMenu() {
 	document.getElementById("menu-btn").style.display = "block";
 	document.getElementById("close-btn").style.display = "none";
 }
+
+//Animazione zoom hover product top
+$('.effect').mouseleave(()=>{
+	$(this).removeClass('effect');
+})

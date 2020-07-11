@@ -13,14 +13,14 @@
    </div>
    <div class="menu-bar">
       <ul>
-         <li><a href="assemblaggio.jsp">Assemblaggio</a></li>
-         <li>
-            <a href="carrello.jsp">Carrello</a>
-         </li>
         <%
 		if(session.getAttribute("roleUtente")==null){
+			out.println("<li><a href=" + "assemblaggio.jsp" + ">Assemblaggio</a></li>");
+			out.println("<li><a href=" + "carrello.jsp" + ">Carrello</a></li>");
 			out.println("<li><a href=" + "login.jsp" + ">Login</a></li>");
 		}else if(session.getAttribute("roleUtente")!=null && session.getAttribute("roleUtente").equals("utente")){
+			out.println("<li><a href=" + "assemblaggio.jsp" + ">Assemblaggio</a></li>");
+			out.println("<li><a href=" + "carrello.jsp" + ">Carrello</a></li>");
 			out.println("<li><a href=" + "account.jsp" + ">Account</a></li>");
 			out.println("<li><a href=" + "Logout" + ">Logout</a></li>");
 		}else if(session.getAttribute("roleUtente")!=null && session.getAttribute("roleUtente").equals("admin")){

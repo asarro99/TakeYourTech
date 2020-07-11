@@ -1,3 +1,4 @@
+<%@page import="com.sun.jmx.snmp.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
  <%@ page import="java.util.*"%>
@@ -69,7 +70,7 @@
 				while (it.hasNext() && cont<8) {
 					cont++;
 					ProductBean bean = (ProductBean) it.next();
-		%>
+			%>
           <div class="col-md-3">
             <div class="product-top">
               <img src="./getPicture?id=<%=bean.getCode() %>" />
@@ -95,11 +96,17 @@
               </div>
             </div>
             <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
+              <%
+                Random rand = new Random();
+				int valore = rand.nextInt(4) + 1;
+              	for(int i=0; i<valore; i++){
+              		out.println("<i class=\"fa fa-star\"></i>");
+              	}
+              	int valore2 = rand.nextInt(2);
+              	for(int j=0; j<valore2; j++){
+              		out.println("<i class=\"fa fa-star-half-o\"></i>");
+              	}
+              %>
               <h3><%=bean.getName() %></h3>
               <h5><%=bean.getPrice() %> Euro</h5>
             </div>
@@ -113,10 +120,10 @@
     </section>
     <!---------------------------------NUOVI PRODOTTI----------------------------------------->
     <section class="new-products">
-    <div class="title-box">
-          <h2>Nuovi Prodotti</h2>
-        </div>
       <div class="container">
+          <div class="title-box">
+          <h2>Nuovi Prodotti</h2>
+      </div>
         <div class="row">
            <%
 			if (products != null && products.size() != 0) {
@@ -154,11 +161,17 @@
               </div>
             </div>
             <div class="product-bottom text-center">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-o"></i>
+              <%
+                Random rand = new Random();
+				int valore = rand.nextInt(4) + 1;
+              	for(int i=0; i<valore; i++){
+              		out.println("<i class=\"fa fa-star\"></i>");
+              	}
+              	int valore2 = rand.nextInt(2);
+              	for(int j=0; j<valore2; j++){
+              		out.println("<i class=\"fa fa-star-half-o\"></i>");
+              	}
+              %>
               <h3><%=bean.getName() %></h3>
               <h5><%=bean.getPrice() %> Euro</h5>
             </div>
@@ -211,7 +224,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     
-        <script> 
+    <script> 
     	window.intergramId = "49403884";
     	window.intergramCustomizations = {
         titleClosed: 'Contattaci!',

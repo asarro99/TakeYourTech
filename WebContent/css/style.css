@@ -345,7 +345,13 @@ a{
 	max-width: 270px;
 	max-height: 135px;
   	height:auto;
-  	width: auto;	
+  	width: auto;
+  	transition: all 0.2s ease-out;
+}
+
+.product-top:hover img,
+.product-top.effect img{
+	transform: scale(1.2);
 }
 
 .overlay-right {
@@ -360,6 +366,7 @@ a{
 .overlay-right .fa {
   cursor: pointer;
   background-color: #fff;
+  border: 1px solid #ff5722;
   color: #000;
   height: 35px;
   width: 35px;
@@ -372,6 +379,7 @@ a{
 .overlay-right .fa:hover {
   background-color: #ff5722;
   color: #000;
+  transition: all 0.2s ease-out;
 }
 
 .overlay-right .btn-secondary {
@@ -401,14 +409,25 @@ a{
   padding-bottom: 10px;
 }
 
+@media only screen and (max-width: 1024px) {
+	.product-top img {
+	max-width: 200px;
+	max-height: 125px;
+	}
+}
 
 @media only screen and (max-width: 980px) {
 	.product-top img {
-	max-width: 270px;
+	max-width: 160px;
 	max-height: 135px;
-  	height:auto;
-  	width: auto;	
+	}
 }
+
+@media only screen and (max-width: 768px) {
+	.product-top img {
+	max-width: 150px;
+	max-height: 135px;	
+	}
 }
 /* CARATTERISTICHE */
 .website-features {
@@ -416,7 +435,7 @@ a{
 }
 
 .website-features img {
-	max-height:100px;
+  max-height:100px;
   height: auto;
   width: auto;
 }
