@@ -73,4 +73,6 @@ public interface DBModel {
     public  int getQuantitaProdotto(int idProdotto) throws SQLException ;
     
     public ArrayList<Object> getDatiFattura(int idOrdine) throws SQLException ;
+    
+    public  Collection<OrdiniBean> getOridiniByDataAndIdUtente(String data1,String data2,int idUtente ) throws SQLException;
 }

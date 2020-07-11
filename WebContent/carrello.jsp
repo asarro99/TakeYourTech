@@ -8,6 +8,11 @@
 
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
+		if((String)request.getAttribute("roleUtente")!="utente")
+		{
+			response.sendRedirect("login.jsp");	
+			return;
+		}
 		response.sendRedirect("./Product?page=/carrello.jsp");	
 		return;
 	}
