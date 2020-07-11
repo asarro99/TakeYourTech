@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.Bean.IndirizziBean;
+import com.model.bean.IndirizziBean;
 
 public interface IndirizziModel {
 	

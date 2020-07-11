@@ -2,7 +2,7 @@ package com.model.dao;
 
 import java.sql.SQLException;
 
-import com.Bean.AccountBean;
+import com.model.bean.AccountBean;
 
 public interface AccountModel {
 	

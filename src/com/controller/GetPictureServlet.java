@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.Bean.ProductBean;
+import com.model.bean.ProductBean;
 import com.model.dao.ProdottoModelDS;
 @WebServlet("/getPicture")
 public class GetPictureServlet extends HttpServlet {

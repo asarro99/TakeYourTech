@@ -3,7 +3,7 @@ package com.model.dao;
 import java.sql.SQLException;
 import java.util.Collection;
 
-import com.Bean.metPagaBean;
+import com.model.bean.metPagaBean;
 
 public interface PagamentoModel {
 	

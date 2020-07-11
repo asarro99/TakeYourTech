@@ -1,4 +1,4 @@
-package com.Bean;
+package com.model.bean;
 
 public class ProductBean {
 	int code;

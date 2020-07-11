@@ -17,7 +17,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.Bean.ProductBean;
+import com.model.bean.ProductBean;
 import com.model.Cart;
 
 public class ProdottoModelDS implements ProdottoModel{

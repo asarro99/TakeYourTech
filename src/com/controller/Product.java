@@ -17,10 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.Bean.IndirizziBean;
-import com.Bean.OrdiniBean;
-import com.Bean.ProductBean;
-import com.Bean.metPagaBean;
+import com.model.bean.IndirizziBean;
+import com.model.bean.OrdiniBean;
+import com.model.bean.ProductBean;
+import com.model.bean.metPagaBean;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.model.Cart;
 import com.model.dao.CategorieModelDS;

@@ -3,7 +3,7 @@ package com.model.dao;
 import java.sql.SQLException;
 import java.util.Collection;
 
-import com.Bean.ProductBean;
+import com.model.bean.ProductBean;
 import com.model.Cart;
 
 public interface ProdottoModel {

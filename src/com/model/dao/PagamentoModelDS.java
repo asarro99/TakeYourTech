@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.Bean.metPagaBean;
+import com.model.bean.metPagaBean;
 
 public class PagamentoModelDS implements PagamentoModel{
 private static DataSource ds;

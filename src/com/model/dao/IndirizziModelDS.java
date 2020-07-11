@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.Bean.IndirizziBean;
+import com.model.bean.IndirizziBean;
 
 public class IndirizziModelDS implements IndirizziModel{
 private static DataSource ds;

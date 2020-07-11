@@ -1,9 +1,4 @@
-package com.Bean;
-
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+package com.model.bean;
 
 public class OrdiniBean {
 	int code;
@@ -70,8 +65,6 @@ public class OrdiniBean {
 		this.via = via;
 	}
 	
-	
-
 	public int getCode() {
 		return code;
 	}
@@ -105,10 +98,7 @@ public class OrdiniBean {
 	}
 
 	
-	public float getTotale() throws JsonParseException, JsonMappingException, IOException {
-		/*ObjectMapper objectMapper = new ObjectMapper();
-		Cart carrello = objectMapper.readValue(description, Cart.class);
-		return (float) carrello.getTotal();*/
+	public float getTotale(){
 		return this.totale;
 	}
 

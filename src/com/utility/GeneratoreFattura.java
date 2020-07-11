@@ -6,9 +6,9 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Bean.AccountBean;
-import com.Bean.OrdiniBean;
-import com.Bean.ProductBean;
+import com.model.bean.AccountBean;
+import com.model.bean.OrdiniBean;
+import com.model.bean.ProductBean;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;

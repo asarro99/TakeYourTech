@@ -10,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.Bean.AccountBean;
+import com.model.bean.AccountBean;
 
 public class AccountModelDS implements AccountModel{
 	

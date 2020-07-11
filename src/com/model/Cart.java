@@ -3,7 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.Bean.ProductBean;
+import com.model.bean.ProductBean;
 
 public class Cart {
 

@@ -11,9 +11,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.Bean.AccountBean;
-import com.Bean.OrdiniBean;
-import com.Bean.ProductBean;
+import com.model.bean.AccountBean;
+import com.model.bean.OrdiniBean;
+import com.model.bean.ProductBean;
 import com.model.Cart;
 
 public class FatturaModelDS implements FatturaModel{

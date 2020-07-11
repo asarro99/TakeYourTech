@@ -1,4 +1,4 @@
-package com.Bean;
+package com.model.bean;
 
 public class metPagaBean {
 	int code;
@@ -69,3 +69,4 @@ public class metPagaBean {
 	}
 
 }
+

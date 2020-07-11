@@ -3,7 +3,7 @@ package com.model.dao;
 import java.sql.SQLException;
 import java.util.Collection;
 
-import com.Bean.OrdiniBean;
+import com.model.bean.OrdiniBean;
 import com.model.Cart;
 
 public interface OrdineModel {
