@@ -483,7 +483,7 @@ public class DB implements DBModel {
 
 		Collection<OrdiniBean> products = new LinkedList<OrdiniBean>();
 
-		String selectSQL = "SELECT * FROM ordini" ;
+		String selectSQL = "SELECT * FROM ordine" ;
 
 		try {
 			connection = ds.getConnection();
@@ -494,10 +494,16 @@ public class DB implements DBModel {
 			while (rs.next()) {
 				OrdiniBean bean = new OrdiniBean();
 
+				bean.setTotale(rs.getFloat("totalePagamento"));
+				bean.setCodicePostale(rs.getString("codicePostale"));
+				bean.setData(rs.getString("Data"));
+				bean.setIdUtente(rs.getInt("idUtente"));
+				bean.setIdMetodoPagamento(rs.getInt("idMetodoPagamento"));
 				bean.setCode(rs.getInt("idOrdine"));
-				bean.setDescription(rs.getString("dettagliOrdine"));
-                bean.setData(rs.getString("data"));
-                bean.setIdUtente(rs.getInt("idUtente"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setVia(rs.getString("via"));
+				bean.setCodiceTracciabilita(rs.getString("codiceTracciabilita"));
+				
                 products.add(bean);
 			}
 
@@ -519,7 +525,7 @@ public class DB implements DBModel {
 		PreparedStatement preparedStatement = null;
 
 		Collection<OrdiniBean> products = new LinkedList<OrdiniBean>();
-		String selectSQL = "SELECT * FROM ordini WHERE data BETWEEN " + '"'+data1 +'"'+ " AND "+ '"'+data2 +'"';
+		String selectSQL = "SELECT * FROM ordine WHERE Data BETWEEN " + '"'+data1 +'"'+ " AND "+ '"'+data2 +'"';
 
 		try {
 			connection = ds.getConnection();
@@ -530,10 +536,58 @@ public class DB implements DBModel {
 			while (rs.next()) {
 				OrdiniBean bean = new OrdiniBean();
 
+				bean.setTotale(rs.getFloat("totalePagamento"));
+				bean.setCodicePostale(rs.getString("codicePostale"));
+				bean.setData(rs.getString("Data"));
+				bean.setIdUtente(rs.getInt("idUtente"));
+				bean.setIdMetodoPagamento(rs.getInt("idMetodoPagamento"));
 				bean.setCode(rs.getInt("idOrdine"));
-				bean.setDescription(rs.getString("dettagliOrdine"));
-                bean.setData(rs.getString("data"));
-                bean.setIdUtente(rs.getInt("idUtente"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setVia(rs.getString("via"));
+				bean.setCodiceTracciabilita(rs.getString("codiceTracciabilita"));
+				
+                products.add(bean);
+			}
+
+		} finally {
+			try {
+				if (preparedStatement != null)
+					preparedStatement.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+    
+    public synchronized Collection<OrdiniBean> getOridiniByDataAndIdUtente(String data1,String data2,int idUtente ) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+
+		Collection<OrdiniBean> products = new LinkedList<OrdiniBean>();
+		String selectSQL = "SELECT * FROM ordine  WHERE idUtente = ? AND Data BETWEEN " + '"'+data1 +'"'+ " AND "+ '"'+data2 +'"';
+
+		try {
+			connection = ds.getConnection();
+			preparedStatement = connection.prepareStatement(selectSQL);
+
+			preparedStatement.setInt(1, idUtente);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				OrdiniBean bean = new OrdiniBean();
+
+				bean.setTotale(rs.getFloat("totalePagamento"));
+				bean.setCodicePostale(rs.getString("codicePostale"));
+				bean.setData(rs.getString("Data"));
+				bean.setIdUtente(rs.getInt("idUtente"));
+				bean.setIdMetodoPagamento(rs.getInt("idMetodoPagamento"));
+				bean.setCode(rs.getInt("idOrdine"));
+				bean.setCitta(rs.getString("citta"));
+				bean.setVia(rs.getString("via"));
+				bean.setCodiceTracciabilita(rs.getString("codiceTracciabilita"));
+				
                 products.add(bean);
 			}
 

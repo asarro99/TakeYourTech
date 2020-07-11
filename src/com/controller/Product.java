@@ -342,6 +342,47 @@ public class Product extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
+			else if(request.getParameter("action").equals("ordiniAdmin"))
+			{
+				
+	                try {
+
+	                	String data1 = request.getParameter("data1");
+	            		String data2 = request.getParameter("data2");
+	            		String idUtente= request.getParameter("idUtenteRic");
+
+	                	if(data1 != null && data2 != null && !data1.equals("2017-06-01") && !data2.equals("2017-06-01"))
+	                	{
+	                			if(idUtente != null && idUtente != "")
+	                			{
+	                				Collection<OrdiniBean> ordini = ds.getOridiniByDataAndIdUtente(data1, data2,Integer.parseInt(idUtente));
+		                            request.setAttribute("ordini", ordini);
+	                			}
+	                			else 
+	                			{
+	                				Collection<OrdiniBean> ordini = ds.getOridiniByData( data1, data2);
+		                            request.setAttribute("ordini", ordini);
+								}
+	            
+	                	}
+	                	else {
+	                		
+	                		if(idUtente!=null && idUtente != "")
+	                		{
+	                			Collection<OrdiniBean> ordini = ds.getOridiniUtente(Integer.parseInt(idUtente));
+	    	                    request.setAttribute("ordini", ordini);
+	                		}
+	                		else 
+	                		{
+	                			Collection<OrdiniBean> ordini = ds.getOridini();
+	    	                    request.setAttribute("ordini", ordini);
+							}
+
+	                	}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+			}
 		}
 		
 		 if (request.getParameter("categoria")!=null) {

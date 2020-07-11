@@ -2,6 +2,7 @@
    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%
+
 	if(session.getAttribute("roleUtente") == null)
 	{
 		response.sendRedirect("login.jsp");	
