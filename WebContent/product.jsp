@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <%
+<<<<<<< HEAD
    ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
    if(prodotto==null)
    {
@@ -20,6 +21,24 @@
    }
    
    %>
+=======
+	
+	ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
+
+	if(prodotto==null)
+	{
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
+		return;
+	}
+	
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
+		return;
+	}
+	
+%>
+>>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
    <head>

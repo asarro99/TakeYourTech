@@ -2,6 +2,7 @@
    pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*,com.model.bean.*"%>
 <%
+<<<<<<< HEAD
    if(session.getAttribute("roleUtente") == null)
    {
    	response.sendRedirect("login.jsp");	
@@ -14,6 +15,27 @@
    	return;
    }
    %>
+=======
+	if(session.getAttribute("roleUtente") == null)
+	{
+		response.sendRedirect("login.jsp");	
+		return;
+	}
+	Collection<?> ordini = (Collection<?>) request.getAttribute("ordini");
+	
+	String sidemenu = (String)request.getAttribute("sidemenu");
+	if(sidemenu == null) {
+		response.sendRedirect("./Product?page=/OrdiniAdmin.jsp&action=ordiniAdmin");	
+		return;
+	}
+	
+	if(ordini==null)
+	{
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
+		return;
+	}
+%>
+>>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
 <head>
