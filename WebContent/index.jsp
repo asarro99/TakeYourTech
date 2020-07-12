@@ -3,7 +3,15 @@
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.*,com.model.bean.ProductBean"%>
 <%
-
+<<<<<<< HEAD
+   Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
+   String sidemenu = (String)request.getAttribute("sidemenu");
+   if(sidemenu == null) {
+   	response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
+   	return;
+   }
+   %>
+=======
 	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
 
 	if(products==null)
@@ -18,6 +26,7 @@
 		return;
 	}
 %>
+>>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
 <head>
