@@ -113,17 +113,13 @@ public class Product extends HttpServlet {
 				return;
 			}else if (request.getParameter("action").equals("modifica")) {
 				int codice = Integer.parseInt(request.getParameter("codice"));
-				String categoria =request.getParameter("categoria");
 				String name = request.getParameter("nome");
-				String description = request.getParameter("descrizione");
 				int price = Integer.parseInt(request.getParameter("prezzo"));
 				int quantity = Integer.parseInt(request.getParameter("quantita"));
 				
 				ProductBean bean = new ProductBean();
 				bean.setCode(codice);
-				bean.setCategoria(categoria);
 				bean.setName(name);
-				bean.setDescription(description);
 				bean.setPrice(price);
 				bean.setQuantity(quantity);
 				try {
@@ -146,6 +142,7 @@ public class Product extends HttpServlet {
 				
 				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/accountGestione.jsp");
 				dispatcher.forward(request, response);
+				return;
 			}else if (request.getParameter("action").equals("addC")) {
 				int id = Integer.parseInt(request.getParameter("codiceprod"));
 				

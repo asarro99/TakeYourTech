@@ -105,19 +105,7 @@
 	          </div>
 	          </div>
 				<div class="form-controller">
-				<input id="categoria-modifica" name="categoria" type="text" placeholder="Inserisci categoria prodotto">
-								 <div class="div-non-visualize">
-	          <small></small>
-	          </div>
-	          </div>
-				<div class="form-controller">
 				<input id="nome-modifica" name="nome" type="text" placeholder="Inserisci nome prodotto">
-								 <div class="div-non-visualize">
-	          <small></small>
-	          </div>
-	          </div>
-				<div class="form-controller">
-				<input id="descrizione-modifica" name="descrizione" type="text" placeholder="Inserisci descrizione prodotto">
 								 <div class="div-non-visualize">
 	          <small></small>
 	          </div>

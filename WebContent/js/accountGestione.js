@@ -13,9 +13,7 @@ const quantitaIns = document.getElementById('quantita-inserimento');
 
 //MODIFICA
 const codiceMod = document.getElementById('codice-modifica');
-const categoriaMod = document.getElementById('categoria-modifica');
 const nomeMod = document.getElementById('nome-modifica');
-const descrizioneMod = document.getElementById('descrizione-modifica');
 const prezzoMod = document.getElementById('prezzo-modifica');
 const quantitaMod = document.getElementById('quantita-modifica');
 
@@ -93,17 +91,13 @@ const checkFormInserimento = () => {
 
 const checkFormModifica = () => {
     const codiceValue = codiceMod.value.trim();
-    const categoriaValue = categoriaMod.value.trim();
     const nomeValue = nomeMod.value.trim();
-    const descrizioneValue = descrizioneMod.value.trim();
     const prezzoValue = prezzoMod.value.trim();
     const quantitaValue = quantitaMod.value.trim();
 
     //VALIDITA
     let validitaCodice = false;
-    let validitaCategoria = false;
     let validitaNome = false;
-    let validitaDescrizione = false;
     let validitaPrezzo = false;
     let validitaQuantita = false;
 
@@ -115,28 +109,12 @@ const checkFormModifica = () => {
         setSuccess(codiceMod);
     }
 
-    if(!categorie.includes(categoriaValue)){
-        validitaCategoria = false;
-        setError(categoriaMod, 'Il campo categoria deve essere corretto');
-    }else{
-        validitaCategoria = true;
-        setSuccess(categoriaMod);
-    }
-
     if(nomeValue === ''){
         validitaNome = false;
         setError(nomeMod, 'L\'iva inserita deve essere corretta');
     }else{
         validitaNome = true;
         setSuccess(nomeMod);
-    }
-
-    if(descrizioneValue === ''){
-        validitaDescrizione = false;
-        setError(descrizioneMod, 'La descrizione deve essere valida');
-    }else{
-        validitaDescrizione = true;
-        setSuccess(descrizioneMod);
     }
 
     if(prezzoValue === ''){
@@ -154,7 +132,7 @@ const checkFormModifica = () => {
         validitaQuantita = true;
         setSuccess(quantitaMod);
     }
-    return validitaCodice && validitaCategoria && validitaNome && validitaDescrizione && validitaPrezzo && validitaQuantita;
+    return validitaCodice && validitaNome && validitaPrezzo && validitaQuantita;
 }
 
 const checkFormRimuovi = () => {
