@@ -8,9 +8,16 @@
 		return;
 	}
 	Collection<?> ordini = (Collection<?>) request.getAttribute("ordini");
+	
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/OrdiniAdmin.jsp&action=ordiniAdmin");	
+		return;
+	}
+	
+	if(ordini==null)
+	{
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
 		return;
 	}
 %>

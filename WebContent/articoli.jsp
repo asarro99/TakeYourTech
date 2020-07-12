@@ -5,6 +5,12 @@
  	
  	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
  
+ 	if(products==null)
+	{
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
+		return;
+	}
+ 
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/articoli.jsp&categoria=Alimentatori");	

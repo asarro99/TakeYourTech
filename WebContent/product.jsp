@@ -9,11 +9,13 @@
 <%
 	
 	ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
+
 	if(prodotto==null)
 	{
-		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
+		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	
 		return;
 	}
+	
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
 		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
