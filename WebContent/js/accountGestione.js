@@ -68,7 +68,7 @@ const checkFormInserimento = () => {
         validitaDescrizione = false;
         setError(descrizioneIns, 'La descrizione deve essere valida');
     }else{
-        validivaliditaDescrizionetaNome = true;
+    	validitaDescrizione = true;
         setSuccess(descrizioneIns);
     }
 
@@ -87,7 +87,7 @@ const checkFormInserimento = () => {
         validitaQuantita = true;
         setSuccess(quantitaIns);
     }
-
+    console.log(validitaNome,validitaCategoria,validitaIva,validitaDescrizione,validitaPrezzo,validitaQuantita);
     return validitaNome && validitaCategoria && validitaIva && validitaDescrizione && validitaPrezzo && validitaQuantita;
 }
 
@@ -154,8 +154,7 @@ const checkFormModifica = () => {
         validitaQuantita = true;
         setSuccess(quantitaMod);
     }
-
-    return validitaCodice && validitaCategoria && validitaIva && validitaDescrizione && validitaPrezzo && validitaQuantita;
+    return validitaCodice && validitaCategoria && validitaNome && validitaDescrizione && validitaPrezzo && validitaQuantita;
 }
 
 const checkFormRimuovi = () => {
@@ -167,10 +166,10 @@ const checkFormRimuovi = () => {
 
 
     if(codiceValue === ''){
-        validitaNome = false;
+    	validitaCodice = false;
         setError(codiceRim, 'Il codice deve essere corretto.');
     }else{
-        validitaNome = true;
+    	validitaCodice = true;
         setSuccess(codiceRim);
     }
 
@@ -198,8 +197,10 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormInserimento())
-       form.submit();
+    if(checkFormInserimento()){
+    	form.submit();
+    }
+       
 });
 
 form2.addEventListener('submit', (e) => {
@@ -210,8 +211,9 @@ form2.addEventListener('submit', (e) => {
 
 form3.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormRimuovi())
-       form3.submit();
+    if(checkFormRimuovi()){
+    	form3.submit();
+    }
 });
 
 
