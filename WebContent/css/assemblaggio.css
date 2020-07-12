@@ -1,45 +1,91 @@
-.site-inner{
+.site-inner {
 	max-width: 1280px;
 	margin: 0 auto;
 	background: #ff5722;
 }
 
-.full-width-content .content{
+.full-width-content .content {
 	width: 100%;
 }
 
-article{
+article {
 	display: block;
 }
 
-#config-ajax{
+#config-ajax {
 	list-style: none;
 	margin-top: 30px;
 }
 
-.coloum-wrap{
-	display:flex;
+.coloum-wrap {
+	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	margin: 20px 0;
 	padding: 0 15px;
 }
 
-.coloum-wrap .coloum{
+.coloum-wrap .coloum {
 	width: 49%;
 }
 
 #config-ajax label {
-    display: block;
-    font-weight: bold;
-    font-style: italic;
-    color: #fff;
+	display: block;
+	font-weight: bold;
+	font-style: italic;
+	color: #fff;
 }
 
 #config-ajax select {
-    width: 100%;
-    background-color: #f7f7f7;
-    padding: 0.625em 0.4375em;
-    border: 1px solid #d1d1d1;
+	width: 100%;
+	background-color: #f7f7f7;
+	padding: 0.625em 0.4375em;
+	border: 1px solid #d1d1d1;
 }
 
+.search-buttons-builds {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.configbasebutton {
+	background-color: #fff;
+	border: none;
+	color: #448aff;
+	cursor: pointer;
+	font-family: 'Raleway', sans-serif;
+	padding: 16px 24px;
+	text-transform: uppercase;
+	width: auto;
+	margin-bottom: 5px;
+	margin-left: 43%;
+	transition: all 0.2s ease-out;
+}
+
+.configbasebutton:hover {
+	color: #fff;
+	background-color: #448aff;
+}
+
+option {
+	text-align: center;
+}
+
+@media (max-width:1024px) {
+	.configbasebutton {
+		margin-left: 30%;
+	}
+}
+
+@media (max-width:768px) {
+	.configbasebutton {
+		margin-left: 38%;
+	}
+}
+
+@media (max-width:375px) {
+	.configbasebutton {
+		margin-left: 25%;
+	}
+}

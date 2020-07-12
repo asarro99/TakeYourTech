@@ -12,35 +12,35 @@ import com.model.dao.LoginModelDS;
 
 @WebServlet("/SignIn")
 public class SignIn extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	private static LoginModelDS ds = new LoginModelDS();
-	
+    private static final long serialVersionUID = 1L;
+
+    private static LoginModelDS ds = new LoginModelDS();
+
     public SignIn() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String nome = request.getParameter("nome");
-		String cognome = request.getParameter("cognome");
-		
-		String redirectedPage = null;
-		try {
-			boolean check = ds.SignIn(email, password, nome, cognome);
-			if(check) {
-				redirectedPage = "/login.jsp";
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			redirectedPage = "/login.jsp";
-		}
-		response.sendRedirect(request.getContextPath() + redirectedPage);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String nome = request.getParameter("nome");
+        String cognome = request.getParameter("cognome");
+
+        String redirectedPage = null;
+        try {
+            boolean check = ds.SignIn(email, password, nome, cognome);
+            if (check) {
+                redirectedPage = "/login.jsp";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            redirectedPage = "/login.jsp";
+        }
+        response.sendRedirect(request.getContextPath() + redirectedPage);
+    }
 
 }

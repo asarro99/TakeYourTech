@@ -7,24 +7,26 @@ import com.model.bean.ProductBean;
 import com.model.Cart;
 
 public interface ProdottoModel {
-	
-	public void doSave(ProductBean product) throws SQLException;
-	
-	public void doUpdate(ProductBean product) throws SQLException;
 
-	public boolean doDelete(int code) throws SQLException;
+    public void doSave(ProductBean product) throws SQLException;
 
-	public ProductBean doRetrieveByKey(int code) throws SQLException;
-	
-	public Collection<ProductBean>  doRetrieveByCategoria(String categoria) throws SQLException;
-	
-	public Collection<ProductBean> doRetrieveAll(String order) throws SQLException;
-	
-	public  Collection<ProductBean> getSediciProdRandom() throws SQLException ;
-	
-	public  Collection<ProductBean> getSearchProdotti(String ricerca) throws SQLException ;
-	
-    public  void aggiornaQuantitaProdotti(Cart carrello) throws SQLException ;
-    
-    public  int getQuantitaProdotto(int idProdotto) throws SQLException ;
+    public void doUpdate(ProductBean product) throws SQLException;
+
+    public boolean doDelete(int code) throws SQLException;
+
+    public ProductBean doRetrieveByKey(int code) throws SQLException;
+
+    public Collection < ProductBean > doRetrieveByCategoria(String categoria) throws SQLException;
+
+    public Collection < ProductBean > doRetrieveAll(String order) throws SQLException;
+
+    public Collection < ProductBean > getSediciProdRandom() throws SQLException;
+
+    public Collection < ProductBean > getSearchProdotti(String ricerca) throws SQLException;
+
+    public Collection < ProductBean > getProdottiConfiguratore() throws SQLException;
+
+    public void aggiornaQuantitaProdotti(Cart carrello) throws SQLException;
+
+    public int getQuantitaProdotto(int idProdotto) throws SQLException;
 }

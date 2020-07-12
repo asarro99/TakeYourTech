@@ -20,35 +20,35 @@ const checkFormInserimento = () => {
     let validitaScandenza = false;
 
 
-    if(codiceValue === ''){
-    	validitaCodice = false;
+    if (codiceValue === '') {
+        validitaCodice = false;
         setError(codiceIns, 'La via deve essere corretta.');
-    }else{
-    	validitaCodice = true;
+    } else {
+        validitaCodice = true;
         setSuccess(codiceIns);
     }
-    
-    if(intestatarioValue === ''){
-    	validitaIntestatario = false;
+
+    if (intestatarioValue === '') {
+        validitaIntestatario = false;
         setError(intestatarioIns, 'La citta deve essere corretta.');
-    }else{
-    	validitaIntestatario = true;
+    } else {
+        validitaIntestatario = true;
         setSuccess(intestatarioIns);
     }
-    
-    if(tipologiaValue === ''){
-    	validitaTipologia = false;
+
+    if (tipologiaValue === '') {
+        validitaTipologia = false;
         setError(tipologiaIns, 'Il CAP deve essere corretto.');
-    }else{
-    	validitaTipologia = true;
+    } else {
+        validitaTipologia = true;
         setSuccess(tipologiaIns);
     }
-    
-    if(scadenzaValue === ''){
-    	validitaScandenza = false;
+
+    if (scadenzaValue === '') {
+        validitaScandenza = false;
         setError(scadenzaIns, 'Il CAP deve essere corretto.');
-    }else{
-    	validitaScandenza = true;
+    } else {
+        validitaScandenza = true;
         setSuccess(scadenzaIns);
     }
 
@@ -76,6 +76,6 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormInserimento())
-       form.submit();
+    if (checkFormInserimento())
+        form.submit();
 });

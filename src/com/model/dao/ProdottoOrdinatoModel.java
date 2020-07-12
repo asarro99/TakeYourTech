@@ -6,5 +6,5 @@ import com.model.Cart;
 
 public interface ProdottoOrdinatoModel {
 
-	public void doProdottiOrdinatiSave(Cart carrello, int idOrdine) throws SQLException;
+    public void doProdottiOrdinatiSave(Cart carrello, int idOrdine) throws SQLException;
 }

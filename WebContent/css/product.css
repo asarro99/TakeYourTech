@@ -1,61 +1,64 @@
 /***********************************************
 SINGOLO 
 ************************************************/
+
 .single-product {
-  margin-top: 70px;
+	margin-top: 70px;
 }
 
 .new-arrival {
-  background: #ff5722;
-  width: 50px;
-  color: #000;
-  font-size: 12px;
-  font-weight: bold;
-  margin-top: 20px;
+	background: #ff5722;
+	width: 50px;
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+	margin-top: 20px;
 }
 
 .col-md-7 h2 {
-  color: #555;
+	color: #555;
 }
 
 .single-product fa {
-  color: #ff5722;
+	color: #ff5722;
 }
 
 .single-product .price {
-  color: #ff5722;
-  font-size: 26px;
-  font-weight: bold;
-  padding-top: 20px;
+	color: #ff5722;
+	font-size: 26px;
+	font-weight: bold;
+	padding-top: 20px;
 }
 
 .single-product input {
-  border: 1px solid #ddd;
-  font-weight: bold;
-  height: 33px;
-  text-align: center;
-  width: 30px;
+	border: 1px solid #ddd;
+	font-weight: bold;
+	height: 33px;
+	text-align: center;
+	width: 30px;
 }
 
 .single-product .btn-primary {
-  background: #ff5722 !important;
-  color: #000;
-  font-size: 15px;
-  margin-left: 20px;
-  border: none;
-  box-shadow: none !important;
+	background: #ff5722 !important;
+	color: #000;
+	font-size: 15px;
+	margin-left: 20px;
+	border: none;
+	box-shadow: none !important;
 }
 
+
 /*  DESCRIZIONE  */
+
 .product-description h6 {
-  margin-top: 50px;
-  color: #ff5722;
+	margin-top: 50px;
+	color: #ff5722;
 }
 
 .product-description p {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .product-description hr {
-  margin-bottom: 50px;
+	margin-bottom: 50px;
 }

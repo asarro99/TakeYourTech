@@ -15,54 +15,54 @@ import com.model.dao.ProdottoModelDS;
 
 @WebServlet("/Carrello")
 public class Carrello extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private static ProdottoModelDS ds = new ProdottoModelDS();
+    private static final long serialVersionUID = 1L;
+    private static ProdottoModelDS ds = new ProdottoModelDS();
 
     public Carrello() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		int quantita = Integer.parseInt(request.getParameter("quantita"));
-		//Controllo quantita prodotto nel database
-		String totale = "";
-		Cart carrello = (Cart) request.getSession().getAttribute("cart");
-		try {
-			ProductBean prodottoOrdinato = (ProductBean) ds.doRetrieveByKey(id);
-			if(prodottoOrdinato.getQuantity() >= quantita) {
-				for(ProductBean b : carrello.getProducts()) {
-					if(b.getCode() == id) {
-						b.setQuantity(quantita);
-						totale += (b.getPrice() * b.getQuantity());
-					}
-				}
-				totale += " " + Integer.toString(quantita);
-				totale += " " + Double.toString(carrello.getTotal());
-				totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
-				response.setContentType("text/plain");
-				response.getWriter().write(totale);
-			}else {
-				for(ProductBean b : carrello.getProducts()) {
-					if(b.getCode() == id) {
-						b.setQuantity(prodottoOrdinato.getQuantity());
-						totale += (b.getPrice() * b.getQuantity());
-					}
-				}
-				totale += " " + Integer.toString(prodottoOrdinato.getQuantity());
-				totale += " " + Double.toString(carrello.getTotal());
-				totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
-				response.setContentType("text/plain");
-				response.getWriter().write(totale);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        int quantita = Integer.parseInt(request.getParameter("quantita"));
+        //Controllo quantita prodotto nel database
+        String totale = "";
+        Cart carrello = (Cart) request.getSession().getAttribute("cart");
+        try {
+            ProductBean prodottoOrdinato = (ProductBean) ds.doRetrieveByKey(id);
+            if (prodottoOrdinato.getQuantity() >= quantita) {
+                for (ProductBean b: carrello.getProducts()) {
+                    if (b.getCode() == id) {
+                        b.setQuantity(quantita);
+                        totale += (b.getPrice() * b.getQuantity());
+                    }
+                }
+                totale += " " + Integer.toString(quantita);
+                totale += " " + Double.toString(carrello.getTotal());
+                totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
+                response.setContentType("text/plain");
+                response.getWriter().write(totale);
+            } else {
+                for (ProductBean b: carrello.getProducts()) {
+                    if (b.getCode() == id) {
+                        b.setQuantity(prodottoOrdinato.getQuantity());
+                        totale += (b.getPrice() * b.getQuantity());
+                    }
+                }
+                totale += " " + Integer.toString(prodottoOrdinato.getQuantity());
+                totale += " " + Double.toString(carrello.getTotal());
+                totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
+                response.setContentType("text/plain");
+                response.getWriter().write(totale);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

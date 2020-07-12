@@ -15,33 +15,33 @@ import com.model.dao.ProdottoModelDS;
 
 @WebServlet("/ProdottoAjax")
 public class ProdottoAjax extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-    
-	private static ProdottoModelDS ds = new ProdottoModelDS();
-	
+    private static final long serialVersionUID = 1L;
+
+    private static ProdottoModelDS ds = new ProdottoModelDS();
+
     public ProdottoAjax() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductBean prodotto = null;
-		String descrizione = "{}";
-		try {
-			prodotto = ds.doRetrieveByKey(Integer.parseInt(request.getParameter("codiceprod")));
-			descrizione = prodotto.getDescription();
-		} catch (NumberFormatException | SQLException e) {
-			e.printStackTrace();
-		}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ProductBean prodotto = null;
+        String descrizione = "{}";
+        try {
+            prodotto = ds.doRetrieveByKey(Integer.parseInt(request.getParameter("codiceprod")));
+            descrizione = prodotto.getDescription();
+        } catch (NumberFormatException | SQLException e) {
+            e.printStackTrace();
+        }
 
-		response.setContentType("application/json;charset=utf-8");
-		PrintWriter pw = response.getWriter();
-		pw.print(descrizione);
-		pw.close();
-		
-	}
+        response.setContentType("application/json;charset=utf-8");
+        PrintWriter pw = response.getWriter();
+        pw.print(descrizione);
+        pw.close();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

@@ -1,72 +1,71 @@
 package com.model.bean;
 
 public class metPagaBean {
-	int code;
-	int idUtente;
-	String tipologia;
-	String codiceCarta;
-	String intestatario;
-	String dataDiScadenza;
+    int code;
+    int idUtente;
+    String tipologia;
+    String codiceCarta;
+    String intestatario;
+    String dataDiScadenza;
 
-	public metPagaBean() {
-		code = -1;
-		codiceCarta="";
-		intestatario="";
-		tipologia="";
-		idUtente=0;
-		dataDiScadenza="";
-	}
-	
-	public String getCodiceCarta() {
-		return codiceCarta;
-	}
-	
-	public void setCodiceCarta(String codiceCarta) {
-		this.codiceCarta = codiceCarta;
-	}
-	
-	public String getDataDiScadenza() {
-		return dataDiScadenza;
-	}
-	
-	public void setDataDiScadenza(String dataDiScadenza) {
-		this.dataDiScadenza = dataDiScadenza;
-	}
-	
-	public String getIntestatario() {
-		return intestatario;
-	}
-	
-	public void setIntestatario(String intestatario) {
-		this.intestatario = intestatario;
-	}
-	
-	public String getTipologia() {
-		return tipologia;
-	}
-	
-	public void setTipologia(String tipologia) {
-		this.tipologia = tipologia;
-	}
-	
+    public metPagaBean() {
+        code = -1;
+        codiceCarta = "";
+        intestatario = "";
+        tipologia = "";
+        idUtente = 0;
+        dataDiScadenza = "";
+    }
 
-	public int getCode() {
-		return code;
-	}
+    public String getCodiceCarta() {
+        return codiceCarta;
+    }
 
-	public void setCode(int code) {
-		this.code = code;
-	}
+    public void setCodiceCarta(String codiceCarta) {
+        this.codiceCarta = codiceCarta;
+    }
+
+    public String getDataDiScadenza() {
+        return dataDiScadenza;
+    }
+
+    public void setDataDiScadenza(String dataDiScadenza) {
+        this.dataDiScadenza = dataDiScadenza;
+    }
+
+    public String getIntestatario() {
+        return intestatario;
+    }
+
+    public void setIntestatario(String intestatario) {
+        this.intestatario = intestatario;
+    }
+
+    public String getTipologia() {
+        return tipologia;
+    }
+
+    public void setTipologia(String tipologia) {
+        this.tipologia = tipologia;
+    }
+
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 
 
 
     public int getIdUtente() {
-		return idUtente;
-	}
-    
+        return idUtente;
+    }
+
     public void setIdUtente(int idUtente) {
-		this.idUtente = idUtente;
-	}
+        this.idUtente = idUtente;
+    }
 
 }
-

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import com.model.bean.AccountBean;
 
 public interface AccountModel {
-	
-	public  AccountBean getInformazioniAccount(String idUtente) throws SQLException;
-	
+
+    public AccountBean getInformazioniAccount(String idUtente) throws SQLException;
+
 }

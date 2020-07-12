@@ -9,23 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/Logout")
 public class Logout extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     public Logout() {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getSession().removeAttribute("roleUtente");
-		request.getSession().removeAttribute("idUtente");
-		//request.getSession().invalidate();   
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().removeAttribute("roleUtente");
+        request.getSession().removeAttribute("idUtente");
+        //request.getSession().invalidate();   
 
-		String redirectedPage = "/login.jsp";
-		response.sendRedirect(request.getContextPath() + redirectedPage);
-	}
+        String redirectedPage = "/login.jsp";
+        response.sendRedirect(request.getContextPath() + redirectedPage);
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

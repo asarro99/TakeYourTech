@@ -1,89 +1,90 @@
 /****************************************
   Categoria
 *****************************************/
+
 .categoria {
-  width: 85%;
-  margin-left: 15%;
+	width: 85%;
+	margin-left: 15%;
 }
 
 .title-box {
-  background: #ff5722;
-  color: #fff;
-  width: 100px;
-  padding: 4px 10px;
-  height: 40px;
-  margin-bottom: 30px;
-  display: flex;
+	background: #ff5722;
+	color: #fff;
+	width: 100px;
+	padding: 4px 10px;
+	height: 40px;
+	margin-bottom: 30px;
+	display: flex;
 }
 
 .title-box h2 {
-  font-size: 24px;
+	font-size: 24px;
 }
 
 .title-box:after {
-  content: "";
-  border-top: 40px solid #ff5722;
-  border-right: 50px solid transparent;
-  position: absolute;
-  display: flex;
-  margin-top: -4px;
-  margin-left: 90px;
+	content: "";
+	border-top: 40px solid #ff5722;
+	border-right: 50px solid transparent;
+	position: absolute;
+	display: flex;
+	margin-top: -4px;
+	margin-left: 90px;
 }
 
 .componenti .title-box {
-  width: 280px;
+	width: 280px;
 }
 
 .componenti .title-box:after {
-  margin-left: 270px;
+	margin-left: 270px;
 }
 
 .promo img {
-  width: 200px;
-  height: 100px;
+	width: 200px;
+	height: 100px;
 }
+
 .novita img {
-  width: 200px;
-  height: 100px;
+	width: 200px;
+	height: 100px;
 }
+
 .componenti img {
-  width: 200px;
-  height: 100px;
+	width: 200px;
+	height: 100px;
 }
 
 .btn-primary {
-  margin-top: 11%;
-  color: #ff5722 !important;
-  background-color: #fff !important;
-  border-color: #ff5722 !important;
+	margin-top: 11%;
+	color: #ff5722 !important;
+	background-color: #fff !important;
+	border-color: #ff5722 !important;
 }
 
 .btn-primary:hover {
-  color: #fff !important;
-  background-color: #ff5722 !important;
-  border-color: #ff5722 !important;
+	color: #fff !important;
+	background-color: #ff5722 !important;
+	border-color: #ff5722 !important;
 }
 
-@media (max-width: 769px){
+@media (max-width: 769px) {
 	.btn-primary {
- 	 margin-left: 12%;
- 	 margin-top: 8%;
- 	 margin-bottom: 10%;
+		margin-left: 12%;
+		margin-top: 8%;
+		margin-bottom: 10%;
 	}
-	
 	.categoria {
-  	margin-left: 1%;
+		margin-left: 1%;
 	}
 }
 
-@media (max-width: 376px){
+@media (max-width: 376px) {
 	.btn-primary {
- 	 margin-left: 16%;
- 	 margin-top: 10%;
- 	 margin-bottom: 10%;
+		margin-left: 16%;
+		margin-top: 10%;
+		margin-bottom: 10%;
 	}
-	
 	.categoria {
-  	margin-left: 1%;
+		margin-left: 1%;
 	}
 }

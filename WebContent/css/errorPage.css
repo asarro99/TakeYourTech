@@ -1,13 +1,12 @@
 @charset "ISO-8859-1";
-
-.containerImg{
-	text-align:center;
-	 width: 100%
+.containerImg {
+	text-align: center;
+	width: 100%
 }
 
-.imgErrore{
-	max-width:70%;
-	min-width:70%;
-	width:auto;
-	height:auto;
+.imgErrore {
+	max-width: 70%;
+	min-width: 70%;
+	width: auto;
+	height: auto;
 }

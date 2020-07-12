@@ -17,27 +17,27 @@ const checkFormInserimento = () => {
     let validitaCap = false;
 
 
-    if(viaValue === ''){
-    	validitaVia = false;
+    if (viaValue === '') {
+        validitaVia = false;
         setError(viaIns, 'La via deve essere corretta.');
-    }else{
-    	validitaVia = true;
+    } else {
+        validitaVia = true;
         setSuccess(viaIns);
     }
-    
-    if(cittaValue === ''){
-    	validitaCitta = false;
+
+    if (cittaValue === '') {
+        validitaCitta = false;
         setError(cittaIns, 'La citta deve essere corretta.');
-    }else{
-    	validitaCitta = true;
+    } else {
+        validitaCitta = true;
         setSuccess(cittaIns);
     }
-    
-    if(capValue === ''){
-    	validitaCap = false;
+
+    if (capValue === '') {
+        validitaCap = false;
         setError(capIns, 'Il CAP deve essere corretto.');
-    }else{
-    	validitaCap = true;
+    } else {
+        validitaCap = true;
         setSuccess(capIns);
     }
 
@@ -65,6 +65,6 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormInserimento())
-       form.submit();
+    if (checkFormInserimento())
+        form.submit();
 });

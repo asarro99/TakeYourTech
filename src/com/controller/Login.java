@@ -13,42 +13,42 @@ import com.model.dao.LoginModelDS;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	
-	private static LoginModelDS ds = new LoginModelDS();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		{	
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
-			
-			String redirectedPage = null;
-			try {
-				ArrayList<String> conferma = ds.Login(email, password);
-				request.getSession().setAttribute("roleUtente", conferma.get(0));
-				request.getSession().setAttribute("idUtente", conferma.get(1));
-				if(request.getSession().getAttribute("erroreLogin") != null) {
-					request.getSession().removeAttribute("erroreLogin");
-				}
-				redirectedPage = "/index.jsp";
-			} catch (Exception e) {
-				request.getSession().setAttribute("roleUtente", null);
-				request.getSession().setAttribute("erroreLogin", true);
-				redirectedPage = "/login.jsp";
-			}
-			response.sendRedirect(request.getContextPath() + redirectedPage);
-		}
-	}
+    private static LoginModelDS ds = new LoginModelDS();
 
-	private static final long serialVersionUID = 1L;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
 
-	public Login() {
-		super();
-	}	
+            String redirectedPage = null;
+            try {
+                ArrayList < String > conferma = ds.Login(email, password);
+                request.getSession().setAttribute("roleUtente", conferma.get(0));
+                request.getSession().setAttribute("idUtente", conferma.get(1));
+                if (request.getSession().getAttribute("erroreLogin") != null) {
+                    request.getSession().removeAttribute("erroreLogin");
+                }
+                redirectedPage = "/index.jsp";
+            } catch (Exception e) {
+                request.getSession().setAttribute("roleUtente", null);
+                request.getSession().setAttribute("erroreLogin", true);
+                redirectedPage = "/login.jsp";
+            }
+            response.sendRedirect(request.getContextPath() + redirectedPage);
+        }
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
-	}
+    private static final long serialVersionUID = 1L;
+
+    public Login() {
+        super();
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException {
+        doPost(request, response);
+    }
 
 }

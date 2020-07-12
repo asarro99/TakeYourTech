@@ -20,7 +20,7 @@ const quantitaMod = document.getElementById('quantita-modifica');
 //RIMUOVI
 const codiceRim = document.getElementById('codice-rimuovi');
 
-const categorie = ['Alimentatori','Case','Dissipatori','Hard_Disk','Portatili','Processori','RAM','Schede_Madri','Schede_Video','Telefoni'];
+const categorie = ['Alimentatori', 'Case', 'Dissipatori', 'Hard_Disk', 'Portatili', 'Processori', 'RAM', 'Schede_Madri', 'Schede_Video', 'Telefoni'];
 
 const checkFormInserimento = () => {
     const nomevalue = nomeIns.value.trim();
@@ -38,54 +38,54 @@ const checkFormInserimento = () => {
     let validitaPrezzo = false;
     let validitaQuantita = false;
 
-    if(nomevalue === ''){
+    if (nomevalue === '') {
         validitaNome = false;
         setError(nomeIns, 'Il nome deve essere corretto.');
-    }else{
+    } else {
         validitaNome = true;
         setSuccess(nomeIns);
     }
 
-    if(!categorie.includes(categoriaValue)){
+    if (!categorie.includes(categoriaValue)) {
         validitaCategoria = false;
         setError(categoriaIns, 'Il campo categoria deve essere corretto');
-    }else{
+    } else {
         validitaCategoria = true;
         setSuccess(categoriaIns);
     }
 
-    if(ivaValue === ''){
+    if (ivaValue === '') {
         validitaIva = false;
         setError(ivaIns, 'L\'iva inserita deve essere corretta');
-    }else{
+    } else {
         validitaIva = true;
         setSuccess(ivaIns);
     }
 
-    if(descrizioneValue === ''){
+    if (descrizioneValue === '') {
         validitaDescrizione = false;
         setError(descrizioneIns, 'La descrizione deve essere valida');
-    }else{
-    	validitaDescrizione = true;
+    } else {
+        validitaDescrizione = true;
         setSuccess(descrizioneIns);
     }
 
-    if(prezzoValue === ''){
+    if (prezzoValue === '') {
         validitaPrezzo = false;
         setError(prezzoIns, 'Il prezzo deve essere valido');
-    }else{
+    } else {
         validitaPrezzo = true;
         setSuccess(prezzoIns);
     }
 
-    if(quantitaValue === ''){
+    if (quantitaValue === '') {
         validitaQuantita = false;
         setError(quantitaIns, 'La quantita deve essere valida');
-    }else{
+    } else {
         validitaQuantita = true;
         setSuccess(quantitaIns);
     }
-    console.log(validitaNome,validitaCategoria,validitaIva,validitaDescrizione,validitaPrezzo,validitaQuantita);
+    console.log(validitaNome, validitaCategoria, validitaIva, validitaDescrizione, validitaPrezzo, validitaQuantita);
     return validitaNome && validitaCategoria && validitaIva && validitaDescrizione && validitaPrezzo && validitaQuantita;
 }
 
@@ -101,34 +101,34 @@ const checkFormModifica = () => {
     let validitaPrezzo = false;
     let validitaQuantita = false;
 
-    if(codiceValue === ''){
+    if (codiceValue === '') {
         validitaCodice = false;
         setError(codiceMod, 'Il codice deve essere corretto.');
-    }else{
+    } else {
         validitaCodice = true;
         setSuccess(codiceMod);
     }
 
-    if(nomeValue === ''){
+    if (nomeValue === '') {
         validitaNome = false;
         setError(nomeMod, 'L\'iva inserita deve essere corretta');
-    }else{
+    } else {
         validitaNome = true;
         setSuccess(nomeMod);
     }
 
-    if(prezzoValue === ''){
+    if (prezzoValue === '') {
         validitaPrezzo = false;
         setError(prezzoMod, 'Il prezzo deve essere valido');
-    }else{
+    } else {
         validitaPrezzo = true;
         setSuccess(prezzoMod);
     }
 
-    if(quantitaValue === ''){
+    if (quantitaValue === '') {
         validitaQuantita = false;
         setError(quantitaMod, 'La quantita deve essere valida');
-    }else{
+    } else {
         validitaQuantita = true;
         setSuccess(quantitaMod);
     }
@@ -143,11 +143,11 @@ const checkFormRimuovi = () => {
     let validitaCodice = false;
 
 
-    if(codiceValue === ''){
-    	validitaCodice = false;
+    if (codiceValue === '') {
+        validitaCodice = false;
         setError(codiceRim, 'Il codice deve essere corretto.');
-    }else{
-    	validitaCodice = true;
+    } else {
+        validitaCodice = true;
         setSuccess(codiceRim);
     }
 
@@ -175,23 +175,21 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormInserimento()){
-    	form.submit();
+    if (checkFormInserimento()) {
+        form.submit();
     }
-       
+
 });
 
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormModifica())
-       form2.submit();
+    if (checkFormModifica())
+        form2.submit();
 });
 
 form3.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormRimuovi()){
-    	form3.submit();
+    if (checkFormRimuovi()) {
+        form3.submit();
     }
 });
-
-

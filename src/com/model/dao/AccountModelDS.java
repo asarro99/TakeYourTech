@@ -12,56 +12,52 @@ import javax.sql.DataSource;
 
 import com.model.bean.AccountBean;
 
-public class AccountModelDS implements AccountModel{
-	
-private static DataSource ds;
-	
-	static 
-	{
-		try 
-		{
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
-		} 
-		catch (NamingException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	public synchronized AccountBean getInformazioniAccount(String idUtente) throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+public class AccountModelDS implements AccountModel {
 
-		AccountBean account = new AccountBean();
+    private static DataSource ds;
 
-		String selectSQL = "SELECT * FROM utente WHERE idUtente = ?" ;
+    static {
+        try {
+            Context initCtx = new InitialContext();
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            ds = (DataSource) envCtx.lookup("jdbc/storage");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    }
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-			preparedStatement.setString(1,idUtente);
+    public synchronized AccountBean getInformazioniAccount(String idUtente) throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-			ResultSet rs = preparedStatement.executeQuery();
+        AccountBean account = new AccountBean();
 
-			while (rs.next()) {
-					account.setTipoAccount(rs.getString("tipoAccount"));
-					account.setNome(rs.getString("nome"));
-					account.setCognome(rs.getString("cognome"));
-					account.setEmail(rs.getString("email"));
-			}
+        String selectSQL = "SELECT * FROM utente WHERE idUtente = ?";
 
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return account;
-	}
-	
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, idUtente);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                account.setTipoAccount(rs.getString("tipoAccount"));
+                account.setNome(rs.getString("nome"));
+                account.setCognome(rs.getString("cognome"));
+                account.setEmail(rs.getString("email"));
+            }
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return account;
+    }
+
 }

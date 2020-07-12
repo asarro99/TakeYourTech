@@ -6,12 +6,12 @@ import java.util.Collection;
 import com.model.bean.metPagaBean;
 
 public interface PagamentoModel {
-	
-	public int getidMetodoPagamento(int IdUtente) throws SQLException;
-	
-	public  Collection<metPagaBean> getMetPagaUtente(int idUtente) throws SQLException;
-	
-	public  void rimuoviMetPaga(int idIndirizzo,int idUtente) throws SQLException;
-	
-	public  void aggiungiMetodoPagamento(metPagaBean metodoPagamento) throws SQLException;
+
+    public int getidMetodoPagamento(int IdUtente) throws SQLException;
+
+    public Collection < metPagaBean > getMetPagaUtente(int idUtente) throws SQLException;
+
+    public void rimuoviMetPaga(int idIndirizzo, int idUtente) throws SQLException;
+
+    public void aggiungiMetodoPagamento(metPagaBean metodoPagamento) throws SQLException;
 }

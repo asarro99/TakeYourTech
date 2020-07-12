@@ -10,51 +10,47 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class CategorieModelDS implements CategorieModel{
-private static DataSource ds;
-	
-	static 
-	{
-		try 
-		{
-			Context initCtx = new InitialContext();
-			Context envCtx = (Context) initCtx.lookup("java:comp/env");
-			ds = (DataSource) envCtx.lookup("jdbc/storage");
-		} 
-		catch (NamingException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	public synchronized String getCategorie() throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+public class CategorieModelDS implements CategorieModel {
+    private static DataSource ds;
 
-		String categorieString = "";
+    static {
+        try {
+            Context initCtx = new InitialContext();
+            Context envCtx = (Context) initCtx.lookup("java:comp/env");
+            ds = (DataSource) envCtx.lookup("jdbc/storage");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+    }
 
-		String selectSQL = "SELECT * FROM categoria" ;
+    public synchronized String getCategorie() throws SQLException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
 
-		try {
-			connection = ds.getConnection();
-			preparedStatement = connection.prepareStatement(selectSQL);
-			
-			ResultSet rs = preparedStatement.executeQuery();
+        String categorieString = "";
 
-			while (rs.next()) {
+        String selectSQL = "SELECT * FROM categoria";
+
+        try {
+            connection = ds.getConnection();
+            preparedStatement = connection.prepareStatement(selectSQL);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
                 categorieString += rs.getString("nomeCategoria") + " ";
-			}
-			
+            }
 
-		} finally {
-			try {
-				if (preparedStatement != null)
-					preparedStatement.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		return categorieString;
-	}
+
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+            } finally {
+                if (connection != null)
+                    connection.close();
+            }
+        }
+        return categorieString;
+    }
 }

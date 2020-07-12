@@ -17,7 +17,7 @@ const checkFormReg = () => {
     const pass2Value = pass2.value.trim();
     const nomeValue = nome.value.trim();
     const cognomeValue = cognome.value.trim();
-    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  //ESPRESSIONE REGOLARE
+    let pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; //ESPRESSIONE REGOLARE
 
     //VALIDITA
     let validitaEmail = false;
@@ -26,42 +26,42 @@ const checkFormReg = () => {
     let validitaNome = false;
     let validitaCognome = false;
 
-    if(!emailValue.match(pattern)){
+    if (!emailValue.match(pattern)) {
         validitaEmail = false;
         setError(email, 'L\'indirizzo e-mail deve essere corretto.');
-    }else{
+    } else {
         validitaEmail = true;
         setSuccess(email);
     }
 
-    if(passValue === ''){
+    if (passValue === '') {
         validitaPass = false;
         setError(pass, 'Il campo password non puo\' essere vuoto');
-    }else{
+    } else {
         validitaPass = true;
         setSuccess(pass);
     }
 
-    if(pass2Value !== passValue || pass2Value === ''){
+    if (pass2Value !== passValue || pass2Value === '') {
         validitaPass2 = false;
         setError(pass2, 'Le due password devono coincidere');
-    }else{
+    } else {
         validitaPass2 = true;
         setSuccess(pass2);
     }
 
-    if(nomeValue === ''){
+    if (nomeValue === '') {
         validitaNome = false;
         setError(nome, 'Il nome non puo\' essere vuoto');
-    }else{
+    } else {
         validitaNome = true;
         setSuccess(nome);
     }
 
-    if(cognomeValue === ''){
+    if (cognomeValue === '') {
         validitaCognome = false;
         setError(cognome, 'Il cognome non puo\' essere vuoto');
-    }else{
+    } else {
         validitaCognome = true;
         setSuccess(cognome);
     }
@@ -77,18 +77,18 @@ const checkFormLog = () => {
     let validitaEmail = false;
     let validitaPass = false;
 
-    if(!emailValue.match(pattern)){
+    if (!emailValue.match(pattern)) {
         validitaEmail = false;
         setError(emailLog, 'L\'indirizzo e-mail deve essere corretto.');
-    }else{
+    } else {
         validitaEmail = true;
         setSuccess(emailLog);
     }
 
-    if(passValue === ''){
+    if (passValue === '') {
         validitaPass = false;
         setError(passLog, 'Il campo password non puo\' essere vuoto');
-    }else{
+    } else {
         validitaPass = true;
         setSuccess(passLog);
     }
@@ -116,13 +116,12 @@ const setSuccess = (input) => {
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormReg())
-       form.submit();
+    if (checkFormReg())
+        form.submit();
 });
 
 form2.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFormLog())
+    if (checkFormLog())
         form2.submit();
 });
-

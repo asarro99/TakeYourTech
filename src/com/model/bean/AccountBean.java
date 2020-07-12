@@ -1,49 +1,49 @@
 package com.model.bean;
 
 public class AccountBean {
-	String tipoAccount;
-	String nome;
-	String cognome;
-	String email;
-	
-	public AccountBean() {
-		tipoAccount = "";
-		nome = "";
-		cognome = "";
-		email = "";
-	}
+    String tipoAccount;
+    String nome;
+    String cognome;
+    String email;
 
-	public String getTipoAccount() {
-		return tipoAccount;
-	}
+    public AccountBean() {
+        tipoAccount = "";
+        nome = "";
+        cognome = "";
+        email = "";
+    }
 
-	public void setTipoAccount(String tipoAccount) {
-		this.tipoAccount = tipoAccount;
-	}
+    public String getTipoAccount() {
+        return tipoAccount;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setTipoAccount(String tipoAccount) {
+        this.tipoAccount = tipoAccount;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public String getCognome() {
-		return cognome;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
+    public String getCognome() {
+        return cognome;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+
 }

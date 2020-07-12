@@ -1,73 +1,74 @@
 .body_account {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 .propic {
-  height: 18.75em;
-  width: 18.75em;
-  margin-left: 2%;
+	height: 18.75em;
+	width: 18.75em;
+	margin-left: 2%;
 }
 
 .propic img {
-  margin-top:10%;
-  max-width:70%;
-  max-height:70%
-  width: auto;
-  height: auto;
-  object-fit: cover;
+	margin-top: 10%;
+	max-width: 70%;
+	max-height: 70%;
+	width: auto;
+	height: auto;
+	object-fit: cover;
 }
 
 .profilo {
-  margin-top: 20px;
-  margin-left:16%;
+	margin-top: 20px;
+	margin-left: 16%;
 }
 
-.indirizzo ,.pagamento ,.ordini{
+.indirizzo,
+.pagamento,
+.ordini {
 	margin: 8.5em 8% 0;
 }
 
-.boxProfile{
-	text-align:center;
+.boxProfile {
+	text-align: center;
 	display: flex;
 }
 
-.bottoni{
+.bottoni {
 	width: 70%;
 	display: flex;
 }
 
 .btn-primary {
 	font-size: 20px !important;
-  color: #ff5722 !important;
-  background-color: #fff !important;
-  border-color: #ff5722 !important;
+	color: #ff5722 !important;
+	background-color: #fff !important;
+	border-color: #ff5722 !important;
 }
 
 .btn-primary:hover {
-  color: #fff !important;
-  background-color: #ff5722 !important;
-  border-color: #ff5722 !important;
+	color: #fff !important;
+	background-color: #ff5722 !important;
+	border-color: #ff5722 !important;
 }
 
-@media only screen and (max-width: 980px){
-	.boxProfile{
-	display: inline-block;
-	width: 100%;
+@media only screen and (max-width: 980px) {
+	.boxProfile {
+		display: inline-block;
+		width: 100%;
 	}
-
-	
-	.bottoni{
-	display: block;
-	width: 100%;}
-	
-	.profilo{
-	text-align: center;
-	margin: 0;
+	.bottoni {
+		display: block;
+		width: 100%;
 	}
-	
-	.indirizzo ,.pagamento ,.ordini{
-	margin: 5% 0;
-	text-align:center;
+	.profilo {
+		text-align: center;
+		margin: 0;
+	}
+	.indirizzo,
+	.pagamento,
+	.ordini {
+		margin: 5% 0;
+		text-align: center;
 	}
 }
