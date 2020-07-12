@@ -83,17 +83,16 @@ private static DataSource ds;
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		
-		String insertSQL = "UPDATE prodotto SET Nome = ?, Descrizione=?, Prezzo=?, Quantita=? WHERE IdProdotto = ?";
+		String insertSQL = "UPDATE prodotto SET Nome = ?, Prezzo=?, Quantita=? WHERE IdProdotto = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStatement = connection.prepareStatement(insertSQL);
 
-			preparedStatement.setInt(5, product.getCode());
+			preparedStatement.setInt(4, product.getCode());
 			preparedStatement.setString(1, product.getName());
-			preparedStatement.setString(2, product.getDescription());
-			preparedStatement.setFloat(3, product.getPrice());
-			preparedStatement.setInt(4, product.getQuantity());
+			preparedStatement.setFloat(2, product.getPrice());
+			preparedStatement.setInt(3, product.getQuantity());
 
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
