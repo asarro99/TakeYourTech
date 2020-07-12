@@ -81,7 +81,7 @@
               %>
 
             <p class="price"><%=prodotto.getPrice()%> Euro</p>
-            <p><b>Disponibilità: </b><%if(prodotto.getQuantity()>50)out.println("<span style=\"color:#1bd615\">In Magazzino</span>"); else if(prodotto.getQuantity()<50 && prodotto.getQuantity()>0) out.println("<span style=\"color:#f9d342\">In esaurimento</span>"); else  out.println("<span style=\"color:#ff0000\">Non disponibile</span>"); %></p>
+            <p><b>Disponibilità: </b><%if(prodotto.getQuantity()>50)out.println("<span style=\"color:#1bd615\">In Magazzino</span>"); else if(prodotto.getQuantity()<=50 && prodotto.getQuantity()>0) out.println("<span style=\"color:#f9d342\">In esaurimento</span>"); else  out.println("<span style=\"color:#ff0000\">Non disponibile</span>"); %></p>
             <p><b>Condizioni: </b>Nuovo</p>
             <p id="brand"></p>
             <%

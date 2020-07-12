@@ -1,6 +1,7 @@
 $('input').change((event)=>{
 	if(event.target.value <= 0){
 		$('#snackbar').text("Non si possono inserire quantita' inferiori ad 1.");
+		console.log(event.target.value);
 		myFunction();
 		event.target.value = 1;
 	}
@@ -16,12 +17,17 @@ $('input').change((event)=>{
 			error: () => console.log('Errore AJAX Carrello'),
 			success: (responseText) => {
 				let prezzi = responseText.split(" ");
+				let valueIniziale = prezzi[3];
 				let totale = prezzi[2];
 				let value = prezzi[1]
 				let prodotto = prezzi[0];
 				$('#prezzoTotale').text(totale + " Euro");
 				$('#'+idPrezzo).text(prodotto + " Euro");
-				$('#snackbar').text("Il massimo disponibile nel magazzino e' " + value);
+				if(value < valueIniziale){
+					console.log(value);
+					$('#snackbar').text("Il massimo disponibile nel magazzino e' " + value);
+				}
+				
 				myFunction();
 				event.target.value = value;
 			}

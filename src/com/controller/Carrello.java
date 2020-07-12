@@ -39,6 +39,7 @@ public class Carrello extends HttpServlet {
 				}
 				totale += " " + Integer.toString(quantita);
 				totale += " " + Double.toString(carrello.getTotal());
+				totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
 				response.setContentType("text/plain");
 				response.getWriter().write(totale);
 			}else {
@@ -50,6 +51,7 @@ public class Carrello extends HttpServlet {
 				}
 				totale += " " + Integer.toString(prodottoOrdinato.getQuantity());
 				totale += " " + Double.toString(carrello.getTotal());
+				totale += " " + Integer.toString(Integer.parseInt(request.getParameter("quantita")));
 				response.setContentType("text/plain");
 				response.getWriter().write(totale);
 			}
