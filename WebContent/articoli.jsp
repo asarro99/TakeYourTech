@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
-<<<<<<< HEAD
-<%@ page import="java.util.*,com.model.bean.ProductBean"%>
-<%
-   Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
-   
-   String sidemenu = (String)request.getAttribute("sidemenu");
-   if(sidemenu == null) {
-   response.sendRedirect("./Product?page=/articoli.jsp&categoria=Alimentatori");	
-   return;
-   }
-   
-   %>
-=======
+
     <%@ page import="java.util.*,com.model.bean.ProductBean"%>
  <%
  	
@@ -31,7 +19,6 @@
 	}
 
  %>
->>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
 <head>
