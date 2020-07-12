@@ -7,21 +7,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
    pageEncoding="ISO-8859-1"%>
 <%
-<<<<<<< HEAD
-   ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
-   if(prodotto==null)
-   {
-   	response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
-   	return;
-   }
-   String sidemenu = (String)request.getAttribute("sidemenu");
-   if(sidemenu == null) {
-   	response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
-   	return;
-   }
-   
-   %>
-=======
 	
 	ProductBean prodotto = (ProductBean)request.getAttribute("prodotto");
 
@@ -33,12 +18,8 @@
 	
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
-		return;
-	}
-	
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");
 %>
->>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -110,6 +91,7 @@
                      </button>
                   </form>
                   <%
+                   }
                      }
                      %>
                </div>
