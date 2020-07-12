@@ -111,6 +111,8 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="./js/app.js"></script>
 	
 	    <script>
     window.onresize = function(){

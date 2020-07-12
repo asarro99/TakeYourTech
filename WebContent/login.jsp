@@ -108,7 +108,9 @@
     <jsp:include page="./utility/footer.jsp"/>
     
     <script src="./js/login.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="./js/app.js"></script>
     <script>
     $(document).ready(function () {
         $(".login-info-box").fadeOut();

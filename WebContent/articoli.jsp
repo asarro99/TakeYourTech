@@ -97,6 +97,8 @@
 			
 		<%
 				}
+			}else{
+				out.println("Nessun Risultato");
 			}
 		%>
           
@@ -134,15 +136,18 @@
          let searchParams = new URLSearchParams(window.location.search);
          if(searchParams.has('categoria')){
          	let productParam = searchParams.get('categoria');
-         	console.log(productParam);
          	productParam = productParam.replace("_", " ");
-         	console.log(productParam);
+         	productParam = productParam[0].toUpperCase() + productParam.slice(1);
          	document.getElementById('cat').innerHTML = productParam;
          }
      })
 
 
      </script>
+       
+           <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
+    <script src="./js/app.js"></script>
        
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>

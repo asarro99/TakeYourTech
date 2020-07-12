@@ -401,6 +401,14 @@ public class Product extends HttpServlet {
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
+			 } else if(request.getParameter("categoria").equals("ricerca")){
+				 try {
+					 	String ric = request.getParameter("par");
+						Collection<ProductBean> prodotti = ds.getSearchProdotti("%" + ric + "%");
+						request.setAttribute("prodotti", prodotti);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			 } else {
 				try {
 					Collection<ProductBean> prodotti = ds.doRetrieveByCategoria(request.getParameter("categoria"));

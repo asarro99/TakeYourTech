@@ -22,3 +22,9 @@ function closeMenu() {
 $('.effect').mouseleave(()=>{
 	$(this).removeClass('effect');
 })
+
+//Ricerca barra menu
+document.querySelector('#inputBottone').addEventListener('click', ()=>{
+	let query = $('#inputRicerca').val();
+	window.location.href = 'http://localhost:8080/TakeYourTech/Product?page=/articoli.jsp&categoria=ricerca&par=' + query;
+})

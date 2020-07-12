@@ -22,6 +22,8 @@ public interface ProdottoModel {
 	
 	public  Collection<ProductBean> getSediciProdRandom() throws SQLException ;
 	
+	public  Collection<ProductBean> getSearchProdotti(String ricerca) throws SQLException ;
+	
     public  void aggiornaQuantitaProdotti(Cart carrello) throws SQLException ;
     
     public  int getQuantitaProdotto(int idProdotto) throws SQLException ;
