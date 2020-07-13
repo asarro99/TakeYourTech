@@ -18,7 +18,10 @@
 	
 	String sidemenu = (String)request.getAttribute("sidemenu");
 	if(sidemenu == null) {
-		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");
+		response.sendRedirect("./Product?page=/product.jsp&codiceprod=33");	
+		return;
+	}
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +94,6 @@
                      </button>
                   </form>
                   <%
-                   }
                      }
                      %>
                </div>

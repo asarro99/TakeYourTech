@@ -14,6 +14,7 @@
 		response.sendRedirect("./Product?page=/OrdiniAdmin.jsp&action=ordiniAdmin");	
 		return;
 	}
+	
 	if(ordini==null)
 	{
 		response.sendRedirect("./Product?page=/index.jsp&action=indexProd");	

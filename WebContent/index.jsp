@@ -2,9 +2,8 @@
    pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.util.*,com.model.bean.ProductBean"%>
-<%
 
-	Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
+	<%Collection<?> products = (Collection<?>)request.getAttribute("prodotti");
 
 	if(products==null)
 	{
