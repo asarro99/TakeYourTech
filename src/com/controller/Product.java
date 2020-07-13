@@ -55,8 +55,18 @@ public class Product extends HttpServlet {
     private static ProdottoOrdinatoModelDS ds5 = new ProdottoOrdinatoModelDS();
     private static CategorieModelDS ds6 = new CategorieModelDS();
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /***
+     * Insert = rigo 79
+     * Modifica = riga 121
+     * Rimozone = riga 141
+     * AddC = riga 153
+     * RemoveC = riga 188
+     * Checkout = riga 195
+     * Ordini = riga 224
+     * Indirizzi = riga 243
+     * MetPagamenti = riga 281
+     * IndexProd =  riga 320
+     * OrdiniAdmin = riga 327
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
@@ -197,7 +207,7 @@ public class Product extends HttpServlet {
                                 response.sendRedirect(request.getContextPath() + "/indirizzi.jsp");
                                 return;
                             } else {
-                                ds4.doCartSave(idMetodoPagamento, Integer.parseInt((String) request.getSession().getAttribute("idUtente")), (float) cart.getTotal(), IndirizzoSpedizione.get(3), IndirizzoSpedizione.get(2), IndirizzoSpedizione.get(1), "fammok");
+                                ds4.doCartSave(idMetodoPagamento, Integer.parseInt((String) request.getSession().getAttribute("idUtente")), (float) cart.getTotal(), IndirizzoSpedizione.get(3), IndirizzoSpedizione.get(2), IndirizzoSpedizione.get(1), "2353V2HJ5V");
                                 int idOrdine = ds4.getidOrdine(Integer.parseInt((String) request.getSession().getAttribute("idUtente")));
                                 ds5.doProdottiOrdinatiSave(cart, idOrdine);
                                 ds.aggiornaQuantitaProdotti(cart);

@@ -41,7 +41,7 @@ public class FatturaModelDS implements FatturaModel {
 
         String ordineSQL = "SELECT * FROM ordine WHERE idOrdine = ?";
         String utenteSQL = "SELECT * FROM utente WHERE idUtente = ?";
-        String prodottiSQL = "SELECT * FROM prodottoordinato WHERE idOrdine = ?";
+        String prodottiSQL = "SELECT * FROM prodottoordinato INNER JOIN prodotto on prodottoordinato.idProdotto = prodotto.idProdotto WHERE prodottoordinato.idOrdine = ?";
 
         try {
             connection = ds.getConnection();
@@ -111,6 +111,7 @@ public class FatturaModelDS implements FatturaModel {
                 bean.setPrice(rs.getFloat("prezzo"));
                 bean.setName(rs.getString("nome"));
                 bean.setIva(rs.getInt("iva"));
+                bean.setCategoria(rs.getString("nomeCategoria"));
 
 
                 prodottiOrdinatiCart.addProduct(bean);

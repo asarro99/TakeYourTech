@@ -71,8 +71,8 @@
                <tr>
                   <td><%=beancart.getName() %></td>
                   <td><%=beancart.getQuantity() %></td>
-                  <td><%=beancart.getIva()%></td>
-                  <td><%=beancart.getPrice() %></td>
+                  <td><%=beancart.getIva()%> %</td>
+                  <td><%=beancart.getPrice() %> Euro</td>
                </tr>
                <%
                   }

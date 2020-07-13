@@ -77,11 +77,11 @@ public class GeneratoreFattura {
             billTable.setWidthPercentage(100);
             billTable.setWidths(new float[] {
                 2,
-                2,
+                3,
                 5,
                 2,
                 2,
-                2
+                3
             });
             billTable.setSpacingBefore(30.0f);
             billTable.addCell(getBillHeaderCell("Indice"));
@@ -95,7 +95,7 @@ public class GeneratoreFattura {
             int index = 0;
             for (ProductBean b: products) {
                 billTable.addCell(getBillRowCell("" + (index + 1)));
-                billTable.addCell(getBillRowCell("Categoria"));
+                billTable.addCell(getBillRowCell("" + b.getCategoria()));
                 billTable.addCell(getBillRowCell("" + b.getName()));
                 billTable.addCell(getBillRowCell("" + b.getPrice() + " Euro"));
                 billTable.addCell(getBillRowCell("" + b.getQuantity()));
